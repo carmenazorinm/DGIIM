@@ -27,7 +27,7 @@
 
 (define append
   (lambda (a lst)
-    (const lst a)))
+    (cons lst a)))
 
 ; Insert element at a given position in the list
 
