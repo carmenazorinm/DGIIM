@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="weaponsMounted" alignment="0" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="panelHangar" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="ammoPower" min="-2" max="-2" attributes="0"/>
+                          <Component id="spacestation" min="-2" max="-2" attributes="0"/>
+                          <Component id="fuelUnits" min="-2" max="-2" attributes="0"/>
+                          <Component id="medals" min="-2" max="-2" attributes="0"/>
+                          <Component id="shieldpower" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="name" min="-2" max="-2" attributes="0"/>
+                          <Component id="nammoPower" min="-2" max="-2" attributes="0"/>
+                          <Component id="nfuel" min="-2" max="-2" attributes="0"/>
+                          <Component id="nmedals" min="-2" max="-2" attributes="0"/>
+                          <Component id="nshields" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="textMountedWeapons" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="textMountedShields" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="discardHangarBut" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Component id="panelPendingDamage" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="spacestation" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="name" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ammoPower" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nammoPower" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="fuelUnits" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nfuel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="medals" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nmedals" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="shieldpower" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nshields" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="textMountedWeapons" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="weaponsMounted" min="-2" pref="117" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="textMountedShields" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="126" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="panelHangar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="discardHangarBut" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <Component id="panelPendingDamage" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="spacestation">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Space Station: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="name">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="ammoPower">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ammonition Power:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="fuelUnits">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fuel Units:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="medals">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Medals: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="shieldpower">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Shiled Power: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nammoPower">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nammoPower"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nfuel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nfuel"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nmedals">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nmedals"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nshields">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nshields"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="weaponsMounted">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="panelMountedWeapons">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="369" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="115" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="panelMountedShields">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="369" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JTextField" name="textMountedWeapons">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mounted Weapons:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textMountedShields">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mounted Shields:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="discardHangarBut">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Discard Hangar"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="panelHangar">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JPanel" name="panelPendingDamage">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+  </SubComponents>
+</Form>
