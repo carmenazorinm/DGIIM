@@ -1,0 +1,1226 @@
+
+Reading from ./data/SegundoCaso.dataset
+Number of events with non null session in index: 400
+After filtering sessions (type == cart): 400 sessions
+There are 10 unique brands in the filtered sessions
+Adjacency Matrix 
+10 10
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0 1 1 5 1 4 2 5 3 2 
+1 0 2 4 7 2 5 5 2 3 
+1 2 0 7 1 2 3 3 2 2 
+5 4 7 0 6 4 5 3 4 6 
+1 7 1 6 0 7 3 5 5 4 
+4 2 2 4 7 0 3 4 6 3 
+2 5 3 5 3 3 0 9 5 2 
+5 5 3 3 5 4 9 0 8 5 
+3 2 2 4 5 6 5 8 0 7 
+2 3 2 6 4 3 2 5 7 0 
+
+PageRank value at 0
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.067699 0.0858505 0.0659499 0.132344 0.106075 0.0987943 0.101759 0.133278 0.115151 0.0930988 
+
+PageRank value at 1
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.072857 0.0888642 0.0706726 0.11914 0.108475 0.0982026 0.103794 0.126217 0.115221 0.0965574 
+
+PageRank value at 2
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0714657 0.0885704 0.0691914 0.122237 0.107634 0.0986907 0.102965 0.12837 0.115256 0.0956201 
+
+PageRank value at 3
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.071843 0.088577 0.0695645 0.121396 0.107963 0.0985116 0.103249 0.127772 0.115253 0.0958707 
+
+PageRank value at 4
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717369 0.0885917 0.0694625 0.121624 0.107854 0.098573 0.10316 0.12794 0.115256 0.0958024 
+
+PageRank value at 5
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717669 0.0885843 0.0694906 0.121561 0.107888 0.0985534 0.103187 0.127893 0.115255 0.0958214 
+
+PageRank value at 6
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717584 0.0885871 0.0694827 0.121578 0.107878 0.0985595 0.103179 0.127906 0.115255 0.095816 
+
+PageRank value at 7
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717608 0.0885862 0.069485 0.121573 0.107881 0.0985576 0.103181 0.127902 0.115255 0.0958175 
+
+PageRank value at 8
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717601 0.0885864 0.0694843 0.121575 0.10788 0.0985582 0.103181 0.127903 0.115255 0.0958171 
+
+PageRank value at 9
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.098558 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 10
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717602 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 11
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 12
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 13
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 14
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 15
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 16
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 17
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 18
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 19
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 20
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 21
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 22
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 23
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 24
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 25
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 26
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 27
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 28
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 29
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 30
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 31
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 32
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 33
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 34
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 35
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 36
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 37
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 38
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 39
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 40
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 41
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 42
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 43
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 44
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 45
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 46
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 47
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 48
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 49
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 50
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 51
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 52
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 53
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 54
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 55
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 56
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 57
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 58
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 59
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 60
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 61
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 62
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 63
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 64
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 65
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 66
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 67
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 68
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 69
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 70
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 71
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 72
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 73
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 74
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 75
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 76
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 77
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 78
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 79
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 80
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 81
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 82
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 83
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 84
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 85
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 86
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 87
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 88
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 89
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 90
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 91
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 92
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 93
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 94
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 95
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 96
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 97
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 98
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 99
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 100
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 101
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 102
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 103
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 104
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 105
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 106
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 107
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 108
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 109
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 110
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 111
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 112
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 113
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 114
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 115
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 116
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 117
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 118
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 119
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 120
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 121
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 122
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 123
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 124
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 125
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 126
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 127
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 128
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 129
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 130
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 131
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 132
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 133
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 134
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 135
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 136
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 137
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 138
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 139
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 140
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 141
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 142
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 143
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 144
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 145
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 146
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 147
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 148
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 149
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 150
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 151
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 152
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 153
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 154
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 155
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 156
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 157
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 158
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 159
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 160
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 161
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 162
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 163
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 164
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 165
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 166
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 167
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 168
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 169
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 170
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 171
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 172
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 173
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 174
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 175
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 176
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 177
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 178
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 179
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 180
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 181
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 182
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 183
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 184
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 185
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 186
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 187
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 188
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 189
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 190
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 191
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 192
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 193
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 194
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 195
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 196
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 197
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 198
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+PageRank value at 199
+1 10
+ 
+ypsed likato biofollica roubloff profhenna estrade missha almea beauty-free deoproce 
+0.0717603 0.0885864 0.0694845 0.121574 0.10788 0.0985581 0.103181 0.127903 0.115255 0.0958172 
+
+
+
+    0.1279    0.1153    0.0695    0.0958    0.0986    0.0886    0.1032    0.1079    0.1216    0.0718    1.0000
+
+     almeabeauty-frebiofollica  deoproce   estrade    likato    missha profhenna  roubloff     ypsed
+

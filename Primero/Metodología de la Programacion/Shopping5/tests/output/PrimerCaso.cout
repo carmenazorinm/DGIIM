@@ -1,0 +1,1222 @@
+
+Reading from ./data/PrimerCaso.dataset
+Number of events with non null session in index: 20
+After filtering sessions (type == cart): 20 sessions
+There are 6 unique brands in the filtered sessions
+Adjacency Matrix 
+6 6
+nitrimax markell roubloff veraclara ingarden haruyama 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0 3 0 0 1 0 
+3 0 1 2 0 0 
+0 1 0 0 0 1 
+0 2 0 0 1 0 
+1 0 0 1 0 0 
+0 0 1 0 0 0 
+
+PageRank value at 0
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.166667 0.296528 0.190278 0.143056 0.107639 0.0958333 
+
+PageRank value at 1
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.196771 0.293183 0.148466 0.154763 0.100949 0.105868 
+
+PageRank value at 2
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.192506 0.301239 0.156522 0.150972 0.110663 0.0880982 
+
+PageRank value at 3
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.200058 0.299795 0.142559 0.157383 0.108683 0.0915219 
+
+PageRank value at 4
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.198603 0.302308 0.145265 0.156132 0.112104 0.0855876 
+
+PageRank value at 5
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201125 0.301822 0.140576 0.158298 0.111441 0.0867375 
+
+PageRank value at 6
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.200637 0.302665 0.141485 0.157878 0.11259 0.084745 
+
+PageRank value at 7
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201483 0.302501 0.139911 0.158606 0.112368 0.0851311 
+
+PageRank value at 8
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201319 0.302784 0.140216 0.158465 0.112754 0.0844621 
+
+PageRank value at 9
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201604 0.30273 0.139687 0.158709 0.112679 0.0845917 
+
+PageRank value at 10
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201549 0.302825 0.13979 0.158662 0.112808 0.0843671 
+
+PageRank value at 11
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201644 0.302806 0.139612 0.158744 0.112783 0.0844106 
+
+PageRank value at 12
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201625 0.302838 0.139647 0.158728 0.112827 0.0843352 
+
+PageRank value at 13
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201658 0.302832 0.139587 0.158755 0.112818 0.0843498 
+
+PageRank value at 14
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201651 0.302843 0.139598 0.15875 0.112833 0.0843245 
+
+PageRank value at 15
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201662 0.302841 0.139578 0.158759 0.11283 0.0843294 
+
+PageRank value at 16
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.20166 0.302844 0.139582 0.158758 0.112835 0.0843209 
+
+PageRank value at 17
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302843 0.139576 0.158761 0.112834 0.0843225 
+
+PageRank value at 18
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201663 0.302845 0.139577 0.15876 0.112836 0.0843196 
+
+PageRank value at 19
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302844 0.139575 0.158761 0.112835 0.0843202 
+
+PageRank value at 20
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139575 0.158761 0.112836 0.0843192 
+
+PageRank value at 21
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.0843194 
+
+PageRank value at 22
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139575 0.158761 0.112836 0.0843191 
+
+PageRank value at 23
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.0843192 
+
+PageRank value at 24
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.0843191 
+
+PageRank value at 25
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.0843191 
+
+PageRank value at 26
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 27
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.0843191 
+
+PageRank value at 28
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 29
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 30
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 31
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 32
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 33
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 34
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 35
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 36
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 37
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 38
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 39
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 40
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 41
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 42
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 43
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 44
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 45
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 46
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 47
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 48
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 49
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 50
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 51
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 52
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 53
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 54
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 55
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 56
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 57
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 58
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 59
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 60
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 61
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 62
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 63
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 64
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 65
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 66
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 67
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 68
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 69
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 70
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 71
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 72
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 73
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 74
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 75
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 76
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 77
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 78
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 79
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 80
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 81
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 82
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 83
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 84
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 85
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 86
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 87
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 88
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 89
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 90
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 91
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 92
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 93
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 94
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 95
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 96
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 97
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 98
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 99
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 100
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 101
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 102
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 103
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 104
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 105
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 106
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 107
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 108
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 109
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 110
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 111
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 112
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 113
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 114
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 115
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 116
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 117
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 118
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 119
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 120
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 121
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 122
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 123
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 124
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 125
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 126
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 127
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 128
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 129
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 130
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 131
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 132
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 133
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 134
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 135
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 136
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 137
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 138
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 139
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 140
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 141
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 142
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 143
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 144
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 145
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 146
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 147
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 148
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 149
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 150
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 151
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 152
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 153
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 154
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 155
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 156
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 157
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 158
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 159
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 160
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 161
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 162
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 163
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 164
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 165
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 166
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 167
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 168
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 169
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 170
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 171
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 172
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 173
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 174
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 175
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 176
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 177
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 178
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 179
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 180
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 181
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 182
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 183
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 184
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 185
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 186
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 187
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 188
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 189
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 190
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 191
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 192
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 193
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 194
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 195
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 196
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 197
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 198
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+PageRank value at 199
+1 6
+ 
+nitrimax markell roubloff veraclara ingarden haruyama 
+0.201664 0.302845 0.139574 0.158761 0.112836 0.084319 
+
+
+
+    0.0843    0.1128    0.3028    0.2017    0.1396    0.1588    1.0000
+
+  haruyama  ingarden   markell  nitrimax  roubloff veraclara
+
