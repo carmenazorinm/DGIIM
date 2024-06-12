@@ -1,0 +1,24 @@
+version: '3'
+services:
+        web:
+                build:
+                        context: .
+                        dockerfile: Dockerfile
+                ports:
+                        - 80:80
+                volumes:
+                        - ./index.php:/var/www/html/index.php
+                        - ./alumnos.php:/var/www/html/alumnos.php
+                depends_on:
+                        - db
+        db:
+                image: mariadb
+                restart: always
+                environment:
+                        MYSQL_ROOT_PASSWORD: root
+                        MYSQL_DATABASE: ise2023
+                        MYSQL_USER: admin
+                        MYSQL_PASSWORD: ise2023
+                volumes:
+                        #- ./data:/var/lib/mysqli
+                        - "./db_scripts/initMaria.db:/docker-entrypoint-initdb.d/initMaria.sql"

@@ -1,0 +1,15 @@
+use mysql;
+
+#create database ise2023; 
+
+grant all privileges on ise2023.* to 'admin'@'localhost' identified by 'ise2023';
+
+use ise2023;
+create table alumnos( id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+dni VARCHAR(9) NOT NULL,
+apellidos VARCHAR(250), 
+nombre varchar(250), 
+email varchar(250) NOT NULL);
+
+insert into alumnos (dni,apellidos,nombre,email) values ('23442342x','Sin Miedo', 'Juan', 'jsinmiedo@ugr.es');
+insert into alumnos (dni,apellidos,nombre,email) values ('23442343x','Sin Nombre', 'Maria', 'mariasinnombre@ugr.es');
