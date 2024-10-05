@@ -82,7 +82,7 @@ DescrVBOAtribs::DescrVBOAtribs( const unsigned p_index, const GLenum p_type, con
                                 const unsigned long p_count, const void *p_data )
 {
    // copiar valores de entrada y comprobar que son correctos
-   index    = p_index ; // ídice de atributo (<num_attrs)
+   index    = p_index ; // índice de atributo (<num_attrs)
    type     = p_type ; // tipo de valores (GL_FLOAT o GL_DOUBLE)
    size     = p_size ; // número de valores por tupla (2,3,4)
    count    = p_count ; // número de tuplas en la tabla (>0)
@@ -436,7 +436,7 @@ void DescrVAO::crearVAO()
    // el profe usa dvbo_atributo[i] que no hace comprobaciones y es mas rapido
    for (unsigned i = 0; i < num_atribs; i++) {
       if(dvbo_atributo.at(i) != nullptr && !atrib_habilitado.at(i)) {
-         glDisableVertexAttribArray(i);
+         glDisableVertexAttribArray(dvbo_atributo[i]->buffer);
       }
    }
 

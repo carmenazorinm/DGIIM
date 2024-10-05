@@ -46,8 +46,8 @@ class MallaInd : public Objeto3D
       // necesarios para una malla indexada (y que no aparezcan ya declarados en esta plantilla)
       // ......
 
-      std::vector<glm::vec3>  vertices ;
-      std::vector<glm::uvec3> triangulos ;
+      std::vector<glm::vec3>  vertices ; // tabla de coordenadas de vertices
+      std::vector<glm::uvec3> triangulos ; // tabla de triangulos (tabla de indices, agrupados de 3 en 3)
 
       std::vector<glm::vec3> col_ver ;   // colores de los vértices
       std::vector<glm::vec3> nor_ver ;   // normales de vértices

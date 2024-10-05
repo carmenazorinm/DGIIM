@@ -117,8 +117,19 @@ void Escena::visualizarGL( )
    //  
    // Usar 'glPolygonMode' en función del modo guardado en 'apl->modo_visu', 
    // que puede ser: puntos,lineas o relleno.
-   //
-   // ...................
+   switch (aplicacionIG->modo_visu) {
+      case ModosVisu::lineas:
+         glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+         break;
+      case ModosVisu::puntos:
+         glPolygonMode(GL_FRONT_AND_BACK,GL_POINT);
+         break;
+      case ModosVisu::relleno:
+         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+         break;
+      default:
+         throw std::invalid_argument("Error en escena.cpp/VisualizarGL");
+   }
 
 
    CError();
@@ -146,7 +157,7 @@ void Escena::visualizarGL( )
    Objeto3D * objeto = objetos[ind_objeto_actual] ; assert( objeto != nullptr );
 
    // COMPLETAR: práctica 1: visualizar el objeto actual ('objeto')
-
+   objeto->visualizarGL();
 
    // Visualizar las aristas del objeto, si procede (es decir: en modo relleno, con 
    // visualización de aristas activada)
@@ -164,8 +175,9 @@ void Escena::visualizarGL( )
       //      - fijar el color a negro
       //      - fijar el modo de polígonos a modo 'lineas'
       // 
-      // ...........
-
+      cauce->fijarColor(0,0,0);
+      glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+      objeto->visualizarGeomGL();
    }
    
 
@@ -306,7 +318,6 @@ Escena1::Escena1()
    // array 'objetos' otros objetos de la práctica 1
    // 
    // .......
-
 }
 
 // -------------------------------------------------------------------------
