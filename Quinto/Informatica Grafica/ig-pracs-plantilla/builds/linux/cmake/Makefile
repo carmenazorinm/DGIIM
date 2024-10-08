@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/builds/linux
+CMAKE_SOURCE_DIR = "/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/builds/linux/cmake
+CMAKE_BINARY_DIR = "/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles /home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/builds/linux/cmake//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles" "/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -142,518 +142,518 @@ release_exe/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/build
 .PHONY : release_exe/fast
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.cpp.s
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.o: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.o: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.o
 
 # target to build an object file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.o
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.o
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.o
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.o
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.i: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.i: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.i
 
 # target to preprocess a source file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.i
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.i
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.i
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.i
 
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.s: home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.s: home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.s
 
 # target to generate assembly for a file
-home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.s
-.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.cpp.s
+home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.s
+.PHONY : home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.cpp.s
 
 # Help Target
 help:
@@ -665,63 +665,63 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... debug_exe"
 	@echo "... release_exe"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/cauce.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/fbo.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/ig-aux.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/materiales/src-cpp/lector-ply.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/animacion.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/aplicacion-ig.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/camara.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/escena.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-raton.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/eventos-teclado.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/grafo-escena.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/main.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-ind.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/malla-revol.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/materiales-luces.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/objeto3d.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/seleccion.s"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.o"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.i"
-	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/src/vaos-vbos.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/cauce.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/fbo.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/ig-aux.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-jpg.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/materiales/src-cpp/lector-ply.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/aplicacion-ig.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/camara.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/escena.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-raton.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/eventos-teclado.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/grafo-escena.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/main.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-ind.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/malla-revol.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/materiales-luces.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/objeto3d.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/seleccion.s"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.o"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.i"
+	@echo "... home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/vaos-vbos.s"
 .PHONY : help
 
 

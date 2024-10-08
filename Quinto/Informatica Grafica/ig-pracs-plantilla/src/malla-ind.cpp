@@ -409,7 +409,7 @@ CasaX::CasaX()
          {4,7,5}, {4,6,7}, // X+ (+4)
 
          {0,6,4}, {0,2,6}, // Z-
-         {1,5,7}, {1,7,3}  // Z+ (+1)
+         {1,5,7}, {1,7,3}, // Z+ (+1)
 
          {2,8,6}, {3,9,7}, // tringulos laterales de la caasa
          {2,8,3}, {8,9,3}, // rectangulo tejado izquierda

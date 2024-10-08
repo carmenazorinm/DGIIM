@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/builds/linux/../../src -I/home/carmen/Documentos/Quinto-DGIIM/IG/P0/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp
+CXX_INCLUDES = -I"/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/../../src" -I"/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp"
 
 CXX_FLAGS =  -std=c++20 -Wall -Wextra -Wno-unused-parameter -Wno-unused-private-field -Wfatal-errors -O2
 
