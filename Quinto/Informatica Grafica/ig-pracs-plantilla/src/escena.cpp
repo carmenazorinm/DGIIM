@@ -312,7 +312,8 @@ Escena1::Escena1()
 
    //objetos.push_back( new Cubo() );
    //objetos.push_back(new Tetraedro());
-   objetos.push_back(new CuboColores());
+   //objetos.push_back(new CuboColores());
+   objetos.push_back(new CasaX());
    // COMPLETAR: práctica 1: añadir resto de objetos a la escena 1
    //
    // Añadir sentencias 'push_back' adicionales para agregar al 

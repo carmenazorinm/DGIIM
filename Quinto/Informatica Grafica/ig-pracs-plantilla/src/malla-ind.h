@@ -138,10 +138,12 @@ class CuboColores : public MallaInd
 };
 
 // ---------------------------------------------------------------------
-class EstrellaZ : public MallaInd
+
+// ---------------------------------------------------------------------
+class CasaX : public MallaInd
 {
    public:
-      EstrellaZ();
+      CasaX();
 };
 
 #endif
