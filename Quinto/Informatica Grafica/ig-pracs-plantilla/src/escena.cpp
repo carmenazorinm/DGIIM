@@ -310,8 +310,9 @@ Escena1::Escena1()
    cout << "Creando objetos de la práctica 1." << endl ;
 
 
-   objetos.push_back( new Cubo() );
-
+   //objetos.push_back( new Cubo() );
+   //objetos.push_back(new Tetraedro());
+   objetos.push_back(new CuboColores());
    // COMPLETAR: práctica 1: añadir resto de objetos a la escena 1
    //
    // Añadir sentencias 'push_back' adicionales para agregar al 
