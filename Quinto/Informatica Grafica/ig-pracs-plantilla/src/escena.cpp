@@ -313,7 +313,11 @@ Escena1::Escena1()
    //objetos.push_back( new Cubo() );
    //objetos.push_back(new Tetraedro());
    //objetos.push_back(new CuboColores());
-   objetos.push_back(new CasaX());
+   //objetos.push_back(new CasaX());
+   //objetos.push_back(new MallaTriangulo());
+   //objetos.push_back(new MallaCuadrado());
+   //objetos.push_back(new MallaPiramideL());
+   objetos.push_back(new EstrellaZ(8));
    // COMPLETAR: práctica 1: añadir resto de objetos a la escena 1
    //
    // Añadir sentencias 'push_back' adicionales para agregar al 
@@ -328,7 +332,17 @@ Escena1::Escena1()
 // Añadir la implementación del constructor de la clase 'Escena2' para construir
 // los objetos que se indican en los guiones de las práctica 2
 // .......
-
+Escena2::Escena2()
+{
+   using namespace std ;
+   cout << "Creando objetos de la práctica 2." << endl ;
+   //objetos.push_back(new Cilindro(3, 10));
+   //objetos.push_back(new Cono(3,10));
+   //objetos.push_back(new Esfera(100,100));
+   //objetos.push_back(new PiramideEstrellaZ(8));
+   //objetos.push_back(new RejillaY(30,8));
+   objetos.push_back(new MallaTorre(2));
+}
 
 
 // -------------------------------------------------------------------------

@@ -282,7 +282,7 @@ MallaPLY::MallaPLY( const std::string & nombre_arch )
 
    // COMPLETAR: práctica 2: leer archivo PLY e inicializar la malla
    // ..........................
-
+   LeerPLY(nombre_arch, vertices, triangulos);
 
    // COMPLETAR: práctica 4: invocar  a 'calcularNormales' para el cálculo de normales
    // .................
@@ -366,8 +366,8 @@ CuboColores::CuboColores()
       {  {0,1,3}, {0,3,2}, // X-
          {4,7,5}, {4,6,7}, // X+ (+4)
 
-         {0,5,1}, {0,4,5}, // Y- -> traingulos base (perpendicular eje y) de abajo
-         {2,3,7}, {2,7,6}, // Y+ (+2) -> trangulos base (perpendiculas eje y) de arriba
+         {0,5,1}, {0,4,5}, // Y-
+         {2,3,7}, {2,7,6}, // Y+ (+2)
 
          {0,6,4}, {0,2,6}, // Z-
          {1,5,7}, {1,7,3}  // Z+ (+1)
@@ -398,8 +398,8 @@ CasaX::CasaX()
          { +1.0, -1.0, +1.0 }, // 5
          { +1.0, +1.0, -1.0 }, // 6
          { +1.0, +1.0, +1.0 }, // 7
-         {  0.0, +2.0, -1.0 }, // 8
-         {  0.0, +2.0, +1.0 }, // 9
+         { -1.0, +2.0, +0.0 }, // 8
+         { +1.0, +2.0, +0.0 }, // 9
       } ;
 
 
@@ -409,24 +409,181 @@ CasaX::CasaX()
          {4,7,5}, {4,6,7}, // X+ (+4)
 
          {0,6,4}, {0,2,6}, // Z-
-         {1,5,7}, {1,7,3}, // Z+ (+1)
+         {1,5,7}, {1,7,3},  // Z+ (+1)
 
-         {2,8,6}, {3,9,7}, // tringulos laterales de la caasa
-         {2,8,3}, {8,9,3}, // rectangulo tejado izquierda
-         {6,7,9}, {9,8,6}, // rectangulo tejado derecha
+         {2,3,8}, {6,7,9}, // tringulos laterales de la caasa
+         {3,7,8}, {8,7,9}, // rectangulo tejado delate
+         {2,6,8}, {8,6,9}, // rectangulo tejado detras
       } ;
 
    col_ver =
-      {  { 0.0, 0.0, 0.0 }, // 0
-         { 0.0, 0.0, +1.0 }, // 1
+      {  { 0.0, +1.0, +1.0 }, // 0
+         { 0.0, +0.0, +1.0 }, // 1
          { 0.0, +1.0, 0.0 }, // 2
          { 0.0, +1.0, +1.0 }, // 3
          { +1.0, 0.0, 0.0 }, // 4
          { +1.0, 0.0, +1.0 }, // 5
          { +1.0, +1.0, 0.0 }, // 6
          { +1.0, +1.0, +1.0 }, // 7
-         { +1.0, +1.0, 0.0 }, // 6
-         { +1.0, +1.0, +1.0 }, // 7
+         { +0.0, +1.0, +0.0 }, // 8
+         { +1.0, +1.0, +0.0 }, // 9
       } ;
 
+}
+
+// -----------------------------------------------------------------------------------------------
+MallaTriangulo::MallaTriangulo()
+:  MallaInd( "casa colores 10 vértices" )
+{
+   vertices = {
+      {-0.5,0,0},
+      {+0.5,0,0},
+      {0,sqrt(2),0},
+   };
+
+   triangulos = {
+      {0,1,2}
+   };
+}
+
+// -----------------------------------------------------------------------------------------------
+MallaCuadrado::MallaCuadrado()
+:  MallaInd( "malla cuadrado de 4 vertices" )
+{
+   vertices = {
+      {-1,-1,0},
+      {1,-1,0},
+      {-1,1,0},
+      {1,1,0}
+   };
+
+   triangulos = {
+      {0,1,2},
+      {2,3,1}
+   };
+}
+
+// -----------------------------------------------------------------------------------------------
+MallaPiramideL::MallaPiramideL()
+:  MallaInd( "malla piramide base L con 7 vertices" )
+{
+   vertices = {
+      {+0.5,+3.0,+0.5},
+      {0,0,0},
+      {2.0,0,0},
+      {2,0,0.5},
+      {0.5,0,0.5},
+      {0.5,0,3},
+      {0,0,3}
+   };
+
+   triangulos = {
+      {0,1,2},
+      {2,3,0},
+      {3,4,0},
+      {4,5,0},
+      {5,6,0},
+      {6,1,0}
+   };
+
+   col_ver = {
+      {1,1,1},
+      {0,0,1},
+      {0,1,0},
+      {1,0,0},
+      {0,1,1},
+      {1,0,1},
+      {1,1,0}
+   };
+}
+
+// -----------------------------------------------------------------------------------------------
+EstrellaZ::EstrellaZ(unsigned n)
+:  MallaInd( "malla estrellaZ con 2n+1 vertices" )
+{
+   // la circunferencia pequeña tiene radio 0.2, la grande tiene radio 0.5
+   vertices = {{0.5,0.5,0}};
+   triangulos = {};
+   col_ver = {{1,1,1}};
+   for (int i = 0; i < 2*n; i+=2) {
+      vertices.push_back({0.5*cos(2.0*M_PI*i/(2*n)) + 0.5,0.5*sin(2.0*M_PI*i/(2*n)) + 0.5,0}); // vértice (i+1) alejado del centro
+      vertices.push_back({0.2*cos(2.0*M_PI*(i+1)/(2*n)) + 0.5,0.2*sin(2.0*M_PI*(i+1)/(2*n)) + 0.5,0}); // vértice (i+2) a la izq
+      // triangulo del centro a vértice alejado del centro, triangulo al siguiente vértice aljeado del centro
+      triangulos.push_back({0,i+1,i+2});
+      triangulos.push_back({0,i+2,(i+3)%(2*n)});
+      col_ver.push_back({0.5*cos(2.0*M_PI*i/(2*n)) + 0.5,0.5*sin(2.0*M_PI*i/(2*n)) + 0.5,0});
+      col_ver.push_back({0.2*cos(2.0*M_PI*(i+1)/(2*n)) + 0.5,0.2*sin(2.0*M_PI*(i+1)/(2*n)) + 0.5,0});
+   }
+}
+
+// -----------------------------------------------------------------------------------------------
+PiramideEstrellaZ::PiramideEstrellaZ(unsigned n)
+:  MallaInd( "malla piramide estrellaZ con 2n+2 vertices" )
+{
+   // la circunferencia pequeña tiene radio 0.2, la grande tiene radio 0.5
+   vertices = {{0.5,0.5,0}};
+   triangulos = {};
+   col_ver = {{1,1,1}};
+   for (int i = 0; i < 2*n; i+=2) {
+      vertices.push_back({0.5*cos(2.0*M_PI*i/(2*n)) + 0.5,0.5*sin(2.0*M_PI*i/(2*n)) + 0.5,0}); // vértice (i+1) alejado del centro
+      vertices.push_back({0.2*cos(2.0*M_PI*(i+1)/(2*n)) + 0.5,0.2*sin(2.0*M_PI*(i+1)/(2*n)) + 0.5,0}); // vértice (i+2) a la izq
+      // triangulo del centro a vértice alejado del centro, triangulo al siguiente vértice aljeado del centro
+      triangulos.push_back({0,i+1,i+2});
+      triangulos.push_back({0,i+2,(i+3)%(2*n)});
+      col_ver.push_back({0.5*cos(2.0*M_PI*i/(2*n)) + 0.5,0.5*sin(2.0*M_PI*i/(2*n)) + 0.5,0});
+      col_ver.push_back({0.2*cos(2.0*M_PI*(i+1)/(2*n)) + 0.5,0.2*sin(2.0*M_PI*(i+1)/(2*n)) + 0.5,0});
+   }
+
+   vertices.push_back({0.5,0.5,0.5}); // el último vértice con índice 2n+1
+   col_ver.push_back({1,1,1});
+
+   for (int i = 1; i <= 2*n; i++) {
+      triangulos.push_back({0,2*n+1,i});
+   }
+}
+
+// -----------------------------------------------------------------------------------------------
+RejillaY::RejillaY(unsigned m, unsigned n)
+:  MallaInd( "malla Rejilla Y con nm vertices" )
+{
+   // cada lado mide 1 -> cada fila mide 1/n y cada columna mide 1/m
+   vertices = {};
+   triangulos = {};
+   col_ver = {};
+   for (int i = 0; i < n; i++) {
+      for (int j = 0; j < m; j++) {
+         vertices.push_back({1.0*i/n, 0,1.0*j/m});
+         col_ver.push_back({1.0*i/n, 0,1.0*j/m});
+         if (j < m-1 && i < n-1) {
+            triangulos.push_back({j+m*i, j+1+m*i,j+m*(i+1)}); // abajo izquierda, abajo derecha, arriba izquierda 
+            triangulos.push_back({j+1+m*i,j+m*(i+1),j+1+m*(i+1)}); // abajo derecha, arriba izquierda, arriba derecha
+         }
+      }
+   }
+}
+
+// -----------------------------------------------------------------------------------------------
+MallaTorre::MallaTorre(unsigned n)
+:  MallaInd( "malla Torre con 4(n+1) vertices" )
+{
+   vertices = {};
+   triangulos = {};
+   // hay n pisos (n+1 contando el ultimo techo), y 4 vertices por piso
+
+   vertices.push_back({0,0,0}); // vertice 0
+   vertices.push_back({1,0,0}); // vertice 1
+   vertices.push_back({1,0,1}); // vertice 2
+   vertices.push_back({0,0,1}); // vertice 3
+
+   for (int piso = 1; piso <= n; piso++) {
+      vertices.push_back({0,piso,0}); // vertice = 0 + i*piso
+      vertices.push_back({1,piso,0}); // vertice = 1 + i*piso
+      vertices.push_back({1,piso,1}); // vertice = 2 + i*piso
+      vertices.push_back({0,piso,1}); // vertice = 3 + i*piso
+
+      for (int i = 0; i < 4; i++) {
+         triangulos.push_back({i+4*(piso-1),(i+1)%4+4*(piso-1),i+4*piso}); // izquierda abajo, derecha abajo, izquierda arriba
+         triangulos.push_back({(i+1)%4+4*(piso-1),i+4*piso,(i+1)%4+4*piso}); // derecha abajo, izquierda arriba, derecha arriba
+      }
+   }
 }

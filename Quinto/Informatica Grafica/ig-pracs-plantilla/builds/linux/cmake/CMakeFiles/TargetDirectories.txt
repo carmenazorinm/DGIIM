@@ -1,4 +1,4 @@
-/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/debug_exe.dir
-/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/release_exe.dir
-/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/edit_cache.dir
-/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/rebuild_cache.dir
+/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/debug_exe.dir
+/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/release_exe.dir
+/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/edit_cache.dir
+/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/cmake/CMakeFiles/rebuild_cache.dir

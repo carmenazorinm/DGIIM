@@ -119,7 +119,11 @@ class Escena1 : public Escena
 // COMPLETAR: Práctica 2, 3, 4 y 5.
 // Añadir la declaración de las clases Escena2, Escena3, etc ..... para definir
 // los objetos que se indican en los guiones de las prácticas 2,3,4 y 5.
-
+class Escena2 : public Escena
+{
+   public:
+      Escena2() ;
+} ;
 
 
 

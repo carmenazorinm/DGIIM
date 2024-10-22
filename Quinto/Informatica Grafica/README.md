@@ -63,7 +63,8 @@ Triangle:
 House: 
 
 |<img src="./images/casa1.png"/> | <img src="./images/casa2.png"/>|
-### Displaying Figures
+
+___Displaying Figures___
 
 To display a specific figure, you need to edit the _escena.cpp_ file. In the _Escena1_ class, add a _push_back_ with the objects you want to display.
 

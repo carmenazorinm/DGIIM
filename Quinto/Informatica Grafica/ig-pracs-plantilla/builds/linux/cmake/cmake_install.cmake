@@ -1,4 +1,4 @@
-# Install script for directory: /home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux
+# Install script for directory: /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/carmen/DGIIM/DGIIM/Quinto/Informatica Grafica/ig-pracs-plantilla/builds/linux/cmake/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/cmake/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

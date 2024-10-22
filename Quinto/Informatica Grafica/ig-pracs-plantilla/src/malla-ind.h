@@ -138,12 +138,59 @@ class CuboColores : public MallaInd
 };
 
 // ---------------------------------------------------------------------
-
-// ---------------------------------------------------------------------
 class CasaX : public MallaInd
 {
    public:
       CasaX();
+};
+
+// ---------------------------------------------------------------------
+class MallaTriangulo : public MallaInd
+{
+   public:
+      MallaTriangulo();
+};
+
+// ---------------------------------------------------------------------
+class MallaCuadrado : public MallaInd
+{
+   public:
+      MallaCuadrado();
+};
+
+// ---------------------------------------------------------------------
+class MallaPiramideL : public MallaInd
+{
+   public:
+      MallaPiramideL();
+};
+
+// ---------------------------------------------------------------------
+class EstrellaZ : public MallaInd
+{
+   public: 
+      EstrellaZ(unsigned n);
+};
+
+// ---------------------------------------------------------------------
+class PiramideEstrellaZ : public MallaInd
+{
+   public: 
+      PiramideEstrellaZ(unsigned n);
+};
+
+// ---------------------------------------------------------------------
+class RejillaY : public MallaInd
+{
+   public: 
+      RejillaY(unsigned m, unsigned n);
+};
+
+// ---------------------------------------------------------------------
+class MallaTorre : public MallaInd
+{
+   public: 
+      MallaTorre(unsigned n);
 };
 
 #endif
