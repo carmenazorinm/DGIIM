@@ -1,68 +1,48 @@
 # Virtual Store Application - Practice
 
-This repository contains the solution for the first two practices of the Internet Application Development course. The project uses MongoDB, Node.js, and Docker.
-Structure
+This project is a simple online store application built using Node.js, Express, and MongoDB. The application allows users to browse products, view product details, add items to their cart, and perform searches. The structure of the project is organized into different directories and files, each serving a specific purpose.
 
-    - P0: Contains the docker-compose.yml file to set up MongoDB and Mongo Express.
-    - P1: Contains two JavaScript files, seed.js and download_images.js, used to populate the database and download product images, respectively.
-    - dump/MyProject: Contains the backup of the database using mongodump.
+## Directory Structure and Contents
 
-## Step-by-step Instructions
-### 1. Setup Docker Containers
+1. *model/*:
 
-    Navigate to the P0 folder where the docker-compose.yml file is located.
+- *db.js*: manages the connection to the MongoDB database. It includes the configuration settings necessary to connect to the database using Mongoose and exports the connection for use in other parts of the application.
 
-    Run the following command to start the MongoDB and Mongo Express containers:
+- *productos.js*: defines the schema for the products in the database. It uses Mongoose to create a model that represents the structure of product documents.
 
-    ```docker-compose up```
+2. *node_modules/*:
 
-    - MongoDB will be available on port 27017.
-    - Mongo Express will be available on port 8081 to allow graphical management of the database.
+- This directory contains all the dependencies and packages requires for the project, installed via npm. It is automatically generated when you run ``npm install```.
 
-### 2. Populate the Database
+3. *public/css/*:
 
-    Go to the P1 folder. There is a script called seed.js which fetches product and user data from Fake Store API and inserts it into the MongoDB database.
+- *styles.css*: contains custom styles for the application. It defines the appearance of the product card and the buttons of the application.
 
-    Run the script using:
+4. *routes/*:
 
-    ```npm run seed```
+- *router_tienda.js*: defines the routes of the online store. It contains the logic for handling different HTTP requests (GET and POST) related to product browsing, searching and cart management. The routes interact with the models to fetch data and render the appropiate views.
 
-    This will:
-    - Fetch the product and user JSON data using fetch.
-    - Insert the data into the MongoDB collections.
+5. *views/*:
 
-### 3. Download Product Images
+- *base.html*: this is the main template file that provides the structure for other views. It includes the header with a category submenu, the search bar and its button.
 
-    The download_images.js script in the P1 folder is used to download product images from the Fake Store API and save them into the imagenes folder.
+- *carrito.html*: represents the shopping cart page, where users can view the products they have added to their cart, along with the total price.
 
-    Run the script using:
+- *detalle_producto.html*: displays detailed information about a specific product. It includes the product's image, title, description, price and an option to add the product to the cart.
 
-    ```npm run download_images```
+- *portada.html*: this is the homepage of the online store. It showcases featured products.
 
-    The images will be saved in the folder imagenes/.
+6. *tienda.js*:
 
-### 4. Database Backup
+- This file serves as the entry point of the application. It sets up the Express server, configures middleware, and establishes the routes for the application.
 
-The database backup is stored in the dump/MyProject folder, created using the mongodump tool. To create the backup, we followed the steps outlined in the MongoDB documentation:
-
-[Backup using mongodump](https://www.mongodb.com/docs/database-tools/mongodump/#mongodb-binary-bin.mongodump)
-### 5. Environment Variables
-
-The .env file is used to store sensitive credentials for MongoDB access. Make sure the .env file is correctly set up with your database username and password:
-
-makefile
-
-```USER_DB=root
-PASS=example
-```
-
-The .env file is crucial as it allows the seed.js script to connect to the MongoDB database securely using these credentials.
 ## Running the Scripts
 
-You can execute the scripts using npm run followed by the script name:
+To get you online store up and running:
 
-To populate the database:
-```npm run seed```
+```npm run tienda.js 
+```
 
-To download product images:
- ```npm run download_images```
+You should see a message indicating that the server is running. Open the browser and navigate to:
+
+[Homepage](http://localhost:8000/portada)
