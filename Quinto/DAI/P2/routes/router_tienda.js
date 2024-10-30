@@ -18,10 +18,9 @@ router.use(async (req, res, next) => {
 // Ruta para la portada
 router.get('/portada', async (req, res) => {
   try {
-    const categorias = await Productos.distinct('category');
     const productos = await Productos.find({});
     const carrito = req.session.carrito || [];
-    res.render('portada.html', { productos, carrito, categorias, titulo: 'Productos Destacados' });
+    res.render('portada.html', { productos, carrito, categorias: res.locals.categorias, titulo: 'Productos Destacados' });
   } catch (err) {
     console.error(err);
     res.status(500).send({ err });
