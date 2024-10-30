@@ -1,0 +1,13 @@
+<!-- ./views/detalle_producto.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ producto.titulo }}</h1>
+<img src="{{ producto.image }}" alt="{{ producto.title }}" class="img-fluid">
+<p><strong>Descripción:</strong> {{ producto.description }}</p>
+<p><strong>Precio:</strong> {{ producto.price }} $</p>
+<form action="/carrito/agregar" method="POST">
+    <input type="hidden" name="productoId" value="{{ producto._id }}">
+    <button type="submit" class="btn btn-success">Añadir al Carrito</button>
+</form>
+{% endblock %}

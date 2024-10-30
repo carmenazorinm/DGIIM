@@ -1,0 +1,18 @@
+<!-- views/home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Productos Destacados</h1>
+<div class="row">
+    {% for producto in productos %}
+        <div class="col-md-3">
+            <div class="product-card">
+                <img src="{{ producto.image }}" alt="{{ producto.title }}" class="product-image">
+                <h5>{{ producto.title }}</h5>
+                <p>{{ producto.price }} $</p>
+                <a href="/productos/{{ producto._id }}" class="btn btn-primary">Ver Detalles</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
