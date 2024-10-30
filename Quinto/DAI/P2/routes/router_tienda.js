@@ -6,9 +6,10 @@ const router = express.Router();
 // Ruta para la portada
 router.get('/portada', async (req, res) => {
   try {
+    const categorias = await Productos.distinct('category');
     const productos = await Productos.find({});
     const carrito = req.session.carrito || [];
-    res.render('portada.html', { productos, carrito });
+    res.render('portada.html', { productos, carrito, categorias });
   } catch (err) {
     console.error(err); // Para facilitar la depuración
     res.status(500).send({ err });
@@ -33,15 +34,28 @@ router.post('/buscar', async (req, res) => {
   }
 });
 
-router.get('/categoria/:nombre', async (req, res) => {
+// Ruta para mostrar productos por categoría
+router.get('/categoria', async (req, res) => {
   try {
-    const categoria = req.params.nombre;
-    const productos = await Productos.find({ category: categoria });
-    res.render('portada.html', { productos });
+    const categoria = req.query.nombre;
+    const categorias = await Productos.distinct('category');
+    const productos = await Productos.find(categoria ? { category: categoria } : {});
+    res.render('portada.html', { productos, categorias, categoriaSeleccionada: categoria });
   } catch (err) {
+    console.error(err);
     res.status(500).send({ err });
   }
 });
+
+// router.get('/prueba-categorias', async (req, res) => {
+//   try {
+//     const categorias = await Productos.distinct('category');
+//     res.send(categorias); // Muestra las categorías en el navegador para verificar
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send({ err });
+//   }
+// });
 
 router.get('/productos/:id', async (req, res) => {
   try {

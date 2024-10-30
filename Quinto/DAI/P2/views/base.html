@@ -14,10 +14,21 @@
 <body>
     <header class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="/">Tienda Online</a>
+        <!-- Formulario de búsqueda -->
         <form class="form-inline my-2 my-lg-0" action="/buscar" method="POST">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar productos" name="query" required>
             <button class="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
         </form>
+        <!-- Filtro de categorías -->
+        <form class="ml-3" action="/categoria" method="GET">
+            <select name="nombre" class="form-select" onchange="this.form.submit()">
+                <option value="">Todas las Categorías</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria }}" {% if categoria == categoriaSeleccionada %}selected{% endif %}>{{ categoria }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <!-- Enlace al carrito -->
         <a href="/carrito" class="btn btn-light ml-3 {% if carrito.length > 0 %} {% else %} disabled {% endif %}" role="button">            <i class="fas fa-shopping-cart"></i> Carrito
         </a>
     </header>      
