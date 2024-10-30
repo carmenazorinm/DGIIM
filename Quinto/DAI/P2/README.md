@@ -40,7 +40,8 @@ This project is a simple online store application built using Node.js, Express, 
 
 To get you online store up and running:
 
-```npm run tienda.js 
+```
+npm run tienda.js 
 ```
 
 You should see a message indicating that the server is running. Open the browser and navigate to:
