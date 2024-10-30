@@ -3,15 +3,27 @@ import Productos from '../model/productos.js';
 
 const router = express.Router();
 
+// Middleware para cargar categorías en todas las vistas
+router.use(async (req, res, next) => {
+  try {
+    const categorias = await Productos.distinct('category');
+    res.locals.categorias = categorias; // Esto permite acceder a `categorias` en `base.html`
+  } catch (err) {
+    console.error('Error al cargar categorías:', err);
+    res.locals.categorias = []; // Si falla, establece un array vacío para evitar errores
+  }
+  next();
+});
+
 // Ruta para la portada
 router.get('/portada', async (req, res) => {
   try {
     const categorias = await Productos.distinct('category');
     const productos = await Productos.find({});
     const carrito = req.session.carrito || [];
-    res.render('portada.html', { productos, carrito, categorias });
+    res.render('portada.html', { productos, carrito, categorias, titulo: 'Productos Destacados' });
   } catch (err) {
-    console.error(err); // Para facilitar la depuración
+    console.error(err);
     res.status(500).send({ err });
   }
 });
@@ -27,7 +39,7 @@ router.post('/buscar', async (req, res) => {
     });
 
     const carrito = req.session.carrito || [];
-    res.render('portada.html', { productos, carrito });
+    res.render('portada.html', { productos, carrito, categorias: res.locals.categorias, titulo: `Productos sobre "${query}"` });
   } catch (err) {
     console.error(err); // Para facilitar la depuración
     res.status(500).send({ err });
@@ -40,22 +52,12 @@ router.get('/categoria', async (req, res) => {
     const categoria = req.query.nombre;
     const categorias = await Productos.distinct('category');
     const productos = await Productos.find(categoria ? { category: categoria } : {});
-    res.render('portada.html', { productos, categorias, categoriaSeleccionada: categoria });
+    res.render('portada.html', { productos, categorias, categoriaSeleccionada: categoria, titulo: `Productos en la categoría "${categoria}"` });
   } catch (err) {
     console.error(err);
     res.status(500).send({ err });
   }
 });
-
-// router.get('/prueba-categorias', async (req, res) => {
-//   try {
-//     const categorias = await Productos.distinct('category');
-//     res.send(categorias); // Muestra las categorías en el navegador para verificar
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send({ err });
-//   }
-// });
 
 router.get('/productos/:id', async (req, res) => {
   try {
