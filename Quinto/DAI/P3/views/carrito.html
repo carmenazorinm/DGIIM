@@ -1,0 +1,19 @@
+<!-- ./views/carrito.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Carrito de Compras</h1>
+{% if carrito.length > 0 %}
+    <ul>
+    {% for producto in carrito %}
+        <li>{{ producto.title }} - {{ producto.price }} $</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay productos en el carrito.</p>
+{% endif %}
+<p>Total: {{ total }} $</p>
+
+<!-- Botón para volver a la portada -->
+<a href="/portada" class="btn btn-primary mt-4">Volver a la portada</a>
+{% endblock %}
