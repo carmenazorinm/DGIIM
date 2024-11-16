@@ -1,5 +1,6 @@
 import express from 'express';
 import Productos from '../model/productos.js';
+import Usuarios from '../model/usuarios.js';
 
 const router = express.Router();
 
@@ -72,29 +73,53 @@ router.get('/productos/:id', async (req, res) => {
   }
 });
 
+// Ruta para agregar un producto al carrito
 router.post('/carrito/agregar', async (req, res) => {
   const { productoId } = req.body;
-  
-  // Asegúrate de inicializar la sesión si no está ya creada
-  if (!req.session.carrito) {
-    req.session.carrito = [];
+
+  // Asegúrate de que el usuario esté autenticado
+  if (!req.username) {
+    return res.status(401).send('Debes estar autenticado para agregar productos al carrito.');
   }
-  
-  // Busca el producto por ID y agrégalo al carrito
+
+  const username = req.username;
+
+  // Busca al usuario por su nombre de usuario
+  const usuario = await Usuarios.findOne({ username });
+  if (!usuario) {
+    return res.status(404).send('Usuario no encontrado');
+  }
+
+  // Busca el producto por ID
   const producto = await Productos.findById(productoId);
-  if (producto) {
-    req.session.carrito.push(producto); 
-    console.log(req.session.carrito); 
-    res.redirect('/carrito'); 
-  } else {
-    res.status(404).send('Producto no encontrado');
+  if (!producto) {
+    return res.status(404).send('Producto no encontrado');
   }
+
+  // Agrega el producto al carrito del usuario
+  usuario.carrito.push(producto._id);
+  await usuario.save(); // Guarda el carrito actualizado
+
+  res.redirect('/carrito');
 });
 
 // Ruta para ver el carrito
-router.get('/carrito', (req, res) => {
-  const carrito = req.session.carrito || [];
-  const total = carrito.reduce((sum, producto) => sum + producto.price, 0); // Cambiar de precio a price
+router.get('/carrito', async (req, res) => {
+  if (!req.username) {
+    return res.status(401).send('Debes estar autenticado para ver el carrito.');
+  }
+
+  const username = req.username;
+
+  // Busca al usuario y carga el carrito
+  const usuario = await Usuarios.findOne({ username }).populate('carrito'); // Usa populate para obtener los productos completos
+  if (!usuario) {
+    return res.status(404).send('Usuario no encontrado');
+  }
+
+  const carrito = usuario.carrito;
+  const total = carrito.reduce((sum, producto) => sum + producto.price, 0);
+
   res.render('carrito.html', { carrito, total });
 });
 

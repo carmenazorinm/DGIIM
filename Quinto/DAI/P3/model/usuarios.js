@@ -16,6 +16,7 @@ const UsuariosSchema = new mongoose.Schema({
     lastname: { type: String },
   },
   phone: { type: String },
+  carrito: [{ type: mongoose.Schema.Types.ObjectId, ref: 'productos' }],
 });
 
 // UsuariosSchema.pre('save', async function (next) {
