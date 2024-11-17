@@ -574,6 +574,33 @@ home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.c
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.cpp.s
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.cpp.s
 
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.o
+
+# target to build an object file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.o
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.i: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.i
+
+# target to preprocess a source file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.i
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.s: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.s
+
+# target to generate assembly for a file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.s
+
 home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.cpp.o
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.o
 
@@ -713,6 +740,9 @@ help:
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.s"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.o"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.i"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.s"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.s"

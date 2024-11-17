@@ -33,6 +33,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/malla-revol.cpp.o.d"
   "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.cpp.o"
   "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.cpp.o.d"
+  "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.o"
+  "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.cpp.o.d"
   "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.cpp.o"
   "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.cpp.o.d"
   "CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/seleccion.cpp.o"
