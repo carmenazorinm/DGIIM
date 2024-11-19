@@ -439,6 +439,33 @@ home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.cp
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.cpp.s
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.cpp.s
 
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.o
+
+# target to build an object file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.o
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.i: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.i
+
+# target to preprocess a source file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.i
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.s: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.s
+
+# target to generate assembly for a file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.s
+
 home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.cpp.o
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.o
 
@@ -725,6 +752,9 @@ help:
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.s"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.o"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.i"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.s"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.s"

@@ -121,6 +121,7 @@ Cono::Cono(
    const unsigned nperfiles
 ) 
 {
+   // tiene altura num_verts_per y radio 2
    // si quisiera altura h y radio r -> y = h - x*(h/r) con la x dando pasos de distancia (r-0)/(num_verts_per-1)
    std::vector<glm::vec3> perfil;
    for (int i = 0; i < num_verts_per; i++) {

@@ -440,6 +440,7 @@ CasaX::CasaX()
 MallaTriangulo::MallaTriangulo()
 :  MallaInd( "casa colores 10 vértices" )
 {
+   // base 1 y altura sqrt(2);
    vertices = {
       {-0.5,0,0},
       {+0.5,0,0},
@@ -552,18 +553,35 @@ RejillaY::RejillaY(unsigned m, unsigned n)
 :  MallaInd( "malla Rejilla Y con nm vertices" )
 {
    // cada lado mide 1 -> cada fila mide 1/n y cada columna mide 1/m
-   vertices = {};
-   triangulos = {};
-   col_ver = {};
-   for (int i = 0; i < n; i++) {
-      for (int j = 0; j < m; j++) {
-         vertices.push_back({1.0*i/n, 0,1.0*j/m});
-         col_ver.push_back({1.0*i/n, 0,1.0*j/m});
-         if (j < m-1 && i < n-1) {
-            triangulos.push_back({j+m*i, j+1+m*i,j+m*(i+1)}); // abajo izquierda, abajo derecha, arriba izquierda 
-            triangulos.push_back({j+1+m*i,j+m*(i+1),j+1+m*(i+1)}); // abajo derecha, arriba izquierda, arriba derecha
-         }
+   // vertices = {};
+   // triangulos = {};
+   // col_ver = {};
+   // for (int i = 0; i < n; i++) {
+   //    for (int j = 0; j < m; j++) {
+   //       vertices.push_back({1.0*i/n, 0,1.0*j/m});
+   //       col_ver.push_back({1.0*i/n, 0,1.0*j/m});
+   //       if (j < m-1 && i < n-1) {
+   //          triangulos.push_back({j+m*i, j+1+m*i,j+m*(i+1)}); // abajo izquierda, abajo derecha, arriba izquierda 
+   //          triangulos.push_back({j+1+m*i,j+m*(i+1),j+1+m*(i+1)}); // abajo derecha, arriba izquierda, arriba derecha
+   //       }
+   //    }
+   // }
+
+   for (int i=0; i<m; i++){
+      for (int j=0; j<n; j++){
+         vertices.push_back({1.0*i/(m-1), 0, 1.0*j/(n-1)});
       }
+   }
+
+   for (int i=0; i<m-1; i++){
+      for (int j=0; j<n-1; j++){
+         triangulos.push_back({n*i+j, n*i+j+1, n*(i+1)+j+1});
+         triangulos.push_back({n*i+j, n*(i+1)+j, n*(i+1)+j+1});
+      }
+   }
+
+   for (int i=0; i<vertices.size(); i++){
+      col_ver.push_back(vertices[i]);
    }
 }
 

@@ -37,6 +37,7 @@
 
 #include "objeto3d.h"
 #include "malla-ind.h" // para poder usar clase MallaInd
+#include "malla-revol.h" // para poder usar clase MallaRevol -> añadido por mi
 #include "materiales-luces.h"
 
 //using namespace tup_mat ;
@@ -122,8 +123,70 @@ class NodoGrafoEscena : public Objeto3D
 } ;
 
 // *********************************************************************
+class GrafoEstrellaX: public NodoGrafoEscena
+{
+   protected:
+      glm::mat4 *pm_rot = nullptr;
+      unsigned num_parametros;
+   public:
+      unsigned leerNumParametros() const { return num_parametros; };
+      void actualizarEstadoParametro( const unsigned iParam, const float t_sec);
+      GrafoEstrellaX(unsigned n);
+
+};
 
 
+// *********************************************************************
+class GrafoCubos: public NodoGrafoEscena
+{
+   protected:
+      glm::mat4 *pm_rot1 = nullptr;
+      unsigned num_parametros;
+   public:
+      unsigned leerNumParametros() const { return num_parametros; };
+      void actualizarEstadoParametro( const unsigned iParam, const float t_sec);
+      GrafoCubos();
+
+};
+
+// *********************************************************************
+class Caja: public NodoGrafoEscena
+{
+   protected:
+      glm::mat4 *pm_rot1 = nullptr;
+      unsigned num_parametros;
+   public:
+      unsigned leerNumParametros() const { return num_parametros; };
+      void actualizarEstadoParametro( const unsigned iParam, const float t_sec);
+      Caja();
+
+};
+
+// *********************************************************************
+class Cubos: public NodoGrafoEscena
+{
+   protected:
+      glm::mat4 *pm_rot, *pm_esc = nullptr;
+      unsigned num_parametros;
+   public:
+      unsigned leerNumParametros() const { return num_parametros; };
+      void actualizarEstadoParametro( const unsigned iParam, const float t_sec);
+      Cubos();
+
+};
+
+// *********************************************************************
+class  P1Malla : public MallaInd
+{
+   public:
+      P1Malla();
+};
+
+class  P2MallaTriangulada : public MallaInd
+{
+   public:
+      P2MallaTriangulada(unsigned n);
+};
 
 
 #endif // GRAFO_ESCENA_HPP

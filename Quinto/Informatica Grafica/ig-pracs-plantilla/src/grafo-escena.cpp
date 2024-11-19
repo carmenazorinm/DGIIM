@@ -356,11 +356,270 @@ bool NodoGrafoEscena::buscarObjeto
    return false ;
 }
 
+// -----------------------------------------------------------------------------
+GrafoEstrellaX::GrafoEstrellaX(unsigned int n) {
+   num_parametros = 1;
+
+   int ident = 1;
+   ponerNombre("Grafo Estrella X");
+
+   unsigned ind_rot = agregar(rotate(float(M_PI),glm::vec3{1.0,0.0,0.0}));
+   agregar(rotate(float(M_PI/2.0),glm::vec3{0.0,1.0,0.0}));
+
+   NodoGrafoEscena *cono = new NodoGrafoEscena();
+   cono->ponerIdentificador(ident);
+   ident++;
+   cono->agregar(translate(glm::vec3(1.3,0.0,0.0)));
+   cono->agregar(rotate(float(3.0*M_PI/2.0),glm::vec3{0.0,0.0,1.0}));
+   cono->agregar(scale(glm::vec3(0.14/2.0,0.15/3.0,0.14/2.0)));
+   cono->agregar(new Cono(3,10)); // tendrá altura 3
+   agregar(cono);
+
+   for(int i = 0; i < n-1; i++) {
+      //agregar(translate())
+      agregar(rotate(float(2.0*M_PI/n),glm::vec3(0.0,0.0,1.0)));
+      agregar(cono);
+   }
+
+   // hay que pensarlo como si primero rotaras, luego trasladaras y luego escalaras, pero lo pones en orden inverso
+   agregar(scale(glm::vec3(1.3/0.5,1.3/0.5,1.3/0.5)));
+   agregar(translate(glm::vec3(-0.5,-0.5,0.0)));
+   //agregar(rotate(float(M_PI/2.0), glm::vec3{0.0,1.0,0.0}));
+   agregar(new EstrellaZ(n));
+
+   pm_rot = leerPtrMatriz(ind_rot);
+   //agregar(cono);
+}
+
+void GrafoEstrellaX::actualizarEstadoParametro( const unsigned iParam, const float t_sec) {
+   assert(iParam < leerNumParametros());
+   float v;
+
+   switch(iParam) {
+      case 0:
+         v = 0 + 2*M_PI*2.5*t_sec;
+         *pm_rot = rotate(v, glm::vec3(1.0,0.0,0.0));
+         break;
+   }
+}
+
+// -----------------------------------------------------------------------------
+GrafoCubos::GrafoCubos() {
+   num_parametros = 1;
+
+   int ident = 1;
+   ponerNombre("Grafo Cubos");
+
+   NodoGrafoEscena *cubo = new NodoGrafoEscena();
+   unsigned ind_rot1 = cubo->agregar(rotate(float(M_PI),glm::vec3{1.0,0.0,0.0}));
+   cubo->agregar(translate(glm::vec3(0.75,0.0,0.0)));
+   cubo->agregar(scale(glm::vec3(0.75/2.0,0.5/2.0,0.5/2.0)));
+   cubo->agregar(new Cubo()); // cada cubo tiene 2 de lado?
+   cubo->ponerColor({255.0,255.0,0.0});
+   agregar(cubo);
+
+   NodoGrafoEscena *cara = new NodoGrafoEscena();
+   cara->agregar(translate(glm::vec3(0.5,-0.5,-0.5)));
+   cara->agregar(rotate(float(M_PI/2.0),glm::vec3(0.0,0.0,1.0)));
+   //cara->ponerColor({0.0,255.0,255.0});
+   cara->agregar(new RejillaY(30,8));
+   agregar(cara);
+
+   for(int i = 0; i < 3; i++) {
+      agregar(rotate(float(M_PI/2.0), glm::vec3(0.0,0.0,1.0)));
+      agregar(cara);
+      agregar(cubo);
+   }
+
+   agregar(rotate(float(M_PI/2.0),glm::vec3(0.0,1.0,0.0)));
+   agregar(cara);
+   agregar(cubo);
+
+   agregar(rotate(float(M_PI),glm::vec3(0.0,1.0,0.0)));
+   agregar(cara);
+   agregar(cubo);
+
+   pm_rot1 = cubo->leerPtrMatriz(ind_rot1);
+}
+
+void GrafoCubos::actualizarEstadoParametro( const unsigned iParam, const float t_sec) {
+   assert(iParam < leerNumParametros());
+   float v;
+
+   switch(iParam) {
+      case 0:
+         v = 0 + 2*M_PI*0.5*t_sec;
+         *pm_rot1 = rotate(v, glm::vec3(1.0,0.0,0.0));
+         break;
+   }
+}
+
+// -----------------------------------------------------------------------------
+Caja::Caja() {
+   num_parametros = 1;
+
+   int ident = 1;
+   ponerNombre("Grafo Caja");
+
+   NodoGrafoEscena *tapa = new NodoGrafoEscena();
+   int ind_rot = tapa->agregar(rotate(float(0.0), glm::vec3(-1.0,1.0,0.0)));
+   tapa->ponerIdentificador(ident);
+   ident++;
+   tapa->agregar(translate(glm::vec3(0.0,1.0,-1.0)));
+   tapa->agregar(rotate(float(M_PI/2.0),glm::vec3(1.0,0.0,0.0)));
+   tapa->agregar(scale(glm::vec3(2.0/1.0,2.0/sqrt(2.0),0.0)));
+   tapa->agregar(new MallaTriangulo());
+   agregar(tapa);
+
+   NodoGrafoEscena *malla = new NodoGrafoEscena();
+   malla->ponerIdentificador(ident);
+   ident++;
+   malla->agregar(translate(glm::vec3(1.0,-1.0,-1.0)));
+   malla->agregar(rotate(float(M_PI/2.0),glm::vec3(0.0,0.0,1.0)));
+   //malla->agregar(translate(glm::vec3(1.0,0.0,0.0)));
+   malla->agregar(scale(glm::vec3(2.0,2.0,2.0)));
+   malla->agregar(new RejillaY(12,10));
+   agregar(malla);
+
+   for(int i = 0; i < 3; i++) {
+      agregar(rotate(float(M_PI/2.0),glm::vec3(0.0,1.0,0.0)));
+      agregar(malla);
+   }
+
+   agregar(rotate(float(-M_PI/2.0), glm::vec3(0.0,0.0,1.0)));
+   agregar(malla);
+
+   pm_rot1 = tapa->leerPtrMatriz(ind_rot);
+}
+
+void Caja::actualizarEstadoParametro( const unsigned iParam, const float t_sec) {
+   assert(iParam < leerNumParametros());
+   float v;
+
+   switch(iParam) {
+      case 0:
+         v = -M_PI/4.0 + sin(t_sec * M_PI / 2.0); // Oscilación con el tiempo
+
+         glm::mat4 traslacion_al_origen = translate(glm::vec3(0.0, -1.0, 1.0));
+         glm::mat4 rotacion = rotate(v, glm::vec3(1.0, 0.0, 0.0));
+         glm::mat4 traslacion_de_vuelta = translate(glm::vec3(0.0, 1.0, -1.0));
+
+         *pm_rot1 = traslacion_de_vuelta * rotacion * traslacion_al_origen;
+         break;
+   }
+}
+
+// -----------------------------------------------------------------------------
+Cubos::Cubos() {
+   num_parametros = 2;
+
+   int ident = 1;
+   ponerNombre("Grafo Cubos");
+
+   NodoGrafoEscena *cubo2 = new NodoGrafoEscena();
+   int ind_rot = cubo2->agregar(rotate(float(0.0), glm::vec3(1.0,1.0,1.0)));
+   cubo2->ponerIdentificador(ident);
+   ident++;
+   cubo2->agregar(translate(glm::vec3(0.0,0.25,0.0)));
+   cubo2->agregar(scale(glm::vec3(1.0,-0.5/2.0,1.0)));
+   cubo2->agregar(new Cubo());
+   agregar(cubo2);
+
+   NodoGrafoEscena *cubo1 = new NodoGrafoEscena();
+   int ind_esc = cubo1->agregar(scale(glm::vec3(1.0,1.0,1.0)));
+   cubo1->ponerIdentificador(ident);
+   ident++;
+   cubo1->agregar(translate(glm::vec3(0.0,-0.25,0.0)));
+   cubo1->agregar(scale(glm::vec3(1.0,-0.5/2.0,1.0)));
+   cubo1->agregar(new Cubo());
+   agregar(cubo1);
+
+   pm_esc = cubo1->leerPtrMatriz(ind_esc);
+   pm_rot = cubo2->leerPtrMatriz(ind_rot);
+}
+
+void Cubos::actualizarEstadoParametro( const unsigned iParam, const float t_sec) {
+   assert(iParam < leerNumParametros());
+   float v;
+
+   switch(iParam) {
+      case 1:
+         *pm_esc = scale(glm::vec3(1.0,2.0*sin(t_sec*M_PI)*sin(t_sec*M_PI),1.0));
+         break;
+      case 0:
+         v = -M_PI/4.0 + (M_PI/4.0)*sin(t_sec*M_PI/2.0);
+
+         glm::mat4 traslacion_origen = translate(glm::vec3(-1.0,0.0,0.0));
+         glm::mat4 rotacion = rotate(v,glm::vec3(0.0,0.0,1.0));
+         glm::mat4 traslacion_vuelta = translate(glm::vec3(1.0,0.0,0.0));
+
+         *pm_rot = traslacion_vuelta * rotacion * traslacion_origen;
+         break;
+   }
+}
+
+// *********************************************************************
+P1Malla::P1Malla()
+:  MallaInd("cubo 8 vétices a color")
+{
+   vertices =
+      {  { -1.0, 0.0, +1.0 }, // 0 -> enfrente izquierda antes del pico
+         { -2.0, 0.0, +1.0 }, // 1 -> enfrente izquierda extremo
+         { 1.0, 0.0, +1.0 }, // 2 -> enfrente derecha despues del pico
+         { 2.0, 0.0, +1.0 }, // 3 -> enfrente derecha extremo
+         { -1.0, 0.0, -1.0 }, // 4 -> detras izquierda antes del pico
+         { -2.0, 0.0, -1.0 }, // 5 -> detras izquierda extremo
+         { +1.0, 0.0, -1.0 }, // 6 -> detras derecha despues del pico
+         { +2.0, 0.0, -1.0 }, // 7 -> detras derecga  extremo
+         { +0.0, 1.0, -1.0}, // 8 -> detras pico
+         { +0.0, 1.0, +1.0}, //9 -> denfrente pico
+      } ;
 
 
 
+   triangulos =
+      {  {0,5,4},{0,1,5},{0,9,4},{4,8,9},{2,6,9},{8,6,9},{2,6,3},{6,3,7}     } ;
 
+    col_ver = {
+      {0.3, 0.3, 0.3}, // 0
+      {0.3, 0.3, 0.3}, // 1
+      {0.3, 0.3, 0.3}, // 2
+      {0.3, 0.3, 0.3}, // 3
+      {0.3, 0.3, 0.3}, // 4
+      {0.3, 0.3, 0.3}, // 5
+      {0.3, 0.3, 0.3}, // 6
+      {0.3, 0.3, 0.3}, // 7
+      {1.0, 1.0, 1.0},
+      {1.0, 1.0, 1.0},
+   }; 
+}
 
+P2MallaTriangulada::P2MallaTriangulada(unsigned n){
+   
+   vertices = {};
+   triangulos = {};
 
+   for (int i = 0; i < n+1; i++) {
+      vertices.push_back({-2.0,0.0,-i}); // 0
+      vertices.push_back({-1.0,0.0,-i}); // 1
+      vertices.push_back({0.0,1.0,-i}); // 2
+      vertices.push_back({1.0,0.0,-i}); //3
+      vertices.push_back({2.0,0.0,-i}); // 4
+   }
 
-
+   for(int piso = 0; piso < n; piso++) {
+      for(int i = 0; i < 4; i++) {
+         triangulos.push_back({i+piso*5, i+1+piso*5, i+5*(piso+1)}); // 0, 1, 5 -> 5, 6, 10
+         triangulos.push_back({i+5*(piso+1), 1+i+piso*5, 1+i+5*(piso+1)}); // 5, 1, 6 -> 
+      }
+      // triangulos.push_back({0+piso*5, 1+piso*5, 0+5*(piso+1)}); // 0, 1, 5 -> 5, 6, 10
+      // triangulos.push_back({0+5*(piso+1), 1+piso*5, 1+5*(piso+1)}); // 5, 1, 6 -> 
+      // triangulos.push_back({1+piso*5, 2+piso*5, 1+5*(piso+1)}); // 1, 2, 6
+      // triangulos.push_back({1+5*(piso+1), 2+piso*5, 2+5*(piso+1)}); // 6, 2 ,7
+      // triangulos.push_back({2+piso*5, 3+piso*5, 2+5*(piso+1)}); // 2, 3, 7
+      // triangulos.push_back({2+5*(piso+1), 3+piso*5, 3+5*(piso+1)}); // 7, 3, 8
+      // triangulos.push_back({3+piso*5, 4+piso*5, 3+5*(piso+1)}); // 3, 4, 8
+      // triangulos.push_back({3+5*(piso+1), 4+piso*5, 4+5*(piso+1)}); // 8, 4, 9
+   }
+   
+}

@@ -428,6 +428,7 @@ CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantil
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.h \
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/malla-ind.h \
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../src/vaos-vbos.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/malla-revol.h \
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.h \
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/lector-jpg.h \
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/aplicacion-ig.h \

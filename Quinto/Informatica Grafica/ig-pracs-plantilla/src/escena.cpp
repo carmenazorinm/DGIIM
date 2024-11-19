@@ -48,6 +48,7 @@
 #include "escena.h"
 #include "grafo-escena.h"
 #include "modelo-jer.h"
+#include "examen2023.h"
 
 
 // -----------------------------------------------------------------------------------------------
@@ -317,13 +318,14 @@ Escena1::Escena1()
 
 
    //objetos.push_back( new Cubo() );
+   objetos.push_back(new P1Malla());
    //objetos.push_back(new Tetraedro());
    //objetos.push_back(new CuboColores());
    //objetos.push_back(new CasaX());
    //objetos.push_back(new MallaTriangulo());
    //objetos.push_back(new MallaCuadrado());
    //objetos.push_back(new MallaPiramideL());
-   objetos.push_back(new EstrellaZ(8));
+   //objetos.push_back(new EstrellaZ(8));
    // COMPLETAR: práctica 1: añadir resto de objetos a la escena 1
    //
    // Añadir sentencias 'push_back' adicionales para agregar al 
@@ -348,7 +350,7 @@ Escena2::Escena2()
    //objetos.push_back(new PiramideEstrellaZ(8));
    //objetos.push_back(new RejillaY(30,8));
    //objetos.push_back(new MallaTorre(2));
-   
+   objetos.push_back(new P2MallaTriangulada(4));
 }
 
 
@@ -364,7 +366,15 @@ Escena3::Escena3()
    cout << "Creando objetos de la práctica 3." << endl;
    //objetos.push_back(new CabezaLampara(20,9));
    //objetos.push_back(new AgarreLampara(2.0));
-   objetos.push_back(new Lampara());
+   //objetos.push_back(new Lampara());
+   //objetos.push_back(new GrafoEstrellaX(8));
+   //objetos.push_back(new GrafoCubos());
+   // objetos.push_back(new P1MallaCubo());
+   // objetos.push_back(new P2Rejilla(3,4));
+   // objetos.push_back(new P3Cuadrado());
+   // objetos.push_back(new EsferaMovil(50,100,2));
+   // objetos.push_back(new P3Caja());
+   objetos.push_back(new Cubos());
 }
 
 
