@@ -8,10 +8,10 @@ const router = express.Router();
 router.use(async (req, res, next) => {
   try {
     const categorias = await Productos.distinct('category');
-    res.locals.categorias = categorias;
+    res.locals.categorias = categorias; // Esto permite acceder a `categorias` en `base.html`
   } catch (err) {
     console.error('Error al cargar categorías:', err);
-    res.locals.categorias = [];
+    res.locals.categorias = []; // Si falla, establece un array vacío para evitar errores
   }
   next();
 });
@@ -21,9 +21,7 @@ router.get('/portada', async (req, res) => {
   try {
     const productos = await Productos.find({});
     const carrito = req.session.carrito || [];
-    const usuario = req.username; // Añadir usuario si está autentificado
-    console.log("Usuario autenticado:", usuario);
-    res.render('portada.html', { productos, carrito, categorias: res.locals.categorias, titulo: 'Productos Destacados',usuario });
+    res.render('portada.html', { productos, carrito, categorias: res.locals.categorias, titulo: 'Productos Destacados', usuario: req.username });
   } catch (err) {
     console.error(err);
     res.status(500).send({ err });
@@ -31,19 +29,19 @@ router.get('/portada', async (req, res) => {
 });
 
 router.post('/buscar', async (req, res) => {
-  const query = req.body.query.toLowerCase(); 
+  const query = req.body.query.toLowerCase(); // Obtener la consulta y convertirla a minúsculas
   try {
     const productos = await Productos.find({
       $or: [
-        { title: { $regex: query, $options: 'i' } }, 
-        { description: { $regex: query, $options: 'i' } } 
+        { title: { $regex: query, $options: 'i' } }, // Buscar en el título
+        { description: { $regex: query, $options: 'i' } } // Buscar en la descripción
       ]
     });
 
     const carrito = req.session.carrito || [];
-    res.render('portada.html', { productos, carrito, categorias: res.locals.categorias, titulo: `Productos sobre "${query}"` });
+    res.render('portada.html', { productos, carrito, categorias: res.locals.categorias, titulo: `Productos sobre "${query}"`, usuario: req.username });
   } catch (err) {
-    console.error(err); 
+    console.error(err); // Para facilitar la depuración
     res.status(500).send({ err });
   }
 });
@@ -54,7 +52,7 @@ router.get('/categoria', async (req, res) => {
     const categoria = req.query.nombre;
     const categorias = await Productos.distinct('category');
     const productos = await Productos.find(categoria ? { category: categoria } : {});
-    res.render('portada.html', { productos, categorias, categoriaSeleccionada: categoria, titulo: `Productos en la categoría "${categoria}"` });
+    res.render('portada.html', { productos, categorias, categoriaSeleccionada: categoria, titulo: `Productos en la categoría "${categoria}"`, usuario: req.username });
   } catch (err) {
     console.error(err);
     res.status(500).send({ err });
@@ -67,60 +65,36 @@ router.get('/productos/:id', async (req, res) => {
     if (!producto) {
       return res.status(404).send('Producto no encontrado');
     }
-    res.render('detalle_producto.html', { producto });
+    res.render('detalle_producto.html', { producto, usuario: req.username });
   } catch (err) {
     res.status(500).send(err);
   }
 });
 
-// Ruta para agregar un producto al carrito
 router.post('/carrito/agregar', async (req, res) => {
   const { productoId } = req.body;
-
-  // Asegúrate de que el usuario esté autenticado
-  if (!req.username) {
-    return res.status(401).send('Debes estar autenticado para agregar productos al carrito.');
+  
+  // Asegúrate de inicializar la sesión si no está ya creada
+  if (!req.session.carrito) {
+    req.session.carrito = [];
   }
-
-  const username = req.username;
-
-  // Busca al usuario por su nombre de usuario
-  const usuario = await Usuarios.findOne({ username });
-  if (!usuario) {
-    return res.status(404).send('Usuario no encontrado');
-  }
-
-  // Busca el producto por ID
+  
+  // Busca el producto por ID y agrégalo al carrito
   const producto = await Productos.findById(productoId);
-  if (!producto) {
-    return res.status(404).send('Producto no encontrado');
+  if (producto) {
+    req.session.carrito.push(producto); // Añade el producto a la sesión
+    console.log(req.session.carrito); // Para depuración
+    res.redirect('/carrito'); // Redirige a la página del carrito
+  } else {
+    res.status(404).send('Producto no encontrado');
   }
-
-  // Agrega el producto al carrito del usuario
-  usuario.carrito.push(producto._id);
-  await usuario.save(); // Guarda el carrito actualizado
-
-  res.redirect('/carrito');
 });
 
 // Ruta para ver el carrito
-router.get('/carrito', async (req, res) => {
-  if (!req.username) {
-    return res.status(401).send('Debes estar autenticado para ver el carrito.');
-  }
-
-  const username = req.username;
-
-  // Busca al usuario y carga el carrito
-  const usuario = await Usuarios.findOne({ username }).populate('carrito'); // Usa populate para obtener los productos completos
-  if (!usuario) {
-    return res.status(404).send('Usuario no encontrado');
-  }
-
-  const carrito = usuario.carrito;
-  const total = carrito.reduce((sum, producto) => sum + producto.price, 0);
-
-  res.render('carrito.html', { carrito, total });
+router.get('/carrito', (req, res) => {
+  const carrito = req.session.carrito || [];
+  const total = carrito.reduce((sum, producto) => sum + producto.price, 0); // Cambiar de precio a price
+  res.render('carrito.html', { carrito, total, usuario: req.username });
 });
 
 export default router;

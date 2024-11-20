@@ -49,6 +49,7 @@ const autentificacion = (req, res, next) => {
     try {
       const data = jwt.verify(token, process.env.SECRET_KEY);
       req.username = data.usuario; // Añadimos el usuario al request
+      req.admin = data.admin; // Información adicional sobre roles
     } catch {
       console.error('Token inválido:', err);
     }

@@ -1,6 +1,5 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
 import Usuarios from '../model/usuarios.js';
 import dotenv from 'dotenv';
 
@@ -13,47 +12,38 @@ router.get('/login', (req, res) => {
   res.render('login.html');
 });
 
-// Recoger datos del formulario de login
+// Procesar el login
 router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
-  
-    try {
-      const user = await Usuarios.findOne({ username });
-      if (!user) {
-        return res.status(401).send('Usuario no encontrado');
-      }
-  
-      if (user.password !== password) {
-        return res.status(401).send('Contraseña incorrecta');
-      }
-  
-      const token = jwt.sign({ usuario: user.username }, process.env.SECRET_KEY, { expiresIn: '1h' });
-  
-      res
-        .cookie('access_token', token, { httpOnly: true, secure: process.env.IN === 'production' })
-        .render('bienvenida.html', { usuario: user.username });
-    } catch (error) {
-      console.error('Error en /login:', error);
-      res.status(500).send('Error en el servidor');
+  const { username, password } = req.body;
+
+  try {
+    const user = await Usuarios.findOne({ username });
+    if (!user) {
+      return res.status(401).render('login.html', { error: 'Usuario no encontrado' });
     }
+
+    //const isPasswordValid = await user.comparePassword(password);
+    if (user.password !== password) {
+      return res.status(401).render('login.html', { error: 'Contraseña incorrecta' });
+    }
+
+    // Generar token JWT
+    const token = jwt.sign({ usuario: user.username, admin: user.admin }, process.env.SECRET_KEY);
+
+    res.cookie('access_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Solo en https si está en producción
+    }).render('bienvenida.html', { usuario: user.username });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error en el servidor');
+  }
 });
 
-// Logout: Limpiar la cookie de autenticación
+// Logout
 router.get('/logout', (req, res) => {
   const usuario = req.username;
-
-//   if (req.session.carritos && req.session.carritos[username]) {
-//     delete req.session.carritos[username]; // Elimina el carrito del usuario
-//   }
   res.clearCookie('access_token').render('despedida.html', { usuario });
-});
-
-router.get('/bienvenida', (req, res) => {
-    const usuario = req.username; // Usuario autenticado desde el middleware
-    if (!usuario) {
-      return res.redirect('/login');
-    }
-    res.render('bienvenida.html', { usuario });
 });
 
 export default router;

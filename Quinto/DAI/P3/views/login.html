@@ -1,9 +1,25 @@
-<form action="/login" method="POST">
-    <label for="username">Usuario:</label>
-    <input type="text" id="username" name="username" required>
-    
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required>
-    
-    <button type="submit">Iniciar sesión</button>
-</form>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+        <h2 class="text-center mb-4">Iniciar Sesión</h2>
+        <form action="/login" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Introduce tu usuario" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Introduce tu contraseña" required>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </div>
+        </form>
+        <p class="text-center mt-3">
+            ¿No tienes una cuenta? <a href="/registro" class="text-decoration-none">Regístrate</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

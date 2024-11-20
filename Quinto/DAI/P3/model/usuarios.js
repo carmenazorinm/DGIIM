@@ -16,7 +16,11 @@ const UsuariosSchema = new mongoose.Schema({
     lastname: { type: String },
   },
   phone: { type: String },
-  carrito: [{ type: mongoose.Schema.Types.ObjectId, ref: 'productos' }],
+  admin: {
+    type: Boolean,
+    default: false, // Por defecto, los usuarios no son administradores
+    required: false
+  },
 });
 
 // UsuariosSchema.pre('save', async function (next) {
