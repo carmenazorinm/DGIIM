@@ -65,7 +65,7 @@ router.get('/productos/:id', async (req, res) => {
     if (!producto) {
       return res.status(404).send('Producto no encontrado');
     }
-    res.render('detalle_producto.html', { producto, usuario: req.username });
+    res.render('detalle_producto.html', { producto, usuario: req.username, admin: req.admin });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -95,6 +95,26 @@ router.get('/carrito', (req, res) => {
   const carrito = req.session.carrito || [];
   const total = carrito.reduce((sum, producto) => sum + producto.price, 0); // Cambiar de precio a price
   res.render('carrito.html', { carrito, total, usuario: req.username });
+});
+
+router.post('/editar-producto/:id', async (req, res) => {
+  if (!req.admin) {
+    return res.status(403).send("No tienes permiso para realizar esta acción");
+  }
+
+  const { nuevoTitulo, nuevoPrecio } = req.body;
+
+  try {
+    const producto = await Productos.findByIdAndUpdate(
+      req.params.id,
+      { title: nuevoTitulo, price: nuevoPrecio },
+      { new: true, runValidators: true } // Validaciones activas
+    );
+
+    res.redirect(`/productos/${producto._id}`);
+  } catch (error) {
+    res.status(400).send("Error al actualizar el producto: " + error.message);
+  }
 });
 
 export default router;

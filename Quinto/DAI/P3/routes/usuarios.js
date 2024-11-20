@@ -16,16 +16,26 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
+  if (!username || !password) {
+    //console.log('Faltan datos');
+    return res.status(400).render('login.html', { error: 'Debe completar todos los campos' });
+  }
+
   try {
     const user = await Usuarios.findOne({ username });
     if (!user) {
+      //console.log('Usuario no encontrado');
       return res.status(401).render('login.html', { error: 'Usuario no encontrado' });
     }
 
-    //const isPasswordValid = await user.comparePassword(password);
     if (user.password !== password) {
       return res.status(401).render('login.html', { error: 'Contraseña incorrecta' });
     }
+    // const esValida = await user.compararPassword(password);
+    // if (!esValida) {
+    //   console.log('Contraseña incorrecta');
+    //   return res.status(401).render('login.html', { error: 'Contraseña incorrecta' });
+    // }
 
     // Generar token JWT
     const token = jwt.sign({ usuario: user.username, admin: user.admin }, process.env.SECRET_KEY);

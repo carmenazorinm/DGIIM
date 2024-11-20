@@ -16,6 +16,7 @@ connectDB();
 const IN = process.env.IN || 'development';
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cookieParser());
 
 //  habilitar el uso de sesiones, lo cual permitirá guardar el carrito de cada usuario
@@ -53,6 +54,9 @@ const autentificacion = (req, res, next) => {
     } catch {
       console.error('Token inválido:', err);
     }
+  } else {
+    req.username = null;
+    req.admin = false;
   }
   next();
 };

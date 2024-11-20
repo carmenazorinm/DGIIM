@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+//import bcrypt from 'bcrypt';
 
 const UsuariosSchema = new mongoose.Schema({
   id: { type: Number, unique: true },
@@ -24,11 +25,17 @@ const UsuariosSchema = new mongoose.Schema({
 });
 
 // UsuariosSchema.pre('save', async function (next) {
-//     if (this.isModified('password')) {
-//       this.password = await bcrypt.hash(this.password, 10); // Hash de la contraseña
-//     }
-//     next();
+//   if (this.isModified('password')) {
+//       const salt = await bcrypt.genSalt(10); // Generar un salt
+//       this.password = await bcrypt.hash(this.password, salt); // Cifrar contraseña
+//   }
+//   next();
 // });
+
+// // Método para verificar contraseñas
+// UsuariosSchema.methods.compararPassword = async function (password) {
+//   return await bcrypt.compare(password, this.password);
+// };
 
 const Usuarios = mongoose.model('usuarios', UsuariosSchema);
 export default Usuarios;
