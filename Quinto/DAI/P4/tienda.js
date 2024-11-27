@@ -8,6 +8,7 @@ import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import logger from './logger.js';
 
 dotenv.config();
 
@@ -61,6 +62,12 @@ const autentificacion = (req, res, next) => {
   }
   next();
 };
+
+// Middleware global para registrar todas las solicitudes
+app.use((req, res, next) => {
+  logger.info(`Petición: ${req.method} ${req.url}`);
+  next();
+});
 
 // intercepta el 
 app.use(autentificacion);

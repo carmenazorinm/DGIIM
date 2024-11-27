@@ -1,0 +1,97 @@
+[2024-11-27T11:45:15.264Z] INFO: Petición: GET /api/ratings/123
+[2024-11-27T11:46:29.587Z] INFO: Petición: GET /api/ratings/123
+[2024-11-27T11:47:17.413Z] INFO: Petición: GET /api/ratings/123
+[2024-11-27T11:47:32.866Z] INFO: Petición: GET /api/ratings/123
+[2024-11-27T12:01:14.567Z] INFO: Petición: GET /api/ratings/123
+[2024-11-27T12:01:14.577Z] ERROR: Error al buscar producto con ID 123: Cast to ObjectId failed for value "123" (type string) at path "_id" for model "productos"
+[2024-11-27T12:38:20.364Z] INFO: Petición: GET /api/ratings/
+[2024-11-27T12:38:31.918Z] INFO: Petición: GET /api/ratings/123
+[2024-11-27T12:38:31.925Z] ERROR: Error al buscar producto con ID 123: Cast to ObjectId failed for value "123" (type string) at path "_id" for model "productos"
+[2024-11-27T12:38:47.790Z] INFO: Petición: GET /api/ratings/66fd548768323ce2cbb5eeda
+[2024-11-27T12:39:01.073Z] INFO: Petición: PUT /api/ratings/66fd548768323ce2cbb5eeda
+[2024-11-27T12:41:43.701Z] INFO: Petición: GET /portada
+[2024-11-27T12:41:43.707Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:41:43.728Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:41:45.905Z] INFO: Petición: GET /favicon.ico
+[2024-11-27T12:41:45.913Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:41:47.201Z] INFO: Petición: GET /productos/66fd548768323ce2cbb5eeda
+[2024-11-27T12:41:47.205Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:41:47.218Z] INFO: Producto con ID 66fd548768323ce2cbb5eeda encontrado
+[2024-11-27T12:41:48.795Z] INFO: Petición: POST /carrito/agregar
+[2024-11-27T12:41:48.798Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:41:48.801Z] INFO: Producto con ID 66fd548768323ce2cbb5eeda agregado al carrito
+[2024-11-27T12:41:48.811Z] INFO: Petición: GET /carrito
+[2024-11-27T12:41:48.814Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:41:48.815Z] INFO: Carrito visualizado por el usuario
+[2024-11-27T12:41:50.086Z] INFO: Petición: GET /portada
+[2024-11-27T12:41:50.091Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:41:50.100Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:41:57.325Z] INFO: Petición: GET /login
+[2024-11-27T12:41:57.327Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:41:59.967Z] INFO: Petición: POST /login
+[2024-11-27T12:41:59.969Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:01.573Z] INFO: Petición: GET /portada
+[2024-11-27T12:42:01.580Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:01.585Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:42:10.591Z] INFO: Petición: GET /categoria?nombre=electronics
+[2024-11-27T12:42:10.594Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:10.596Z] INFO: Productos obtenidos para la categoría: "electronics"
+[2024-11-27T12:42:17.493Z] INFO: Petición: POST /buscar
+[2024-11-27T12:42:17.495Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:17.498Z] INFO: Búsqueda realizada con query: "men"
+[2024-11-27T12:42:21.226Z] INFO: Petición: GET /portada
+[2024-11-27T12:42:21.230Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:21.234Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:42:24.871Z] INFO: Petición: GET /carrito
+[2024-11-27T12:42:24.877Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:24.878Z] INFO: Carrito visualizado por el usuario
+[2024-11-27T12:42:28.500Z] INFO: Petición: GET /portada
+[2024-11-27T12:42:28.503Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:28.509Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:42:30.126Z] INFO: Petición: GET /logout
+[2024-11-27T12:42:30.129Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:34.737Z] INFO: Petición: GET /portada
+[2024-11-27T12:42:34.742Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:42:34.747Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:43:49.787Z] INFO: Petición: GET /login
+[2024-11-27T12:43:49.800Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:43:52.343Z] INFO: Petición: POST /login
+[2024-11-27T12:43:52.345Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:43:53.675Z] INFO: Petición: GET /portada
+[2024-11-27T12:43:53.681Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:43:53.688Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:44:07.895Z] INFO: Petición: GET /logout
+[2024-11-27T12:44:07.901Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:44:10.599Z] INFO: Petición: GET /portada
+[2024-11-27T12:44:10.602Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:44:10.610Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:44:33.713Z] INFO: Petición: GET /login
+[2024-11-27T12:44:33.720Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:44:35.892Z] INFO: Petición: POST /login
+[2024-11-27T12:44:35.896Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:44:36.047Z] INFO: Petición: GET /favicon.ico
+[2024-11-27T12:44:36.056Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:44:37.053Z] INFO: Petición: GET /portada
+[2024-11-27T12:44:37.062Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:44:37.073Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:45:25.670Z] INFO: Petición: GET /logout
+[2024-11-27T12:45:25.683Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:45:25.683Z] INFO: Logout realizado por: "jimmie_k".
+[2024-11-27T12:45:27.218Z] INFO: Petición: GET /portada
+[2024-11-27T12:45:27.220Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:45:27.238Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:45:34.973Z] INFO: Petición: GET /login
+[2024-11-27T12:45:34.981Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:45:34.982Z] INFO: Formulario de login solicitado.
+[2024-11-27T12:45:39.269Z] INFO: Petición: POST /login
+[2024-11-27T12:45:39.272Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:45:39.285Z] INFO: Login exitoso: Usuario "jimmie_k".
+[2024-11-27T12:45:40.490Z] INFO: Petición: GET /portada
+[2024-11-27T12:45:40.497Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:45:40.505Z] INFO: Productos obtenidos para la portada
+[2024-11-27T12:45:47.325Z] INFO: Petición: GET /logout
+[2024-11-27T12:45:47.329Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:45:47.329Z] INFO: Logout realizado por: "jimmie_k".
+[2024-11-27T12:45:49.858Z] INFO: Petición: GET /portada
+[2024-11-27T12:45:49.862Z] INFO: Categorías cargadas correctamente
+[2024-11-27T12:45:49.867Z] INFO: Productos obtenidos para la portada
