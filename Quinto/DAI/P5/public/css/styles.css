@@ -1,0 +1,47 @@
+/* Contenedor de las tarjetas */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 370px; /* Aumentamos el espacio vertical */
+    width: 200px;
+    margin: 15px;
+    overflow: hidden; /* Evitamos que elementos salgan de la caja */
+}
+
+/* Imágenes */
+.product-card img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Botón de compra */
+.add-to-cart-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    height: 40px; /* Tamaño fijo para los botones */
+    margin-top: auto; /* Empuja el botón hacia el final de la tarjeta */
+}
+
+.add-to-cart-btn:hover {
+    background-color: #45a049;
+}
+
+.checked {
+    color: orange;
+}
