@@ -49,6 +49,8 @@
 #include "grafo-escena.h"
 #include "modelo-jer.h"
 #include "examen2023.h"
+#include "examen-ec-p123.h"
+#include "latapeones.h"
 
 
 // -----------------------------------------------------------------------------------------------
@@ -63,13 +65,19 @@ Escena::Escena()
    // - Se deben de elegir los parámetros del material.
    //
    // ...
-
+   col_fuentes = new Col2Fuentes();
+   material_ini = new Material(0.4f, 0.8f, 0.0f, 2.0f);
 
    // COMPLETAR: práctica 5: añadir varias cámaras perspectiva y ortogonales al vector de cámaras de la escena
    //
    // Añadir sentencias 'push_back' para añadir varias cámaras al vector 'camaras'.
    // Eliminar este 'push_back' de la cámara orbital simple ('CamaraOrbitalSimple') por varias cámaras de 3 modos ('Camara3Modos')
+   
    camaras.push_back( new CamaraOrbitalSimple() );
+   // camaras.push_back(new Camara3Modos(true, *(new vec3({2.0, 2.0, 2.0})), 1.0, *(new vec3({0.0, 0.0, 0.0})), 60.0));
+   // camaras.push_back(new Camara3Modos(false, *(new vec3({5.0, 5.0, 5.0})), 1.0, *(new vec3({0.0, 0.0, 0.0})), 60.0));
+   // camaras.push_back(new Camara3Modos(false, *(new vec3({-2.5, 2.5, 2.5})), 1.0, *(new vec3({0.0, 0.0, 0.0})), 50.0));
+   // camaras.push_back(new Camara3Modos(true, *(new vec3({5.0, -2.5, 5.0})), 1.0, *(new vec3({0.5, 3.0, 0.0})), 70.0));
 
 }
 // -----------------------------------------------------------------------------------------------
@@ -149,6 +157,9 @@ void Escena::visualizarGL( )
       // * activar la colección de fuentes de la escena
       // * activar el material inicial (usando 'pila_materiales')
       // ....
+      cauce->fijarEvalMIL(true);
+      col_fuentes->activar();
+      aplicacionIG->pila_materiales->activar(material_ini);
 
    }
    else // si la iluminación no está activada, deshabilitar MIL y texturas
@@ -252,7 +263,10 @@ void Escena::visualizarNormales(  )
    // 2. Visualizar las normales del objeto actual de la escena (con el método 'visualizarNormalesGL')
 
    // ......
-
+   aplicacionIG->cauce->fijarEvalMIL(false);
+   aplicacionIG->cauce->fijarEvalText(false);
+   aplicacionIG->cauce->fijarColor(1.0,1.0,1.0);
+   objetoActual()->visualizarNormalesGL();
 }
 
 
@@ -318,7 +332,7 @@ Escena1::Escena1()
 
 
    //objetos.push_back( new Cubo() );
-   objetos.push_back(new P1Malla());
+   //objetos.push_back(new P1Malla());
    //objetos.push_back(new Tetraedro());
    //objetos.push_back(new CuboColores());
    //objetos.push_back(new CasaX());
@@ -332,6 +346,7 @@ Escena1::Escena1()
    // array 'objetos' otros objetos de la práctica 1
    // 
    // .......
+   objetos.push_back(new Ejercicio1());
 }
 
 // -------------------------------------------------------------------------
@@ -350,7 +365,8 @@ Escena2::Escena2()
    //objetos.push_back(new PiramideEstrellaZ(8));
    //objetos.push_back(new RejillaY(30,8));
    //objetos.push_back(new MallaTorre(2));
-   objetos.push_back(new P2MallaTriangulada(4));
+   //objetos.push_back(new P2MallaTriangulada(4));
+   objetos.push_back(new Ejercicio2(8));
 }
 
 
@@ -374,7 +390,7 @@ Escena3::Escena3()
    // objetos.push_back(new P3Cuadrado());
    // objetos.push_back(new EsferaMovil(50,100,2));
    // objetos.push_back(new P3Caja());
-   objetos.push_back(new Cubos());
+   objetos.push_back(new Ejercicio3(3,0.5));
 }
 
 
@@ -384,7 +400,19 @@ Escena3::Escena3()
 // Añadir la implementación del constructor de la clase Escena4 para construir
 // los objetos que se indican en el guion de la práctica 4
 // .......
-
+Escena4::Escena4()
+{
+   using namespace std;
+   cout << "Creando objetos de la práctica 4." << endl;
+   //objetos.push_back(new P3Caja());
+   objetos.push_back(new LataPeones());
+   objetos.push_back(new NodoCubo24());
+   objetos.push_back(new NodoDiscoP4());
+   objetos.push_back(new NodoBeethoven("vertical"));
+   objetos.push_back(new NodoBeethoven("horizontal"));
+   objetos.push_back(new NodoBeethoven("diagonal"));
+   objetos.push_back(new NodoBeethoven("diagonal inversa"));
+}
 
 
 // ----------------------------------------------------------------------
@@ -393,6 +421,5 @@ Escena3::Escena3()
 // Añadir la implementación del constructor de la clase Escena5 para construir
 // los objetos que se indican en el guion de la práctica 5
 // .......
-
 
 

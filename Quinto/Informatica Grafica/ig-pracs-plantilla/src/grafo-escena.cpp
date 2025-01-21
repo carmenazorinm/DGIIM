@@ -130,6 +130,10 @@ void NodoGrafoEscena::visualizarGL(  )
       cauce->fijarColor(leerColor());
    }
    
+   if(aplicacionIG->iluminacion) {
+      aplicacionIG->pila_materiales->push();
+   }
+
    cauce->pushMM();
 
    for (EntradaNGE entrada: entradas) {
@@ -137,6 +141,8 @@ void NodoGrafoEscena::visualizarGL(  )
          entrada.objeto->visualizarGL();
       else if (entrada.tipo == TipoEntNGE::transformacion)
          cauce->compMM(*entrada.matriz);
+      else if(entrada.tipo == TipoEntNGE::material)
+         aplicacionIG->pila_materiales->activar(entrada.material);
    }
    
    cauce->popMM();
@@ -153,7 +159,9 @@ void NodoGrafoEscena::visualizarGL(  )
    //   3. al finalizar, hacer 'pop' de la pila de materiales (restaura el material activo al inicio)
 
    // ......
-
+   if(aplicacionIG->iluminacion) {
+      aplicacionIG->pila_materiales->pop();
+   }
 
 }
 
@@ -213,7 +221,15 @@ void NodoGrafoEscena::visualizarNormalesGL(  )
    // - ignorar las entradas de tipo material, y la gestión de materiales (se usa sin iluminación)
 
    // .......
-
+   cauce->pushMM();
+   for(int i = 0; i < entradas.size(); i++ ){
+      if(entradas[i].tipo == TipoEntNGE::objeto) {
+         entradas[i].objeto->visualizarNormalesGL();
+      } else if(entradas[i].tipo == TipoEntNGE::transformacion) {
+         cauce->compMM(*entradas[i].matriz);
+      }
+   }
+   cauce->popMM();
 }
 
 // -----------------------------------------------------------------------------
@@ -622,4 +638,24 @@ P2MallaTriangulada::P2MallaTriangulada(unsigned n){
       // triangulos.push_back({3+5*(piso+1), 4+piso*5, 4+5*(piso+1)}); // 8, 4, 9
    }
    
+}
+
+
+NodoCubo24::NodoCubo24(){
+   agregar( new Material( new Textura("window-icon.jpg") , 0.5, 0.3, 0.7, 100.0) );
+   agregar( new Cubo24() );
+}
+
+NodoDiscoP4::NodoDiscoP4(){
+   ponerNombre("Nodo ejercicio adicional práctica 4, examen 27 enero");
+   agregar( new Material( new Textura("cuadricula.jpg") , 0.5, 0.3, 0.7, 100.0) );
+   agregar( new MallaDiscoP4() );
+}
+
+NodoBeethoven::NodoBeethoven(const std::string& vetas_verticales) {
+   agregar(new Material(new TexturaMadera("text-madera.jpg", vetas_verticales), 
+                             0.5, 0.3, 0.7, 100.0));
+        
+   // Agregar la malla PLY del busto de Beethoven
+   agregar(new MallaPLY("beethoven.ply"));
 }

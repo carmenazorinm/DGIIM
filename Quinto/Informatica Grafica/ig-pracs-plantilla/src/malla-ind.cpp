@@ -75,7 +75,24 @@ void MallaInd::calcularNormalesTriangulos()
 
    // COMPLETAR: Práctica 4: creación de la tabla de normales de triángulos
    // ....
+   for(int i=0; i < nt; i++) {
+      glm::vec3 p = vertices[triangulos[i][0]];
+      glm::vec3 q = vertices[triangulos[i][1]];
+      glm::vec3 r = vertices[triangulos[i][2]];
 
+      glm::vec3 a = q-p;
+      glm::vec3 b = r-p;
+
+      glm::vec3 m_c = cross(a,b);
+
+      glm::vec3 n_c;
+      if(length(m_c) != 0.0){
+         n_c = normalize(m_c);
+      } else {
+         n_c = glm::vec3(0.0,0.0,0.0);
+      }
+      nor_tri.push_back(n_c);
+   }
 }
 
 
@@ -89,7 +106,22 @@ void MallaInd::calcularNormales()
    // se debe invocar en primer lugar 'calcularNormalesTriangulos'
    // .......
 
+   calcularNormalesTriangulos();
 
+   nor_ver = std::vector<vec3>(vertices.size(), vec3(0.0,0.0,0.0));
+
+   for(int i = 0; i < triangulos.size(); i++) {
+      for(int j = 0; j < 3; j++) {
+         unsigned indice_vertice = triangulos[i][j];
+         nor_ver[indice_vertice] = nor_ver[indice_vertice] + nor_tri[i];
+      }
+   }
+
+   for(int i = 0; i < nor_ver.size(); i++){
+      if(length(nor_ver[i]) != 0.0) {
+         nor_ver[i] = normalize(nor_ver[i]);
+      }
+   }
 }
 
 
@@ -138,7 +170,10 @@ void MallaInd::visualizarGL( )
       DescrVBOInds* descrIndices = new DescrVBOInds(triangulos);
       // descrIndices.crearVBO();
       dvao->agregar(descrIndices);
-
+      if (cc_tt_ver.size() > 0) {
+         DescrVBOAtribs* descrTexturas = new DescrVBOAtribs(ind_atrib_coord_text,cc_tt_ver);
+         dvao->agregar(descrTexturas);
+      }
       if (col_ver.size() > 0) {
          DescrVBOAtribs* descrColores = new DescrVBOAtribs(ind_atrib_colores,col_ver);
          dvao->agregar(descrColores);
@@ -146,10 +181,6 @@ void MallaInd::visualizarGL( )
       if (nor_ver.size() > 0) {
          DescrVBOAtribs* descrNormales = new DescrVBOAtribs(ind_atrib_normales,nor_ver);
          dvao->agregar(descrNormales);
-      }
-      if (cc_tt_ver.size() > 0) {
-         DescrVBOAtribs* descrTexturas = new DescrVBOAtribs(ind_atrib_coord_text,cc_tt_ver);
-         dvao->agregar(descrTexturas);
       }
    }   
 
@@ -183,24 +214,23 @@ void MallaInd::visualizarGeomGL( )
    // COMPLETAR: práctica 1: visualizar únicamente la geometría del objeto 
    // 
    //    1. Desactivar todas las tablas de atributos del VAO (que no estén vacías)
+   if (cc_tt_ver.size() > 0) 
+      dvao->habilitarAtrib(ind_atrib_coord_text,false);
    if (col_ver.size() > 0) 
       dvao->habilitarAtrib(ind_atrib_colores,false);
    if (nor_ver.size() > 0) 
       dvao->habilitarAtrib(ind_atrib_normales,false);
-   if (cc_tt_ver.size() > 0) 
-      dvao->habilitarAtrib(ind_atrib_coord_text,false);
-
    //    2. Dibujar la malla (únicamente visualizará los triángulos), se usa el método 'draw' del VAO (dvao)
    dvao->draw(GL_TRIANGLES);
 
    //    3. Volver a activar todos los atributos para los cuales la tabla no esté vacía
+   if (cc_tt_ver.size() > 0) 
+      dvao->habilitarAtrib(ind_atrib_coord_text,true);
    if (col_ver.size() > 0) 
       dvao->habilitarAtrib(ind_atrib_colores,true);
    if (nor_ver.size() > 0) 
       dvao->habilitarAtrib(ind_atrib_normales,true);
-   if (cc_tt_ver.size() > 0) 
-      dvao->habilitarAtrib(ind_atrib_coord_text,true);
-
+   
 }
 
 // -----------------------------------------------------------------------------
@@ -248,7 +278,14 @@ void MallaInd::visualizarNormalesGL(  )
    //       tipo de primitiva 'GL_LINES'.
 
    //  ..........
-
+   if(dvao_normales == nullptr){
+      for(int i = 0; i < vertices.size(); i++) {
+         segmentos_normales.push_back(vertices[i]);
+         segmentos_normales.push_back(vertices[i] + (0.35f * nor_ver[i]));
+      }
+      dvao_normales = new DescrVAO(numero_atributos_cauce, new DescrVBOAtribs(ind_atrib_posiciones, segmentos_normales));
+   }
+   dvao_normales->draw(GL_LINES);
 }
 
 // -----------------------------------------------------------------------------
@@ -291,7 +328,7 @@ MallaPLY::MallaPLY( const std::string & nombre_arch )
 
    // COMPLETAR: práctica 4: invocar  a 'calcularNormales' para el cálculo de normales
    // .................
-
+   calcularNormales();
 }
 
 // ****************************************************************************
@@ -300,7 +337,7 @@ MallaPLY::MallaPLY( const std::string & nombre_arch )
 Cubo::Cubo()
 :  MallaInd( "cubo 8 vértices" )
 {
-
+   // longitud lado = 2 y centro en el origen
    vertices =
       {  { -1.0, -1.0, -1.0 }, // 0
          { -1.0, -1.0, +1.0 }, // 1
@@ -325,6 +362,7 @@ Cubo::Cubo()
          {1,5,7}, {1,7,3}  // Z+ (+1)
       } ;
 
+   calcularNormales();
 }
 
 // -----------------------------------------------------------------------------------------------
@@ -347,6 +385,8 @@ Tetraedro::Tetraedro() :  MallaInd( "tetraedro: 4 caras y 4 vertices" ){
       { 0.0, 0.0, 1.0 }, // 2
       { 1.0, 0.0, 0.0 }, // 3
    };
+
+   calcularNormales();
 }
 
 // -----------------------------------------------------------------------------------------------
@@ -394,6 +434,7 @@ CuboColores::CuboColores()
 CasaX::CasaX()
 :  MallaInd( "casa colores 10 vértices" )
 {
+   // es el cubo sin los dos triangulos de la base y de la tapa-> añadido en la parte superior 6 triangulos que forman un tejado a dos aguas (arista sup paralela eje X)
    vertices =
       {  { -1.0, -1.0, -1.0 }, // 0
          { -1.0, -1.0, +1.0 }, // 1
@@ -434,11 +475,40 @@ CasaX::CasaX()
          { +1.0, +1.0, +0.0 }, // 9
       } ;
 
+   /* 
+   vertices =
+      {  { 0.0, 0.0, 0.0 }, // 0
+         { +1.0, 0.0, 0.0 }, // 1
+         { +1.0, 0.0, +0.8 }, // 2
+         { 0.0, 0.0, +0.8 }, // 3
+         { 0.0, +0.8, 0.0 }, // 4
+         { +1.0, +0.8, 0.0 }, // 5
+         { +1.0, +0.8, +0.8 }, // 6
+         { 0.0, +0.8, +0.8 }, // 7
+         { 0.0, +1.0, +0.4 }, //8
+         { +1.0, +1.0, +0.4 } //9
+      } ;
+
+
+
+   triangulos =
+      {  {0,1,5}, {0,5,4}, 
+         {1,2,6}, {1,6,5}, 
+
+         {2,3,6}, {3,7,6}, 
+         {3,0,7}, {0,7,4},
+
+         {5,6,9}, {7,4,8},
+
+         {4,5,9}, {4,8,9},
+         {6,7,9}, {7,8,9}
+      } ;
+   */
 }
 
 // -----------------------------------------------------------------------------------------------
 MallaTriangulo::MallaTriangulo()
-:  MallaInd( "casa colores 10 vértices" )
+:  MallaInd( "malla triangulo en plano perpendicular al eje Z, 1 de base y sqrt(2) de altura" )
 {
    // base 1 y altura sqrt(2);
    vertices = {
@@ -454,7 +524,7 @@ MallaTriangulo::MallaTriangulo()
 
 // -----------------------------------------------------------------------------------------------
 MallaCuadrado::MallaCuadrado()
-:  MallaInd( "malla cuadrado de 4 vertices" )
+:  MallaInd( "malla cuadrado en plano perpendicular al eje Z, 2 de lado y centro en origen" )
 {
    vertices = {
       {-1,-1,0},
@@ -612,3 +682,125 @@ MallaTorre::MallaTorre(unsigned n)
 }
 
 // -----------------------------------------------------------------------------------------------
+
+Cubo24::Cubo24() {
+   vertices =
+      {
+         {+1.0, -1.0, +1.0}, // 0
+         {+1.0, +1.0, +1.0}, // 1
+         {+1.0, +1.0, -1.0}, // 2
+         {+1.0, -1.0, -1.0}, // 3
+
+
+         {-1.0, -1.0, +1.0}, // 4
+         {-1.0, +1.0, +1.0}, // 5
+         {+1.0, +1.0, +1.0}, // 6
+         {+1.0, -1.0, +1.0}, // 7
+
+
+         {-1.0, -1.0, -1.0}, // 8
+         {-1.0, +1.0, -1.0}, // 9
+         {-1.0, +1.0, +1.0}, // 10
+         {-1.0, -1.0, +1.0}, // 11
+
+         {+1.0, -1.0, -1.0}, // 12
+         {+1.0, +1.0, -1.0}, // 13
+         {-1.0, +1.0, -1.0}, // 14
+         {-1.0, -1.0, -1.0}, // 15
+
+
+         {+1.0, +1.0, +1.0}, // 16
+         {-1.0, +1.0, +1.0}, // 17
+         {-1.0, +1.0, -1.0}, // 18
+         {+1.0, +1.0, -1.0}, // 19
+
+         {+1.0, -1.0, +1.0}, // 20
+         {-1.0, -1.0, +1.0}, // 21
+         {-1.0, -1.0, -1.0}, // 22
+         {+1.0, -1.0, -1.0}  // 23
+      };
+
+   triangulos =
+      {
+         {0, 3, 2},
+         {0, 2, 1},
+
+         {4, 7, 6},
+         {4, 6, 5},
+
+         {8, 11, 10},
+         {8, 10, 9},
+
+         {12, 15, 14},
+         {12, 14, 13},
+
+         {16, 19, 18},
+         {16, 18, 17},
+
+         {20, 22, 23},
+         {20, 21, 22}
+      };
+      
+   cc_tt_ver = {
+      {0.0, 1.0-0.0},
+      {0.0, 1.0-1.0},
+      {1.0, 1.0-1.0},
+      {1.0, 1.0-0.0},
+
+      {0.0, 1.0-0.0},
+      {0.0, 1.0-1.0},
+      {1.0, 1.0-1.0},
+      {1.0, 1.0-0.0},
+
+      {0.0, 1.0-0.0},
+      {0.0, 1.0-1.0},
+      {1.0, 1.0-1.0},
+      {1.0, 1.0-0.0},
+
+      {0.0, 1.0-0.0},
+      {0.0, 1.0-1.0},
+      {1.0, 1.0-1.0},
+      {1.0, 1.0-0.0},
+
+      {0.0, 1.0-0.0},
+      {0.0, 1.0-1.0},
+      {1.0, 1.0-1.0},
+      {1.0, 1.0-0.0},
+
+      {0.0, 1.0-0.0},
+      {0.0, 1.0-1.0},
+      {1.0, 1.0-1.0},
+      {1.0, 1.0-0.0}
+   };
+
+   calcularNormales();
+}
+
+MallaDiscoP4::MallaDiscoP4()
+{
+   ponerColor({1.0, 1.0, 1.0});
+   const unsigned ni = 23, nj = 31 ;
+
+   for( unsigned i= 0 ; i < ni ; i++ )
+   for( unsigned j= 0 ; j < nj ; j++ )
+   {
+      const float
+         fi = float(i)/float(ni-1),
+         fj = float(j)/float(nj-1),
+         ai = 2.0*M_PI*fi,
+         x = fj * cos( ai ),
+         y = fj * sin( ai ),
+         z = 0.0 ;
+      vertices.push_back({ x, y, z });
+      // Ejercicio adicional 1
+      //cc_tt_ver.push_back({(x+1)*1.0/2.0, 1.0*(y+1)/2.0});
+      // Ejercicio adicional 2
+      cc_tt_ver.push_back({fj, float(ai/(2.0*M_PI))});                                                                                                                        
+   }
+   for( unsigned i= 0 ; i < ni-1 ; i++ )
+   for( unsigned j= 0 ; j < nj-1 ; j++ )
+   {
+      triangulos.push_back({ i*nj+j, i*nj+(j+1), (i+1)*nj+(j+1) });
+      triangulos.push_back({ i*nj+j, (i+1)*nj+(j+1), (i+1)*nj+j });
+   }
+}

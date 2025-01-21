@@ -198,4 +198,14 @@ class MallaTorre : public MallaInd
       MallaTorre(unsigned n);
 };
 
+class Cubo24 : public MallaInd {
+   public:
+      Cubo24();
+};
+
+class MallaDiscoP4 : public MallaInd {
+   public:
+      MallaDiscoP4();
+};
+
 #endif

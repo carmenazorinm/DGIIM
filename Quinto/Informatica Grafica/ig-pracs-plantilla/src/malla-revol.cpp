@@ -52,6 +52,49 @@ void MallaRevol::inicializar
 )
 {
    using namespace glm ;
+   using namespace std;
+
+   // Practica 4
+   vector<vec3> normales_m;
+
+   //aristas
+   for(int i = 0; i < perfil.size(); i++) {
+      float v_1 = (perfil[i+1] -perfil[i])[0];
+      float v_2 = (perfil[i+1]-perfil[i])[1];
+      vec3 m_i(vec3(v_2, -v_1, 0.0f));
+
+      if(length(m_i) != 0.0) {
+         m_i = normalize(m_i);
+      }
+      normales_m.push_back(m_i);
+   }
+
+   // vertices
+   vector<vec3> normales_n;
+   normales_n.push_back(normales_m[0]);
+   for(int i = 1; i < perfil.size()-1; i++) {
+      normales_n.push_back(normalize(normales_m[i-1]+normales_m[i]));
+   }
+   normales_n.push_back(normales_m[perfil.size()-2]);
+
+   //vectores d y t
+   vector<float> d, t, sumas_parciales;
+   float suma_total;
+
+   for(int i = 0; i < perfil.size()-1; i++) {
+      d.push_back(sqrt(length(perfil[i+1]-perfil[i])));
+   }
+
+   sumas_parciales.push_back(0.0f);
+   for(int i = 0; i < perfil.size(); i++) {
+      sumas_parciales.push_back(sumas_parciales[i-1]+d[i-1]);
+   }
+
+   suma_total = sumas_parciales[perfil.size()-1];
+   t.push_back(0.0f);
+   for(int i = 0; i < perfil.size(); i++) {
+      t.push_back(sumas_parciales[i]/suma_total);
+   }
    
    // COMPLETAR: práctica 2: implementar algoritmo de creación de malla de revolución
    //
@@ -62,6 +105,14 @@ void MallaRevol::inicializar
          float rotacion =2.0*M_PI*i/(num_copias-1);
          glm::vec3 q(cos(rotacion)*perfil[j][0], perfil[j][1], sin(rotacion)*perfil[j][0]);
          vertices.push_back(q);
+
+         // practica 4
+         vec3 aux = vec3(normales_n[j][0]*cos(rotacion), normales_n[j][1], -normales_n[j][0]*sin(rotacion));
+         if(length(aux) != 0.0) {
+            normalize(aux);
+         }
+         nor_ver.push_back(aux);
+         cc_tt_ver.push_back({float(i)/(num_copias-1),1-t[j]});
       }
    }
 
@@ -74,6 +125,8 @@ void MallaRevol::inicializar
          triangulos.push_back(t2);
       }
    }
+
+
 }
 
 // -----------------------------------------------------------------------------
@@ -88,8 +141,9 @@ MallaRevolPLY::MallaRevolPLY
    ponerNombre( std::string("malla por revolución del perfil en '"+ nombre_arch + "'" ));
    // COMPLETAR: práctica 2: crear la malla de revolución
    // Leer los vértice del perfil desde un PLY, después llamar a 'inicializar'
-   LeerVerticesPLY(nombre_arch, vertices);
-   inicializar(vertices, nperfiles);
+   std::vector<glm::vec3> perfil;
+   LeerVerticesPLY(nombre_arch, perfil);
+   inicializar(perfil, nperfiles);
 
 }
 
@@ -100,7 +154,7 @@ Cilindro::Cilindro(
    const unsigned nperfiles
 ) 
 {
-   // el cilindro tendrá radio 2
+   // el cilindro tendrá radio 2 y altura num_verts_per-1?
    // si queremos cilindro radio r, altura h -> x = r/2, y = i*(h/num_verts_per)
    std::vector<glm::vec3> perfil;
    for (int i = 0; i < num_verts_per; i++) {
@@ -155,6 +209,15 @@ Esfera::Esfera(
    for(int i=0; i < vertices.size(); i++) {
       col_ver.push_back(glm::vec3({239.0/255.0,184.0/255.0,16.0/255.0}));
    }
+
+   /*
+   std::vector<glm::vec3> perfil;
+   for (int i=0; i<num_verts_per; i++){
+      perfil.push_back({cos(i*(M_PI*2.0/(num_verts_per-1))), sin(i*(M_PI*2.0/(num_verts_per-1))), 0.0});
+   }
+
+   inicializar(perfil, nperfiles);
+   */
 }
 
 // -----------------------------------------------------------------------------
@@ -164,7 +227,7 @@ Palo::Palo(
    const unsigned nperfiles
 ) 
 {
-   // el palo tendrá radio 0.5
+   // el palo tendrá radio 0.5 y altura 5*(num_verts_per-1)/num_verts_per
    // si queremos cilindro radio r, altura h -> x = r/2, y = i*(h/num_verts_per)
    std::vector<glm::vec3> perfil;
    for (int i = 0; i < num_verts_per; i++) {
@@ -178,6 +241,5 @@ Palo::Palo(
       col_ver.push_back(glm::vec3({149.0/255.0,95.0/255.0,32.0/255.0}));
    }
 }
-
 
 

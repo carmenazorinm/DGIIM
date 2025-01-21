@@ -279,5 +279,10 @@ class Col2Fuentes : public ColFuentesLuz
       Col2Fuentes() ;
 } ;
 
+class TexturaMadera : public Textura {
+   public:
+      TexturaMadera(const std::string& nombre_archivo,const std::string& vetas_verticales);
+};
+
 
 #endif

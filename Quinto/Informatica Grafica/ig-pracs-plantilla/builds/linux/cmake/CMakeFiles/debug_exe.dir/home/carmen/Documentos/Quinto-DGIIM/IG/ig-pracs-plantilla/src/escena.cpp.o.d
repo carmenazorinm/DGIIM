@@ -436,4 +436,6 @@ CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantil
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/aplicacion-ig.h \
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.h \
  /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/modelo-jer.h \
- /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.h
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.h

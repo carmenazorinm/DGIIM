@@ -50,6 +50,7 @@ Textura::Textura( const std::string & nombreArchivoJPG )
    // El nombre del archivo debe ir sin el 'path', la función 'LeerArchivoJPG' lo 
    // busca en 'materiales/imgs' y si no está se busca en 'archivos-alumno'
    // .....
+   imagen = LeerArchivoJPEG(nombreArchivoJPG.c_str(),ancho,alto);
 
 }
 
@@ -62,7 +63,24 @@ void Textura::enviar()
    // COMPLETAR: práctica 4: enviar la imagen de textura a la GPU
    // y configurar parámetros de la textura (glTexParameter)
    // .......
+   glGenTextures(1, &ident_textura);
 
+   glActiveTexture(GL_TEXTURE0);
+   glBindTexture(GL_TEXTURE_2D,ident_textura);
+
+   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, ancho, alto, 0, GL_RGB, GL_UNSIGNED_BYTE, imagen);
+   glGenerateMipmap(GL_TEXTURE_2D);
+
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
+   
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+   enviada = true;
 }
 
 //----------------------------------------------------------------------
@@ -89,7 +107,22 @@ void Textura::activar(  )
 
    // COMPLETAR: práctica 4: enviar la textura a la GPU (solo la primera vez) y activarla
    // .......
+   if(!enviada) {
+      enviar();
+   }
+   cauce->fijarEvalText(true, ident_textura);
+   cauce->fijarTipoGCT(modo_gen_ct, coefs_s, coefs_t);
 
+}
+
+TexturaXY::TexturaXY(const std::string &nom) : Textura(nom) {
+   modo_gen_ct = mgct_coords_objeto;
+}
+
+TexturaXZ::TexturaXZ(const std::string &nom) : Textura(nom) {
+   modo_gen_ct = mgct_coords_objeto;
+   coefs_t[1]=0.0;
+   coefs_t[2]=1.0;
 }
 // *********************************************************************
 // crea un material usando un color plano y los coeficientes de las componentes
@@ -147,6 +180,13 @@ void Material::activar( )
 
    // COMPLETAR: práctica 4: activar un material
    // .....
+   if(textura!=nullptr) {
+      textura->activar();
+   } else {
+      cauce->fijarEvalText(false);
+   }
+
+   cauce->fijarParamsMIL(k_amb, k_dif, k_pse, exp_pse);
 
 }
 //**********************************************************************
@@ -214,8 +254,18 @@ void ColFuentesLuz::activar( )
    // COMPLETAR: práctica 4: activar una colección de fuentes de luz
    //   - crear un 'std::vector' con los colores y otro con las posiciones/direcciones,
    //   - usar el método 'fijarFuentesLuz' del cauce para activarlas
-   // .....
+   std::vector<glm::vec3> colores;
+   std::vector<glm::vec4> direcciones;
 
+   for(long unsigned int i = 0; i < vpf.size(); i++) {
+      FuenteLuz *actual = vpf[i];
+      float lon = actual->longi, lat = actual->lati;
+
+      colores.push_back(glm::vec3(actual->color[0],actual->color[1],actual->color[2]));
+      direcciones.push_back(glm::vec4(cos(radians(lat)), sin(radians(lat)) * cos(radians(lon)), sin(radians(lat)) * cos(radians(lon)), 0.0f));
+   }   
+
+   cauce->fijarFuentesLuz(colores,direcciones);
 }
 
 // ---------------------------------------------------------------------
@@ -331,4 +381,22 @@ Col2Fuentes::Col2Fuentes()
    insertar( new FuenteLuz( +45.0, 60.0,  vec3 { f0, f0,     f0,    } ) );
    insertar( new FuenteLuz( -70.0, -30.0, vec3 { f1, f1*0.5, f1*0.5 } ) );
 
+}
+
+TexturaMadera::TexturaMadera(const std::string& nombre_archivo,const std::string& vetas_verticales)
+: Textura(nombre_archivo) {
+   modo_gen_ct = mgct_coords_objeto;
+    if (vetas_verticales == "horizontal") {
+      coefs_s[0] = 0.0;
+      coefs_s[1] = 1.0;
+    } else if(vetas_verticales == "vertical") {
+      coefs_s[0] = 1.0;
+      coefs_s[1] = 0.0;
+    } else if(vetas_verticales == "diagonal") {
+      coefs_s[0] = 0.5;
+      coefs_s[1] = 0.5;
+    }else if(vetas_verticales == "diagonal inversa") {
+      coefs_s[0] = 0.5; // o -0.5
+      coefs_s[1] = -0.5; // 0.5
+    }
 }

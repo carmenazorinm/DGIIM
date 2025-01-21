@@ -439,6 +439,33 @@ home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.cp
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.cpp.s
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.cpp.s
 
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.o
+
+# target to build an object file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.o
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.i: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.i
+
+# target to preprocess a source file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.i
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.s: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.s
+
+# target to generate assembly for a file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.s
+
 home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.cpp.o
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.o
 
@@ -492,6 +519,33 @@ home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.cpp.s
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.cpp.s
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.o
+
+# target to build an object file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.o
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.o
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.i: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.i
+
+# target to preprocess a source file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.i
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.i
+
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.s: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.s
+
+# target to generate assembly for a file
+home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_exe.dir/build.make CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/release_exe.dir/build.make CMakeFiles/release_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.s
+.PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.cpp.s
 
 home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/main.o: home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/main.cpp.o
 .PHONY : home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/main.o
@@ -752,12 +806,18 @@ help:
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/eventos-teclado.s"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.o"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.i"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.s"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen2023.s"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.s"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.o"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.i"
+	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/latapeones.s"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/main.o"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/main.i"
 	@echo "... home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/main.s"

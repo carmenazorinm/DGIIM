@@ -1,9 +1,6 @@
 // Nombre: Daniel, Apellidos: Alconchel Vázquez, Titulación: GIM.
 // email: danieeeld2@correo.ugr.es, DNI o pasaporte: 49617109Z
 
-#ifndef EXAMEN_EC_P123_HPP
-#define EXAMEN_EC_P123_HPP
-
 #include "grafo-escena.h"
 #include "malla-ind.h"
 #include "ig-aux.h"
@@ -45,5 +42,3 @@ class P3Caja : public NodoGrafoEscena
         virtual void actualizarEstadoParametro(const unsigned iParam, const float t_sec);
         P3Caja();
 };
-
-#endif

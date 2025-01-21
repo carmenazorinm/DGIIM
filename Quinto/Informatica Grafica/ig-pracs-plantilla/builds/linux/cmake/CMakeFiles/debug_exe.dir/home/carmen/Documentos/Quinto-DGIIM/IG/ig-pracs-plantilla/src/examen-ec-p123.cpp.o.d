@@ -1,8 +1,9 @@
-CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-pracs-plantilla/src/animacion.cpp.o: \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/src/animacion.cpp \
+CMakeFiles/debug_exe.dir/home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp.o: \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.cpp \
  /usr/include/stdc-predef.h \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/src/animacion.h \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/src/objeto3d.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/examen-ec-p123.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/grafo-escena.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/objeto3d.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -278,7 +279,8 @@ CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-p
  /usr/include/glm/detail/type_half.hpp \
  /usr/include/glm/detail/type_half.inl /usr/include/glm/integer.hpp \
  /usr/include/glm/detail/func_integer.inl \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/ig-aux.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/malla-ind.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/ig-aux.h \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \
@@ -423,7 +425,11 @@ CMakeFiles/debug_exe.dir/home/carmen/DGIIM/DGIIM/Quinto/Informatica_Grafica/ig-p
  /usr/include/glm/gtx/component_wise.inl /usr/include/glm/gtx/norm.inl \
  /usr/include/glm/gtc/matrix_inverse.hpp \
  /usr/include/glm/gtc/matrix_inverse.inl \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/lector-jpg.h \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/fbo.h \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/ig-aux.h \
- /home/carmen/DGIIM/DGIIM/Quinto/Informatica\ Grafica/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/cauce.h
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/lector-jpg.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/fbo.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/ig-aux.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/cauce.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../src/vaos-vbos.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/malla-revol.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/src/materiales-luces.h \
+ /home/carmen/Documentos/Quinto-DGIIM/IG/ig-pracs-plantilla/builds/linux/../../materiales/src-cpp/lector-jpg.h

@@ -188,7 +188,20 @@ class  P2MallaTriangulada : public MallaInd
       P2MallaTriangulada(unsigned n);
 };
 
+class NodoCubo24 : public NodoGrafoEscena {
+   public:
+      NodoCubo24();
+};
+
+class NodoDiscoP4 : public NodoGrafoEscena {
+   public:
+      NodoDiscoP4();
+};
+
+class NodoBeethoven : public NodoGrafoEscena {
+   public:
+      NodoBeethoven(const std::string& vetas_verticales);
+};
 
 #endif // GRAFO_ESCENA_HPP
-
 
