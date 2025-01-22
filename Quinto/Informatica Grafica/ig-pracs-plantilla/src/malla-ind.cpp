@@ -311,7 +311,14 @@ void MallaInd::visualizarModoSeleccionGL()
    // 2. Invocar 'visualizarGeomGL' para visualizar la geometría.
    // 3. Si tiene identificador: hacer pop del color, con 'popColor'.
    //
+   int identificador = leerIdentificador();
+   if (identificador != -1) {
+      cauce->pushColor();
+      cauce->fijarColor(ColorDesdeIdent(identificador));
+   }
 
+   visualizarGeomGL();
+   if(identificador != -1) cauce->popColor();
 }
 
 

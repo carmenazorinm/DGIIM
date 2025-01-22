@@ -3,9 +3,8 @@
 using namespace std;
 using namespace glm;
 
-Peon::Peon(int nperfiles) { 
+Peon::Peon(int nperfiles) {
     pm_tras = leerPtrMatriz(agregar(translate(vec3(0.0))));
-    //cout << "agregar Malla" << endl;
     agregar(new MallaRevolPLY("peon.ply", nperfiles));
 }
 
@@ -21,9 +20,8 @@ Lata::Lata(const std::string & nombre_arch) {
     unsigned identBase = 1;
     unsigned identCara = 2;
 
-    Textura* cocacola = new TexturaXY(nombre_arch);
-    Material* materialLata = new Material(cocacola, 1.0, 0.65, 0.25, 50.0);
-    //Material* materialLata = new Material(cocacola, 1.0, 1.0, 1.0, 1.0);
+    Textura* cocacola = new Textura(nombre_arch);
+    Material* materialLata = new Material(cocacola, 0.75, 0.65, 0.25, 50.0);
     Material* materialBases = new Material(0.35, 0.45, 0.25, 50.0);
 
     NodoGrafoEscena* base = new NodoGrafoEscena();
@@ -58,7 +56,6 @@ LataPeones::LataPeones() {
     Material* materialPeonBlanco = new Material(0.5, 0.2, 0.5, 5.0);
     Material* materialPeonNegro = new Material(0.01, 0.2, 0.5, 50.0);
 
-    
     NodoGrafoEscena* peones = new NodoGrafoEscena();
     peones->agregar(translate(vec3(0.0, 0.4, 0.7)));
     peones->agregar(scale(vec3(0.25, 0.25, 0.25)));
@@ -95,4 +92,27 @@ LataPeones::LataPeones() {
     actual->agregar(lata);
 
     agregar(actual);
+}
+
+// PRACTICA 5
+
+VariasLatasPeones::VariasLatasPeones() {
+    unsigned identPepsi = 5;
+    unsigned identUGR = 6;
+
+    NodoGrafoEscena* lataPepsi = new NodoGrafoEscena();
+    NodoGrafoEscena* lataUGR = new NodoGrafoEscena();
+
+    lataPepsi->ponerNombre("Lata de Pepsi");
+    lataPepsi->ponerIdentificador(identPepsi);
+    lataPepsi->agregar(translate(vec3(1.0, 0.0, 0.0)));
+    lataPepsi->agregar(new Lata("lata-pepsi.jpg"));
+
+    lataUGR->ponerNombre("Lata de la UGR");
+    lataUGR->ponerIdentificador(identUGR);
+    lataUGR->agregar(translate(vec3(2.0, 0.0, 0.0)));
+    lataUGR->agregar(new Lata("window-icon.jpg"));
+
+    agregar(lataPepsi);
+    agregar(lataUGR);
 }

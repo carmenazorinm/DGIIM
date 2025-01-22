@@ -255,8 +255,26 @@ void NodoGrafoEscena::visualizarModoSeleccionGL()
    // 5. Restaurar la matriz de modelado original (con 'popMM')   
    // 6. Si el identificador no es -1, restaurar el color previo del cauce (con 'popColor')
    //
-   // ........
+   int identificador = leerIdentificador();
+   if(identificador != -1) {
+      cauce->pushColor();
+      cauce->fijarColor(ColorDesdeIdent(identificador));
+   }
 
+   cauce->pushMM();
+   for(unsigned i = 0; i < entradas.size(); i++) {
+      if(entradas[i].tipo == TipoEntNGE::objeto) {
+         entradas[i].objeto->visualizarModoSeleccionGL();
+      } else if(entradas[i].tipo == TipoEntNGE::transformacion) {
+         cauce->compMM(*entradas[i].matriz);
+      }
+   }
+
+   cauce->popMM();
+
+   if(identificador != -1) {
+      cauce->popColor();
+   }
 
 }
 
@@ -333,7 +351,25 @@ void NodoGrafoEscena::calcularCentroOC()
    // COMPLETAR: práctica 5: calcular y guardar el centro del nodo
    //    en coordenadas de objeto (hay que hacerlo recursivamente)
    //   (si el centro ya ha sido calculado, no volver a hacerlo)
-   // ........
+   if (!centro_calculado) {
+      vec3 centro = vec3(0.0,0.0,0.0);
+      int cont = 0;
+      mat4 matrizModelado(1.0f);
+
+      for (unsigned i=0; i<entradas.size(); i++) {
+         if (entradas[i].tipo==TipoEntNGE::objeto) {
+            entradas[i].objeto->calcularCentroOC();
+            vec3 aux = entradas[i].objeto->leerCentroOC();
+            centro += vec3(matrizModelado*vec4(entradas[i].objeto->leerCentroOC(), 1.0f));
+            cont++;
+         } else if (entradas[i].tipo==TipoEntNGE::transformacion) {
+            matrizModelado = matrizModelado*(*entradas[i].matriz);
+         }
+      }
+      centro /= cont;
+      ponerCentroOC(centro);
+      centro_calculado = true;
+   }
 
 }
 // -----------------------------------------------------------------------------
@@ -356,16 +392,27 @@ bool NodoGrafoEscena::buscarObjeto
    // Se deben de dar estos pasos:
 
    // 1. calcula el centro del objeto, (solo la primera vez)
-   // ........
+   calcularCentroOC();
 
 
    // 2. si el identificador del nodo es el que se busca, ya está (terminar)
-   // ........
+   if (ident_busc == leerIdentificador()) {
+      *objeto = this;
+      centro_wc = leerCentroOC();
+      return true;
+   }
 
 
    // 3. El nodo no es el buscado: buscar recursivamente en los hijos
    //    (si alguna llamada para un sub-árbol lo encuentra, terminar y devolver 'true')
-   // ........
+   mat4 matrizmod = mmodelado;
+
+   for(int i=0; i<entradas.size(); i++){
+        if(entradas[i].tipo == TipoEntNGE::objeto){
+            if(entradas[i].objeto->buscarObjeto(ident_busc, matrizmod, objeto, centro_wc)) return true;
+        }
+        else if(entradas[i].tipo == TipoEntNGE::transformacion) matrizmod = matrizmod*(*entradas[i].matriz);
+   }
 
 
    // ni este nodo ni ningún hijo es el buscado: terminar

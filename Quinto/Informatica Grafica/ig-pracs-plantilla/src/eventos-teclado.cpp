@@ -66,7 +66,7 @@ void FGE_PulsarLevantarTecla( GLFWwindow* window, int key, int scancode, int act
       // de luz actual (usar método 'colFuentes' de la escena activa para obtener un puntero), llamar a
       // 'ProcesaTeclaFuenteLuz', si devuelve 'true', forzar revisualizar escena (asignar 'true' a 'apl->revisualizar_escena')
       // .....
-
+      aplicacionIG->revisualizar_escena = ProcesaTeclaFuenteLuz(escena->colFuentes(), key);
       return ; // finalizar la f.g.e, ya que si está la tecla L pulsada no se mira ninguna otra tecla.
    }
 
@@ -80,8 +80,9 @@ void FGE_PulsarLevantarTecla( GLFWwindow* window, int key, int scancode, int act
       // procesar la tecla en la variable 'key' para actualizar el estado de animación
       // del objeto actual ('objeto'), se debe usar 'ProcesarTeclaAnimacion': si devuelve
       // 'true', forzar revisualizar escena (asignando valor a 'revisualizar_escena')
-      if (ProcesarTeclaAnimacion(objeto,key))
-         redib = true;   
+      // if (ProcesarTeclaAnimacion(objeto,key))
+      //    redib = true; 
+      aplicacionIG->revisualizar_escena = ProcesarTeclaAnimacion(objeto, key);  
 
       return ; // finalizar la f.g.e, ya que si está la tecla A pulsada no se mira ninguna otra tecla.
    }
@@ -192,7 +193,10 @@ void FGE_PulsarLevantarTecla( GLFWwindow* window, int key, int scancode, int act
       // el valor de 'apl->visualizar_fbo, e informar sobre si la visualización del 
       // FBO ha quedado activada o desactivada
       //
-
+      case GLFW_KEY_Y:
+         aplicacionIG->visualizar_fbo = !aplicacionIG->visualizar_fbo;
+         cout << "Visualziar FBO: " << (aplicacionIG->visualizar_fbo ? "activado" : "desactivado") << endl << flush;
+         break;
 
       case GLFW_KEY_T :
          aplicacionIG->imprimir_tiempos = ! aplicacionIG->imprimir_tiempos ;

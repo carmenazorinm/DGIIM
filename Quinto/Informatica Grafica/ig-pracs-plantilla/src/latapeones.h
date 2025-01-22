@@ -22,5 +22,9 @@ class Peon : public NodoGrafoEscena {
         glm::mat4* pm_tras = nullptr;
 };
 
+class VariasLatasPeones : public LataPeones {
+    public:
+        VariasLatasPeones();
+};
 
 #endif
