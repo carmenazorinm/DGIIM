@@ -97,6 +97,7 @@ Lampara::Lampara ()
     NodoGrafoEscena *cabeza = new NodoGrafoEscena();
     TexturaXY* texturaCabeza = new TexturaXY("texturaLuz.jpg");
     Material* materialCabeza = new Material(texturaCabeza, 0.5, 0.6, 0.5, 50.0);
+    materialCabeza->ponerNombre("texturaCabeza");
     cabeza->ponerColor({255.0,255.0,0.0});
     cabeza->ponerIdentificador(ident);
     ident++;
@@ -111,6 +112,7 @@ Lampara::Lampara ()
     NodoGrafoEscena *agarre = new NodoGrafoEscena();
     Textura* texturaAgarre = new TexturaXY("text-madera.jpg");
     Material* materialAgarre = new Material(texturaAgarre, 1.0,0.65, 0.25,50.0);
+    materialAgarre->ponerNombre("texturaAgarre");
     agarre->ponerColor({0.0,0.0,0.0});
     agarre->ponerIdentificador(ident);
     ident++;
@@ -128,10 +130,8 @@ Lampara::Lampara ()
     NodoGrafoEscena *cono = new NodoGrafoEscena();
 
     TexturaXY* texturaCuerda = new TexturaXY("texturaCuerda.jpg");
-    Material* materialCuerda = new Material(texturaCuerda, 0.5, 0.6, 0.5, 50.0);
-
-    TexturaXY* texturaCono = new TexturaXY("texturaCono.jpg");
-    Material* materialCono = new Material(texturaCono, 0.5, 0.6, 0.5, 50.0);
+    Material* materialCuerda = new Material(texturaCuerda, 0.7, 0.7, 0.7, 50.0);
+    materialCuerda->ponerNombre("texturaCuerda");
 
     palo->ponerIdentificador(ident);
     ident++;
@@ -167,7 +167,6 @@ Lampara::Lampara ()
     ident++;
     cono->agregar(translate(vec3(0.0,-2.5,0.0)));
     cono->agregar(scale(vec3(0.1,0.1,0.1)));
-    cono->agregar(materialCono);
     cono->agregar(new Cono(3,10));
 
     unsigned ind_tras_palo = cuerda->agregar(translate(vec3(0.0,0.0,0.0)));
@@ -185,7 +184,6 @@ Lampara::Lampara ()
     cilindro->agregar(rotate(float(M_PI/2.0),vec3{0.0,1.0,0.0}));
     cilindro->agregar(scale(vec3(0.2,0.2,0.2)));
     cilindro->agregar(translate(vec3(0.0,-1.0,0)));
-    cilindro->agregar(materialCono);
     cilindro->agregar(new Cilindro(3,10));
 
     lampara->agregar(cabeza);

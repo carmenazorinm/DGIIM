@@ -284,5 +284,10 @@ class TexturaMadera : public Textura {
       TexturaMadera(const std::string& nombre_archivo,const std::string& vetas_verticales);
 };
 
+class TexturaRayas : public Textura {
+   public:
+      TexturaRayas(const std::string& nombre_archivo,const std::string& vetas_verticales);
+};
+
 
 #endif

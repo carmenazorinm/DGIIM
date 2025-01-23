@@ -400,3 +400,21 @@ TexturaMadera::TexturaMadera(const std::string& nombre_archivo,const std::string
       coefs_s[1] = -0.5; // 0.5
     }
 }
+
+TexturaRayas::TexturaRayas(const std::string& nombre_archivo,const std::string& vetas_verticales)
+: Textura(nombre_archivo) {
+   modo_gen_ct = mgct_coords_objeto;
+    if (vetas_verticales == "horizontal") {
+      coefs_s[0] = 0.0;
+      coefs_s[1] = 1.0;
+    } else if(vetas_verticales == "vertical") {
+      coefs_s[0] = 1.0;
+      coefs_s[1] = 0.0;
+    } else if(vetas_verticales == "diagonal") {
+      coefs_s[0] = 0.5;
+      coefs_s[1] = 0.5;
+    }else if(vetas_verticales == "diagonal inversa") {
+      coefs_s[0] = 0.5; // o -0.5
+      coefs_s[1] = -0.5; // 0.5
+    }
+}

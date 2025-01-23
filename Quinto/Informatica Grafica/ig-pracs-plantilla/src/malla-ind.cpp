@@ -811,3 +811,45 @@ MallaDiscoP4::MallaDiscoP4()
       triangulos.push_back({ i*nj+j, (i+1)*nj+(j+1), (i+1)*nj+j });
    }
 }
+
+//---------------------------------------
+
+Piramide::Piramide(){
+   // rayas en horizontal y rayas en vertical
+   vertices = {};
+   for(int i = 0; i < 3; i++){
+      vertices.push_back({0.0,0.0,0.0}); //0
+      vertices.push_back({1.0,0.0,-sqrt(5)}); //1
+      vertices.push_back({2.0,0.0,0.0}); //2
+      vertices.push_back({1.0,sqrt(5), -sqrt(5)/2.0}); // 3 -> la punta
+   }
+
+
+   triangulos = {};
+   triangulos.push_back({0,2,3});
+   triangulos.push_back({4,1,7});
+   triangulos.push_back({5,6,11});
+   triangulos.push_back({8,9,10});
+
+
+   cc_tt_ver = {};
+   //rayas en vertical
+   cc_tt_ver.push_back({0.0,0.0}); //0
+   cc_tt_ver.push_back({0.0,0.0});
+   cc_tt_ver.push_back({1.0,0.0});//2
+   cc_tt_ver.push_back({0.5,1.0});
+   cc_tt_ver.push_back({1.0,0.0});//4
+   cc_tt_ver.push_back({1.0,0.0});
+   cc_tt_ver.push_back({0.0,0.0});//6
+   cc_tt_ver.push_back({0.5,1.0});
+   cc_tt_ver.push_back({0.0,0.0});//8
+   cc_tt_ver.push_back({0.5,1.0});
+   cc_tt_ver.push_back({1.0,0.0});//10
+   cc_tt_ver.push_back({0.5,1.0});
+}
+
+MallaEXP4::MallaEXP4(){
+   //rayas hacia arriba y rayas hacia el lado
+
+   calcularNormales();
+}

@@ -208,4 +208,14 @@ class MallaDiscoP4 : public MallaInd {
       MallaDiscoP4();
 };
 
+class Piramide : public MallaInd {
+   public:
+      Piramide();
+};
+
+class MallaEXP4 : public MallaInd {
+   public:
+      MallaEXP4();
+};
+
 #endif

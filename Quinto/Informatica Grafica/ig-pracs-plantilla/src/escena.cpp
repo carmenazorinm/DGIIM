@@ -408,7 +408,7 @@ Escena4::Escena4()
 {
    using namespace std;
    cout << "Creando objetos de la práctica 4." << endl;
-   //objetos.push_back(new P3Caja());
+   // objetos.push_back(new P3Caja());
    // objetos.push_back(new LataPeones());
    // objetos.push_back(new NodoCubo24());
    // objetos.push_back(new NodoDiscoP4());
@@ -417,6 +417,7 @@ Escena4::Escena4()
    // objetos.push_back(new NodoBeethoven("diagonal"));
    // objetos.push_back(new NodoBeethoven("diagonal inversa"));
    objetos.push_back(new Lampara());
+   //objetos.push_back(new Piramide());
 }
 
 
@@ -425,10 +426,19 @@ Escena4::Escena4()
 // 
 // Añadir la implementación del constructor de la clase Escena5 para construir
 // los objetos que se indican en el guion de la práctica 5
-// .......
+
 Escena5::Escena5(){
    using namespace std;   
    cout << "Creando objetos de la práctica 5." << endl;
-   objetos.push_back(new VariasLatasPeones());
+   //objetos.push_back(new VariasLatasPeones());
+   //objetos.push_back(new GrafoEsferasP5());
+   //objetos.push_back(new GrafoEsferasP5_2());
+   
+   // objetos.push_back(new NodoEXP4());
+   // objetos.push_back(new EsferaEXP5(5));
+   // objetos.push_back(new AnilloEXP5(5));
+   //objetos.push_back(new PiramideRayada());
+   //objetos.push_back(new EsferaEXP5(5));
+   objetos.push_back(new AnilloEXP5(5));
 }
 

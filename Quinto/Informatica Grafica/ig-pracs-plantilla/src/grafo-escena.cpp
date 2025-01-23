@@ -706,3 +706,122 @@ NodoBeethoven::NodoBeethoven(const std::string& vetas_verticales) {
    // Agregar la malla PLY del busto de Beethoven
    agregar(new MallaPLY("beethoven.ply"));
 }
+
+MiEsferaE1::MiEsferaE1(unsigned i, unsigned j) {
+   fila = i+1;
+   columna = j+1;
+   agregar(new Material(0.5,0.5,1.0,50));
+   agregar(new Esfera(20,20));
+}
+
+bool MiEsferaE1::cuandoClick(const glm::vec3 & centro_wc) {
+   using namespace std;
+   cout << "Se ha seleccionado la esfera número " << columna << " de la fila número " << fila << endl;
+   return true;
+}
+
+GrafoEsferasP5::GrafoEsferasP5() {
+   using namespace glm;
+   const unsigned 
+      n_filas_esferas = 8, 
+      n_esferas_x_fila = 5;
+   const float e = 0.4/n_esferas_x_fila;
+
+   agregar(scale(vec3(e,e,e)));
+
+   for(unsigned i = 0; i < n_filas_esferas; i++) {
+      NodoGrafoEscena * fila_esferas = new NodoGrafoEscena();
+      for(unsigned j = 0; j < n_esferas_x_fila; j++) {
+         MiEsferaE1 * esfera = new MiEsferaE1(i,j);
+         esfera->ponerIdentificador(i*n_esferas_x_fila+j+1);
+
+         fila_esferas->agregar(translate(vec3(2.2,0.0,0.0)));
+         fila_esferas->agregar(esfera);
+      }
+      agregar(fila_esferas);
+      agregar(translate(vec3(0.0,0.0,5.0)));
+   }
+}
+
+MiEsferaE2::MiEsferaE2() {
+   ponerColor({1.0,1.0,1.0});
+   agregar(new Esfera(20,20));
+}
+
+bool MiEsferaE2::cuandoClick(const glm::vec3 & centro_wc) {
+   using namespace glm;
+   using namespace std;
+   if(leerColor() == vec3(1.0,0.0,0.0)){
+      cout << "poniendo color blanco" << endl;
+      ponerColor(vec3(1.0,1.0,1.0));
+   }
+   else {
+      cout << "poniendo color rojo" << endl;
+      ponerColor(vec3(1.0,0.0,0.0));
+   }
+   return true;
+}
+
+GrafoEsferasP5_2::GrafoEsferasP5_2() {
+   using namespace glm;
+   const unsigned n_filas_esferas = 8, n_esferas_x_fila = 5;
+   const float e = 2.5/n_esferas_x_fila;
+
+   agregar(scale(vec3(e,e,e)));
+
+   for(unsigned i = 0; i < n_filas_esferas; i++) {
+      NodoGrafoEscena* fila_esferas = new NodoGrafoEscena();
+      fila_esferas->agregar(translate(vec3(3.0,0.0,0.0)));
+
+      for(unsigned j = 0; j < n_esferas_x_fila; j++) {
+         MiEsferaE2* esfera = new MiEsferaE2();
+         
+         fila_esferas->agregar(translate(vec3(2.5,0.0,0.0)));
+         fila_esferas->agregar(esfera);
+
+         esfera->ponerIdentificador(i*n_esferas_x_fila + j + 1);
+      }
+      agregar(fila_esferas);
+      agregar(rotate(float(2*M_PI/(n_filas_esferas)), vec3(0.0,1.0,0.0)));
+   }
+}
+
+//___________________EXAMEN DE INTERNET____________________
+
+PiramideRayada::PiramideRayada(){
+   // agregar( new Material( new Textura("textura-examen.jpg") , 0.5, 0.3, 0.7, 100.0) );
+   agregar(new Material(new TexturaRayas("textura-examen.jpg", "diagonal"), 
+                             0.5, 0.3, 0.7, 100.0));
+   agregar( new Piramide() );
+}
+
+AnilloEXP5::AnilloEXP5(unsigned int n) {
+   using namespace glm;
+   using namespace std;
+   const unsigned n_esferas = n;
+
+   // la esfera tiene radio 1 y su centro esta en el origen
+   agregar(translate(vec3(2.0,0.0,0.0)));
+
+   for(int i = 1; i < n_esferas+1; i++) {
+      EsferaEXP5* esfera = new EsferaEXP5(n);
+      esfera->ponerIdentificador(i);
+      agregar(esfera);
+      agregar(rotate(float(2.0*M_PI/n_esferas), vec3(0.0,1.0,0.0)));
+   }
+}
+
+EsferaEXP5::EsferaEXP5(unsigned int n) {
+   using namespace std;
+   using namespace glm;
+   pm_tras = leerPtrMatriz(agregar(translate(vec3(0.0))));
+   agregar(new Esfera(20,20));
+}
+
+bool EsferaEXP5::cuandoClick(const glm::vec3 & centro_wc) {
+   using namespace glm;
+   using namespace std;
+   cout << "Click" << endl;
+   *pm_tras = translate(vec3(0.0,1.0,0.0));
+   return true;
+}
