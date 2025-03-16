@@ -1,0 +1,20 @@
+### Obtener todos los ratings
+GET http://localhost:8000/api/ratings/
+
+### Obtener los 5 primeros ratings
+GET http://localhost:8000/api/ratings?desde=0&hasta=4
+###
+
+GET http://localhost:8000/api/ratings/123
+### Obtener el rating de un producto específico
+GET http://localhost:8000/api/ratings/66fd548768323ce2cbb5eeda
+
+###
+
+### Modificar el rating de un producto
+PUT http://localhost:8000/api/ratings/66fd548768323ce2cbb5eeda
+Content-Type: application/json
+
+{
+  "rating": 3.5
+}

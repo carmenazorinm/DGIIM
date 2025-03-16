@@ -1,0 +1,46 @@
+# docker-compose-prod.yml
+services:
+  tienda:
+    build: .
+    depends_on:
+      - mongo
+      - caddy
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    volumes:
+      - ./data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  seed:
+    image: node:22
+    depends_on:
+      - mongo
+    working_dir: /app
+    volumes:
+      - ./seed.js:/app/seed.js
+    environment:
+      USER_DB: root
+      PASS: example
+      DB_HOST: mongo
+    command: sh -c "npm install node-fetch mongodb && node seed.js"
+
+  caddy:
+    image: caddy:alpine
+    restart: unless-stopped
+    ports: 
+      - 80:80
+      - 443:443
+    volumes:
+      - caddy-config:/config
+      - caddy-data:/data
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./public:/usr/share/caddy
+    
+volumes:
+  caddy-config:
+  caddy-data:
