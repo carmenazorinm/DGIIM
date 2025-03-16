@@ -1,0 +1,8 @@
+Environment -> Set Directory
+Environment -> Load Constructs -> p1.clp
+Debug -> Agenda Browser
+
+Siempre en este orden:
+(load "p1.clp")
+(reset)
+(run)
