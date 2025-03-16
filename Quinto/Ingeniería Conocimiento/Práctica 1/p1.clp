@@ -274,6 +274,7 @@
 ;;;                  tenga el preguntado, y los que tengan una propiedad que no tenga el preguntado
 ;;;               3) Imprime por pantalla los alimento_parecido que queden 
 (defrule guardar_alimentos_parecidos
+    (declare (salience -5))
     (es_alimento ?x)
     (nivel_piramide_alimentaria ?a ?n)
     (nivel_piramide_alimentaria ?x ?n)
@@ -282,10 +283,39 @@
 )
 
 (defrule borrar_alimentos_parecidos_distinta_propiedad
-    ()
+    (declare (salience -6))
+    (alimento_parecido ?x)
+    (propiedad ?p ?x ?v1)
+    (propiedad ?p ?a ?v2)
+    (test (neq ?v1 ?v2))
+    =>
+    (retract (alimento_parecido ?x))
 )
 
+(defrule borrar_alimentos_parecidos_propiedad_extra
+    (declare (salience -6))
+    (alimento_parecido ?x)
+    (propiedad ?p ?x ?v1)
+    (not (propiedad ?p ?a ?v2))
+    =>
+    (retract (alimento_parecido ?x))
+)
 
+(defrule borrar_alimentos_parecidos_propiedad_faltante
+    (declare (salience -6))
+    (alimento_parecido ?x)
+    (propiedad ?p ?a ?v1)
+    (not (propiedad ?p ?x ?v2))
+    =>
+    (retract (alimento_parecido ?x))
+)
+
+(defrule listar_alimentos_parecidos
+    (declare (salience -7))
+    (alimento_parecido ?x)
+    =>
+    (printout t "También puedes considerar: " ?x crlf)
+)
 
 
 ;;;;;; EJEMPLO CLASE: regla para que se muestren todas sus propiedades

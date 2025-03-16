@@ -23,42 +23,41 @@
 )
 ;;;; Para los datos calculados se puede utilizar: https://www.labdeiters.com/nutricalculadora/ o https://fitia.app/buscar/alimentos-y-recetas/
 
-(receta
-	(nombre “Salsa de champiñones”)
-	(introducido_por “Carmen Azorin Marti”)
-	(numero_personas 4)
-	(ingredientes champinones cebolla leche vino_blanco maicena mantequilla sal pimienta_negra)
-	(dificultad baja)
-	(duracion 45m)
-	(enlace “https://www.recetasgratis.net/receta-de-salsa-de-champinones-facil-59513.html”)
-	(tipo_plato primer_plato acompanamiento)
-	(tipo_coccion cocido)
-	(Calorias 86)
-    (Proteinas 4)
-    (Grasa 4)
-    (Carbohidratos 9)
-    (Fibra 1)
-    (Colesterol 3)
-)
+; (receta
+; 	(nombre “Salsa de champiñones”)
+; 	(introducido_por “Carmen Azorin Marti”)
+; 	(numero_personas 4)
+; 	(ingredientes champinones cebolla leche vino_blanco maicena mantequilla sal pimienta_negra)
+; 	(dificultad baja)
+; 	(duracion 45m)
+; 	(enlace “https://www.recetasgratis.net/receta-de-salsa-de-champinones-facil-59513.html”)
+; 	(tipo_plato primer_plato acompanamiento)
+; 	(tipo_coccion cocido)
+; 	(Calorias 86)
+;     (Proteinas 4)
+;     (Grasa 4)
+;     (Carbohidratos 9)
+;     (Fibra 1)
+;     (Colesterol 3)
+; )
 
-(receta
-	(nombre “Torrijas de la abuela”)
-	(introducido_por “Carmen Azorin Marti”)
-	(numero_personas 6)
-	(ingredientes pan leche huevos canela azucar aceite_girasol cascara_limon)
-	(dificultad media)
-	(duracion 45m)
-	(enlace “https://www.recetasgratis.net/receta-de-torrijas-de-la-abuela-73990.html”)
-	(tipo_plato postre desayuno_merienda)
-	(tipo_coccion cocido frito)
-	(Calorias 657)
-    (Proteinas 13)
-    (Grasa 29)
-    (Carbohidratos 85)
-    (Fibra 2)
-    (Colesterol 183)
-)
-
+; (receta
+; 	(nombre “Torrijas de la abuela”)
+; 	(introducido_por “Carmen Azorin Marti”)
+; 	(numero_personas 6)
+; 	(ingredientes pan leche huevos canela azucar aceite_girasol cascara_limon)
+; 	(dificultad media)
+; 	(duracion 45m)
+; 	(enlace “https://www.recetasgratis.net/receta-de-torrijas-de-la-abuela-73990.html”)
+; 	(tipo_plato postre desayuno_merienda)
+; 	(tipo_coccion cocido frito)
+; 	(Calorias 657)
+;     (Proteinas 13)
+;     (Grasa 29)
+;     (Carbohidratos 85)
+;     (Fibra 2)
+;     (Colesterol 183)
+; )
 
 
 ;;; Crear un fichero de texto recetas.txt en el mismo directorio de recetas.clp y compiar el contenido del archivo compartido
@@ -76,10 +75,54 @@
 (save-facts "recetas_saved.txt")
 )
 
+; tengo que sacar todos los ingredientes de cada receta
+(defrule guardar_ingredientes
+	?receta <- (receta (ingredientes $?ingredientes))
+	=>
+	(foreach ?ingrediente ?ingredientes
+		(assert (ingrediente ?ingrediente)))
+)
+
+(defrule listar_alimentos
+    (ingrediente ?x)
+    =>
+    (printout t crlf ?x crlf)
+)
+
+
 ;;;EJERCICIO: Añadir reglas para  deducir tal y como tu lo harias (usando razonamiento basado en conocimiento):
 ;;;  1) cual o cuales son los ingredientes relevantes de una receta
 
-; depende del nombre de la receta, de los ingredientes y del tipo de los ingredientes
+; regla para guardar condimentos
+(deffacts condimentos
+(es_condimento sal)
+(es_condimento ajo)
+(es_condimento aji_molido)
+(es_condimento romero)
+(es_condimento pimienta)
+(es_condimento oregano)
+(es_condimento ramas_de_culantro)
+(es_condimento aji_limo)
+(es_condimento pimenton_dulce)
+(es_condimento pimienta_negra)
+(es_condimento laurel)
+(es_condimento cayena)
+(es_condimento cardamomo)
+(es_condimento aji)
+(es_condimento nuez_moscada)
+(es_condimento canela_en_polvo)
+(es_condimento coco_rallado)
+(es_condimento azucar)
+(es_condimento semillas_sesamo)
+(es_condimento brotes_soja)
+(es_condimento colorante)
+(es_condimento levadura)
+(es_condimento piemienta_negra)
+(es_condimento curcuma)
+(es_condimento ajo)
+)
+; regla para guardar ingredientes básicos reposteria
+; regla para guardar ingredientes liquidos
 
 ;;;  2) modificar las recetas completando cual seria el/los tipo_plato asociados a una receta, 
 ;;;;;;;; especialmente para el caso de que no incluya ninguno
