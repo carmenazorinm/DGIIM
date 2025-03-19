@@ -256,8 +256,10 @@
 (defrule guardar_alimentos
     (declare (salience 5))
     (es_un_tipo_de ?x ?t)
+    (nivel_piramide_alimentaria ?a ?b)
     =>
-    (assert (es_alimento ?x))    
+    (assert (es_alimento ?x))
+    (assert (es_alimento ?a))
 )
 
 
@@ -273,57 +275,86 @@
 ;;;               2) retracta los alimento_parecido que tengan una propiedad con valor distinto al preguntado, y los que no tengan una propiedad que si 
 ;;;                  tenga el preguntado, y los que tengan una propiedad que no tenga el preguntado
 ;;;               3) Imprime por pantalla los alimento_parecido que queden 
-(defrule guardar_alimentos_parecidos
-    (declare (salience -5))
-    (es_alimento ?x)
-    (nivel_piramide_alimentaria ?a ?n)
+
+; tengo en nivel el nivel de la piramide de a y tengo que mirar los alimentos que esten en el mismo nivel
+(defrule alimentos_mismo_nivel
+    (declare (salience -4))
+    (nivel ?n)
+    (alimento ?a)
     (nivel_piramide_alimentaria ?x ?n)
+    (es_alimento ?y)
+    (es_un_tipo_de ?y ?x)
+    (test (neq ?a ?y))
     =>
+    (assert (alimento_parecido ?y))
     (assert (alimento_parecido ?x))
 )
 
+;(defrule listar_alimentos_casi_parecidos
+;  (declare (salience -5))
+;  (alimento_parecido ?x)
+;  =>
+;  (printout t crlf "Alimentos casi parecidos: " ?x crlf)
+;)
+
+
 (defrule borrar_alimentos_parecidos_distinta_propiedad
-    (declare (salience -6))
+    (declare (salience -5))
     (alimento_parecido ?x)
+    (alimento ?a)
     (propiedad ?p ?x ?v1)
     (propiedad ?p ?a ?v2)
     (test (neq ?v1 ?v2))
+    ?Borrar <- (alimento_parecido ?x)
     =>
-    (retract (alimento_parecido ?x))
+    ;(printout t crlf "Elimino 1: " ?x crlf)
+    (retract ?Borrar)
 )
 
 (defrule borrar_alimentos_parecidos_propiedad_extra
     (declare (salience -6))
     (alimento_parecido ?x)
+    (alimento ?a)
     (propiedad ?p ?x ?v1)
     (not (propiedad ?p ?a ?v2))
+    ?Borrar <- (alimento_parecido ?x)
     =>
-    (retract (alimento_parecido ?x))
+    ;(printout t crlf "Elimino 2: " ?x crlf)
+    (retract ?Borrar)
 )
 
 (defrule borrar_alimentos_parecidos_propiedad_faltante
     (declare (salience -6))
     (alimento_parecido ?x)
+    (alimento ?a)
     (propiedad ?p ?a ?v1)
     (not (propiedad ?p ?x ?v2))
+    ?Borrar <- (alimento_parecido ?x)
     =>
-    (retract (alimento_parecido ?x))
+    ;(printout t crlf "Elimino 3: " ?x crlf)
+    (retract ?Borrar)
 )
 
-(defrule listar_alimentos_parecidos
+(defrule presentar_alimentos_parecidos
     (declare (salience -7))
+    (alimento ?a)
+    =>
+    (printout t crlf "También puedes considerar: " crlf)
+)
+(defrule listar_alimentos_parecidos
+    (declare (salience -8))
     (alimento_parecido ?x)
     =>
-    (printout t "También puedes considerar: " ?x crlf)
+    (printout t crlf ?x crlf)
 )
 
 
 ;;;;;; EJEMPLO CLASE: regla para que se muestren todas sus propiedades
-(defrule listar_propiedades_alimento
-    (declare (salience -1))
-    (alimento ?a)
-    ; propiedad p se pone porque quiero todas las propiedades y ?a porque quiero las propiedades de ese alimento y ?v es el valor de la propiedad
-    (propiedad ?p ?a ?v)
-    =>
-    (printout t crlf "Propiedad " ?p "Valor: " ?v crlf)
-)
+;(defrule listar_propiedades_alimento
+;   (declare (salience -1))
+;   (alimento ?a)
+;   ; propiedad p se pone porque quiero todas las propiedades y ?a porque quiero las propiedades de ese alimento y ?v es el valor de la propiedad
+;   (propiedad ?p ?a ?v)
+;   =>
+;   (printout t crlf "Propiedad " ?p " Valor: " ?v crlf)
+;)
