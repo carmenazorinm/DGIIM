@@ -2,7 +2,9 @@ package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Set;
 
@@ -94,68 +96,52 @@ public class AgenteDijkstra extends AbstractPlayer {
 		pos_siguiente_accion = 0;
 	}
 	
-	private boolean nodoExpandible(Nodo n) {
-		int x = (int) n.x; 
-		int y = (int) n.y;
-		if(mapa[x][y] == 0 || mapa[x][y] == 4) return false;
-		else if(mapa[x][y] == 1 && !n.capa_azul) return false;
-		else if(mapa[x][y] == 2 && !n.capa_roja) return false;
-		else return true;
+	private List<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
+	    List<Nodo> vecinos = new ArrayList<>(4); // Capacidad fija para 4 direcciones
+	    int x = (int)nodo.x;
+	    int y = (int)nodo.y;
+
+	    // Derecha (x+1)
+	    if (x + 1 < mapa.length && esMovimientoValido(mapa[x+1][y], nodo)) {
+	        vecinos.add(new Nodo(x+1, y, ACTIONS.ACTION_RIGHT, nodo));
+	    }
+	    
+	    // Izquierda (x-1)
+	    if (x - 1 >= 0 && esMovimientoValido(mapa[x-1][y], nodo)) {
+	        vecinos.add(new Nodo(x-1, y, ACTIONS.ACTION_LEFT, nodo));
+	    }
+	    
+	    // Arriba (y-1)
+	    if (y - 1 >= 0 && esMovimientoValido(mapa[x][y-1], nodo)) {
+	        vecinos.add(new Nodo(x, y-1, ACTIONS.ACTION_UP, nodo));
+	    }
+	    
+	    // Abajo (y+1)
+	    if (y + 1 < mapa[0].length && esMovimientoValido(mapa[x][y+1], nodo)) {
+	        vecinos.add(new Nodo(x, y+1, ACTIONS.ACTION_DOWN, nodo));
+	    }
+	    
+	    return vecinos;
 	}
 
-	private ArrayList<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
-		ArrayList<Nodo> vecinos = new ArrayList<>();
-		
-		Vector2d avatar = new Vector2d(nodo.x, nodo.y);
-		Vector2d newPos_right = avatar, newPos_left = avatar, newPos_up = avatar, newPos_down = avatar;
-		
-		if (avatar.x +1 <= stateObs.getObservationGrid().length -1) {
-			newPos_right = new Vector2d(avatar.x+1, avatar.y);
-			Nodo hijo = new Nodo(newPos_right, ACTIONS.ACTION_RIGHT, nodo);
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-			}
-		}
-		if (avatar.x -1 >= 0) {
-			newPos_left = new Vector2d(avatar.x-1, avatar.y);
-			Nodo hijo = new Nodo(newPos_left, ACTIONS.ACTION_LEFT, nodo);
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-			}
-		}
-		
-		if (avatar.y -1 >= 0) {
-			newPos_up = new Vector2d(avatar.x, avatar.y-1);
-			Nodo hijo = new Nodo(newPos_up, ACTIONS.ACTION_UP, nodo);
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-			}
-		}
-		
-		if (avatar.y +1 <= stateObs.getObservationGrid()[0].length -1) {
-			newPos_down = new Vector2d(avatar.x, avatar.y+1);
-			Nodo hijo = new Nodo(newPos_down, ACTIONS.ACTION_DOWN, nodo);
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-			}
-		}
-		return vecinos;
+	private boolean esMovimientoValido(int tipoCelda, Nodo actual) {
+	    // 0: Pared sólida | 4: Obstáculo (no transitable)
+	    if (tipoCelda == 0 || tipoCelda == 4) return false;
+	    
+	    // 1: Pared azul (requiere capa azul)
+	    if (tipoCelda == 1 && !actual.capa_azul) return false;
+	    
+	    // 2: Pared roja (requiere capa roja)
+	    if (tipoCelda == 2 && !actual.capa_roja) return false;
+	    
+	    return true;
 	}
 	
-//	private boolean enVisitados(Nodo nodo, ArrayList<Nodo> visitados) {
-//		for(Nodo n: visitados) {
-//			if(n.x == nodo.x && n.y == nodo.y && n.capa_azul == nodo.capa_azul && n.capa_roja == nodo.capa_roja) {
-//				return true;
-//			}
+//	private void aumentarAntiguedad(ArrayList<Nodo> a) {
+//		for (Nodo n: a) {
+//			n.antiguedad++;
 //		}
-//		return false;
 //	}
-	
-	private void aumentarAntiguedad(ArrayList<Nodo> a) {
-		for (Nodo n: a) {
-			n.antiguedad++;
-		}
-	}
 	
 	private void calcularRuta(Nodo n) {
 		Nodo actual = n;
