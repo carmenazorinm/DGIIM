@@ -60,10 +60,14 @@ public class Nodo implements Comparable<Nodo>{
 		
 		    AbstractMap.SimpleEntry<Integer,Integer> par = new AbstractMap.SimpleEntry<>((int)x,(int) y);
 		    // si el padre no tenía capa azul y el hijo si que la tiene, eso es que la casilla del hijo tenía una capa
-			if (!padre.capa_azul && capa_azul && capasAzules.contains(par)) {
+			if (capasAzules.contains(par)) {
 				capasAzules.remove(par);
-			} else if(!padre.capa_roja && capa_roja && capasRojas.contains(par)) {
+				capa_azul = true;
+				capa_roja = false;
+			} else if(capasRojas.contains(par)) {
 				capasRojas.remove(par);
+				capa_roja = true;
+				capa_azul = false;
 			}
 		} else {
 			capasAzules = new HashSet<>();

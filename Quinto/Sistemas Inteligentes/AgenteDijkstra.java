@@ -112,72 +112,31 @@ public class AgenteDijkstra extends AbstractPlayer {
 		if (avatar.x +1 <= stateObs.getObservationGrid().length -1) {
 			newPos_right = new Vector2d(avatar.x+1, avatar.y);
 			Nodo hijo = new Nodo(newPos_right, ACTIONS.ACTION_RIGHT, nodo);
-			if(mapa[(int)avatar.x+1][(int)avatar.y] == 5 && nodo.hayCapaRoja(avatar.x+1, avatar.y)) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x+1][(int)avatar.y] == 6 && nodo.hayCapaAzul(avatar.x+1, avatar.y)) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo derecha es viable");
 			if(nodoExpandible(hijo)) {
 				vecinos.add(hijo);
-				//System.out.println("Expandido hijo derecha (" + (int)avatar.x+1 + "," + avatar.y + ")");
 			}
 		}
 		if (avatar.x -1 >= 0) {
 			newPos_left = new Vector2d(avatar.x-1, avatar.y);
 			Nodo hijo = new Nodo(newPos_left, ACTIONS.ACTION_LEFT, nodo);
-			if(mapa[(int)avatar.x-1][(int)avatar.y] == 5 && nodo.hayCapaRoja(avatar.x-1, avatar.y)) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x-1][(int)avatar.y] == 6 && nodo.hayCapaAzul(avatar.x-1, avatar.y)) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo izquierda es viable");
 			if(nodoExpandible(hijo)) {
 				vecinos.add(hijo);
-				//System.out.println("Expandido hijo izquierda (" + (int)avatar.x+1 + "," + avatar.y + ")");
 			}
 		}
 		
 		if (avatar.y -1 >= 0) {
 			newPos_up = new Vector2d(avatar.x, avatar.y-1);
 			Nodo hijo = new Nodo(newPos_up, ACTIONS.ACTION_UP, nodo);
-			// tiene que haber capa en el mapa principal y que nunca antes se haya cogido
-			if(mapa[(int)avatar.x][(int)avatar.y-1] == 5 && nodo.hayCapaRoja(avatar.x, avatar.y-1)) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x][(int)avatar.y-1] == 6 && nodo.hayCapaAzul(avatar.x, avatar.y-1)) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo arriba es viable");
 			if(nodoExpandible(hijo)) {
 				vecinos.add(hijo);
-				//System.out.println("Expandido hijo arriba (" + (int)avatar.x+1 + "," + avatar.y + ")");
 			}
 		}
 		
 		if (avatar.y +1 <= stateObs.getObservationGrid()[0].length -1) {
 			newPos_down = new Vector2d(avatar.x, avatar.y+1);
 			Nodo hijo = new Nodo(newPos_down, ACTIONS.ACTION_DOWN, nodo);
-			if(mapa[(int)avatar.x][(int)avatar.y+1] == 5 && nodo.hayCapaRoja(avatar.x, avatar.y+1)) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x][(int)avatar.y+1] == 6&& nodo.hayCapaAzul(avatar.x, avatar.y+1)) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo abajo es viable");
 			if(nodoExpandible(hijo)) {
 				vecinos.add(hijo);
-				//System.out.println("Expandido hijo abajo (" + (int)avatar.x+1 + "," + avatar.y + ")");
 			}
 		}
 		return vecinos;
@@ -199,19 +158,16 @@ public class AgenteDijkstra extends AbstractPlayer {
 	}
 	
 	private void calcularRuta(Nodo n) {
-		// System.out.print("Calculando ruta");
 		Nodo actual = n;
 		
 		ACTIONS accion;
 		while(actual != null) {
 			accion = actual.accion;
-			// System.out.print(accion);
 			if(accion != ACTIONS.ACTION_NIL) {
 				acciones.add(0,  accion);
 			}
 			actual = actual.padre;
 		}
-		// System.out.println(acciones);
 	}
 	
 	@Override
