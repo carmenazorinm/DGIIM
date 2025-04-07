@@ -2,11 +2,15 @@ package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.TreeSet;
 
 import core.game.Observation;
 import core.game.StateObservation;
@@ -34,11 +38,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 		ruta_calculada = false;
 
 		mapa = new int[stateObs.getObservationGrid().length][stateObs.getObservationGrid()[0].length];
-		for(int i = 0; i < mapa.length; i++) {
-			for(int j = 0; j < mapa[0].length; j++) {
-				mapa[i][j] = 7;
-			}
-		}
+		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
 		for(int i = 0; i < immovable.length; i++) {
@@ -47,36 +47,33 @@ public class AgenteDijkstra extends AbstractPlayer {
 				int x = (int) Math.floor(obs.position.x / fescala.x );
 				int y = (int) Math.floor(obs.position.y / fescala.y );
 		        // System.out.println("Inmovable iType: " + obs.itype + " at grid (" + x + "," + y + ")");
-		        if (obs.itype == 5) { // muro gris
-		            mapa[x][y] = 0;
-		        } else if (obs.itype == 7) { // muro azul -> necesita capa azul
-		            mapa[x][y] = 1;
-		        } else if (obs.itype == 6) { // muro marron -> necesita capa roja
-		            mapa[x][y] = 2;
-		        } else if (obs.itype == 3) { // pinchos
-		        	mapa[x][y] = 4;
+				switch(obs.itype) {
+		            case 5: mapa[x][y] = 0; break;  // Muro gris
+		            case 7: mapa[x][y] = 1; break;  // Muro azul
+		            case 6: mapa[x][y] = 2; break;  // Muro marrón
+		            case 3: mapa[x][y] = 4; break;  // Pinchos
 		        }
 			}
 		}
 		
 		capasAzules = new HashSet<>();
-	    capasRojas = new HashSet<>();
+		capasRojas = new HashSet<>();
 		ArrayList<Observation>[] recursos = stateObs.getResourcesPositions();
-		if(recursos != null) {
-			for (int i = 0; i < recursos.length; i++) {
-			    for (Observation obs : recursos[i]) {
-			        int x = (int) Math.floor(obs.position.x / fescala.x);
-			        int y = (int) Math.floor(obs.position.y / fescala.y);
-			        // System.out.println("Capa roja iType: " + obs.itype + " at grid (" + x + "," + y + ")");
-			        if (obs.itype == 8) { // capa roja
-			            mapa[x][y] = 5; 
-			            capasRojas.add(new AbstractMap.SimpleEntry<>(x,y));
-			        } else if (obs.itype == 9) { // capa azul
-			            mapa[x][y] = 6;
-			            capasAzules.add(new AbstractMap.SimpleEntry<>(x,y));
-			        }
-			    }
-			}
+		if (recursos != null) {
+		    for (ArrayList<Observation> resourceList : recursos) {
+		        for (Observation obs : resourceList) {
+		            int x = (int)(obs.position.x / fescala.x);
+		            int y = (int)(obs.position.y / fescala.y);
+		            
+		            if (obs.itype == 8) { // Capa roja
+		                mapa[x][y] = 5;
+		                capasRojas.add(new AbstractMap.SimpleEntry<>(x, y));
+		            } else if (obs.itype == 9) { // Capa azul
+		                mapa[x][y] = 6;
+		                capasAzules.add(new AbstractMap.SimpleEntry<>(x, y));
+		            }
+		        }
+		    }
 		}
 		
 //		for(int i = 0; i < mapa.length; i++) {
@@ -89,8 +86,8 @@ public class AgenteDijkstra extends AbstractPlayer {
 		
 		ArrayList<Observation>[] posiciones = stateObs.getPortalsPositions();
 		portal = posiciones[0].get(0).position;
-		portal.x = Math.floor(portal.x / fescala.x);
-		portal.y = Math.floor(portal.y / fescala.y);
+		portal.x = (int)(portal.x / fescala.x); // Cast directo en lugar de Math.floor
+		portal.y = (int)(portal.y / fescala.y);
 		
 		nodos_expandidos = 0;
 		pos_siguiente_accion = 0;
@@ -137,11 +134,20 @@ public class AgenteDijkstra extends AbstractPlayer {
 	    return true;
 	}
 	
-//	private void aumentarAntiguedad(ArrayList<Nodo> a) {
-//		for (Nodo n: a) {
-//			n.antiguedad++;
-//		}
-//	}
+	private void aumentarAntiguedad(TreeSet<Nodo> a) {
+		for (Nodo n: a) {
+			n.antiguedad++;
+		}
+	}
+	
+	private String calcularClave(Nodo nodo) {
+		return String.format("%d,%d,%b,%b,%s,%s", 
+			    (int)nodo.x, (int)nodo.y, 
+			    nodo.capa_azul, nodo.capa_roja,
+			    nodo.capasAzules.toString(), 
+			    nodo.capasRojas.toString()
+			);
+	}
 	
 	private void calcularRuta(Nodo n) {
 		Nodo actual = n;
@@ -163,7 +169,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 			pos_siguiente_accion++;
 			return acciones.get(pos_siguiente_accion);
 		} else {
-			ArrayList<Nodo> visitados = new ArrayList<>();
+			Set<Nodo> visitados = new HashSet<>();
 			PriorityQueue<Nodo> nodos_por_visitar = new PriorityQueue<>();
 			Nodo nodo_actual = new Nodo(stateObs.getAvatarPosition().x / fescala.x, 
 					stateObs.getAvatarPosition().y / fescala.y, ACTIONS.ACTION_NIL, null);
@@ -203,5 +209,17 @@ public class AgenteDijkstra extends AbstractPlayer {
 		
 		return ACTIONS.ACTION_NIL;
 	}
+	
+	private int prioridadAccion(ACTIONS a, ACTIONS b) {
+        // Derecha > Izquierda > Arriba > Abajo
+        if (a == ACTIONS.ACTION_RIGHT && b != ACTIONS.ACTION_RIGHT) return -1;
+        if (b == ACTIONS.ACTION_RIGHT && a != ACTIONS.ACTION_RIGHT) return 1;
+        if (a == ACTIONS.ACTION_LEFT && b != ACTIONS.ACTION_LEFT) return -1;
+        if (b == ACTIONS.ACTION_LEFT && a != ACTIONS.ACTION_LEFT) return 1;
+        if (a == ACTIONS.ACTION_UP && b != ACTIONS.ACTION_UP) return -1;
+        if (b == ACTIONS.ACTION_UP && a != ACTIONS.ACTION_UP) return 1;
+        if (a == ACTIONS.ACTION_DOWN && b != ACTIONS.ACTION_DOWN) return -1;
+        return 1;
+    }
 	
 }
