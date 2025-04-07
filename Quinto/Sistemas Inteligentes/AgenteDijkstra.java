@@ -178,7 +178,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 			nodo_actual.g = 0;
 			nodos_por_visitar.add(nodo_actual); // nodos_por_visitar = A, 
 			
-			while(nodos_por_visitar.size() > 0) {
+			while(!nodos_por_visitar.isEmpty()) {
 				// escogemos el siguiente nodo a visitar
 				// aumentarAntiguedad(nodos_por_visitar);
 				nodo_actual = nodos_por_visitar.poll();
@@ -195,9 +195,9 @@ public class AgenteDijkstra extends AbstractPlayer {
 				visitados.add(nodo_actual);
 				for (Nodo sucesor: getVecinos(stateObs, nodo_actual)) {
 					if (!visitados.contains(sucesor) && sucesor.g > nodo_actual.g + 1) {
-						if(nodos_por_visitar.contains(sucesor)) {
-							nodos_por_visitar.remove(sucesor);
-						}
+						//if(nodos_por_visitar.contains(sucesor)) {
+							nodos_por_visitar.remove(sucesor); // si existe, lo borra
+						//}
 						nodos_por_visitar.add(sucesor);
 						sucesor.g = nodo_actual.g + 1;
 						sucesor.padre = nodo_actual;
