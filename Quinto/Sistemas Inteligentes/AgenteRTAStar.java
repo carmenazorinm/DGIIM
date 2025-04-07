@@ -77,19 +77,19 @@ public class AgenteRTAStar extends AbstractPlayer{
 		inicializarHeuristicas(stateObs);
 		
 		
-		actual = new Nodo(stateObs.getAvatarPosition().x / fescala.x,
-                stateObs.getAvatarPosition().y / fescala.y,
+		actual = new Nodo((int)(stateObs.getAvatarPosition().x / fescala.x),
+                (int)(stateObs.getAvatarPosition().y / fescala.y),
                 ACTIONS.ACTION_NIL, null);
-		AbstractMap.SimpleEntry<Integer, Integer>pos = new AbstractMap.SimpleEntry<>((int)actual.x, (int)actual.y);
-		if(capasAzules.contains(pos)) {
-			actual.capa_azul = true;
-			actual.capa_roja = false;
-			capasAzules.remove(pos);
-		} else if(capasRojas.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)actual.x, (int)actual.y))) {
-			actual.capa_roja = true;
-			actual.capa_azul = false;
-			capasRojas.remove(pos);
-		}
+//		AbstractMap.SimpleEntry<Integer, Integer>pos = new AbstractMap.SimpleEntry<>((int)actual.x, (int)actual.y);
+//		if(capasAzules.remove(pos)) {
+//			actual.capa_azul = true;
+//			actual.capa_roja = false;
+//		} else if(capasRojas.remove(pos)) {
+//			actual.capa_roja = true;
+//			actual.capa_azul = false;
+//		}
+		actual.capasAzules = new HashSet<>(capasAzules);
+		actual.capasRojas = new HashSet<>(capasRojas);
 	}
 	
 	private List<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
@@ -99,53 +99,25 @@ public class AgenteRTAStar extends AbstractPlayer{
 
 	    if (x + 1 < mapa.length) {
 	    	Nodo vecino = new Nodo(x+1, y, ACTIONS.ACTION_RIGHT, nodo);
-	    	if(capasAzules.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_azul = true;
-				vecino.capa_roja = false;
-			} else if(capasRojas.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_roja = true;
-				vecino.capa_azul = false;
-			}
-	    	if(esMovimientoValido(mapa[x+1][y], vecino))
+	    	if(esMovimientoValido(mapa[x+1][y], nodo))
 	    		vecinos.add(vecino);
 	    }
 	    
 	    if (x - 1 >= 0) {
 	        Nodo vecino = new Nodo(x-1, y, ACTIONS.ACTION_LEFT, nodo);
-	    	if(capasAzules.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_azul = true;
-				vecino.capa_roja = false;
-			} else if(capasRojas.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_roja = true;
-				vecino.capa_azul = false;
-			}
-	    	if(esMovimientoValido(mapa[x-1][y], vecino))
+	    	if(esMovimientoValido(mapa[x-1][y], nodo))
 	    		vecinos.add(vecino);
 	    }
 	    
 	    if (y - 1 >= 0) {
 	        Nodo vecino = new Nodo(x, y-1, ACTIONS.ACTION_UP, nodo);
-	    	if(capasAzules.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_azul = true;
-				vecino.capa_roja = false;
-			} else if(capasRojas.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_roja = true;
-				vecino.capa_azul = false;
-			}
-	    	if(esMovimientoValido(mapa[x][y-1], vecino))
+	    	if(esMovimientoValido(mapa[x][y-1], nodo))
 	    		vecinos.add(vecino);
 	    }
 	    
 	    if (y + 1 < mapa[0].length) {
 	        Nodo vecino = new Nodo(x, y+1, ACTIONS.ACTION_DOWN, nodo);
-	    	if(capasAzules.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_azul = true;
-				vecino.capa_roja = false;
-			} else if(capasRojas.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)vecino.x, (int)vecino.y))) {
-				vecino.capa_roja = true;
-				vecino.capa_azul = false;
-			}
-	    	if(esMovimientoValido(mapa[x][y+1], vecino))
+	    	if(esMovimientoValido(mapa[x][y+1], nodo))
 	    		vecinos.add(vecino);
 	    }
 	    
@@ -157,10 +129,10 @@ public class AgenteRTAStar extends AbstractPlayer{
 	    if (tipoCelda == 0 || tipoCelda == 4) return false;
 	    
 	    // 1: Pared azul (requiere capa azul)
-	    if (tipoCelda == 1 && !actual.capa_azul) return false;
+	    else if (tipoCelda == 1 && !actual.capa_azul) return false;
 	    
 	    // 2: Pared roja (requiere capa roja)
-	    if (tipoCelda == 2 && !actual.capa_roja) return false;
+	    else if (tipoCelda == 2 && !actual.capa_roja) return false;
 	    
 	    return true;
 	}
@@ -201,7 +173,6 @@ public class AgenteRTAStar extends AbstractPlayer{
 	}
 	
 	
-	
 	private float obtenerHeuristica(Nodo n) {
 	    String clave = generarClave(n);
 	    return tablaHeuristica.get(clave);
@@ -211,12 +182,19 @@ public class AgenteRTAStar extends AbstractPlayer{
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 	    // 2. Actualizar las capas
 		AbstractMap.SimpleEntry<Integer, Integer>pos = new AbstractMap.SimpleEntry<>((int)actual.x, (int)actual.y);
-		if(capasAzules.contains(pos)) {
-			capasAzules.remove(pos);
-		} else if(capasRojas.contains(new AbstractMap.SimpleEntry<Integer, Integer>((int)actual.x, (int)actual.y))) {
-			capasRojas.remove(pos);
-		}
-		
+		capasAzules.remove(pos);
+		capasRojas.remove(pos);
+//		if (capasAzules.contains(pos)) {
+//		    actual.capa_azul = true;
+//		    actual.capa_roja = false;
+//		    actual.capasAzules.remove(pos);
+//		}
+//		if (capasRojas.contains(pos)) {
+//		    actual.capa_roja = true;
+//		    actual.capa_azul = false;
+//		    actual.capasRojas.remove(pos);
+//		}
+
 
 	    // 3. Verificación de objetivo
 		nodos_expandidos++;
@@ -245,8 +223,7 @@ public class AgenteRTAStar extends AbstractPlayer{
 	    }
 
 	    // 6. Regla de aprendizaje (actualizar heurística del nodo actual)
-	    int x = (int) actual.x;
-	    int y = (int) actual.y;
+	    
 	    if (segundoMejor != Float.MAX_VALUE) {
     		tablaHeuristica.put(generarClave(actual), Math.max(
     	            obtenerHeuristica(actual),
