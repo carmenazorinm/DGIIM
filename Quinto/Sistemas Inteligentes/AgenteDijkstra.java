@@ -76,13 +76,6 @@ public class AgenteDijkstra extends AbstractPlayer {
 		    }
 		}
 		
-//		for(int i = 0; i < mapa.length; i++) {
-//			for(int j = 0; j < mapa[0].length; j++) {
-//				System.out.print("["+ mapa[i][j] + "]");
-//			}
-//			System.out.println();
-//		}
-		
 		
 		ArrayList<Observation>[] posiciones = stateObs.getPortalsPositions();
 		portal = posiciones[0].get(0).position;
@@ -134,12 +127,6 @@ public class AgenteDijkstra extends AbstractPlayer {
 	    return true;
 	}
 	
-	private void aumentarAntiguedad(TreeSet<Nodo> a) {
-		for (Nodo n: a) {
-			n.antiguedad++;
-		}
-	}
-	
 	private String calcularClave(Nodo nodo) {
 		return String.format("%d,%d,%b,%b,%s,%s", 
 			    (int)nodo.x, (int)nodo.y, 
@@ -162,45 +149,53 @@ public class AgenteDijkstra extends AbstractPlayer {
 		}
 	}
 	
+	private Nodo inicializarNodo(StateObservation stateObs) {
+		Nodo nodo_actual = new Nodo((int)(stateObs.getAvatarPosition().x / fescala.x), 
+				(int)(stateObs.getAvatarPosition().y / fescala.y), ACTIONS.ACTION_NIL, null);
+		nodo_actual.capasAzules = new HashSet<>(capasAzules);
+		nodo_actual.capasRojas = new HashSet<>(capasRojas);
+		nodo_actual.g = 0;
+		return nodo_actual;
+	}
+	
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		// en el primer paso, se calcula la ruta
 		if(ruta_calculada) {
 			pos_siguiente_accion++;
 			return acciones.get(pos_siguiente_accion);
+			
 		} else {
 			Set<Nodo> visitados = new HashSet<>();
 			PriorityQueue<Nodo> nodos_por_visitar = new PriorityQueue<>();
-			Nodo nodo_actual = new Nodo(stateObs.getAvatarPosition().x / fescala.x, 
-					stateObs.getAvatarPosition().y / fescala.y, ACTIONS.ACTION_NIL, null);
-			nodo_actual.capasAzules = capasAzules;
-			nodo_actual.capasRojas = capasRojas;
-			nodo_actual.g = 0;
-			nodos_por_visitar.add(nodo_actual); // nodos_por_visitar = A, 
+			Nodo nodo_actual = inicializarNodo(stateObs);
+			
+			nodos_por_visitar.add(nodo_actual);
 			
 			while(!nodos_por_visitar.isEmpty()) {
-				// escogemos el siguiente nodo a visitar
-				// aumentarAntiguedad(nodos_por_visitar);
-				nodo_actual = nodos_por_visitar.poll();
+				do {
+					nodo_actual = nodos_por_visitar.poll();
+				} while(visitados.contains(nodo_actual) || nodo_actual == null);	
 				
-				//nodos_por_visitar.remove(nodo_actual);
+				
 				nodos_expandidos++;
+				
 				if(nodo_actual.x == portal.x && nodo_actual.y == portal.y) {
-					// System.out.println("Ruta calculada");
-					calcularRuta(nodo_actual);
+					calcularRuta(nodo_actual); // rellena el atributo acciones
 					ruta_calculada = true;
 					System.out.println("Nodos expandidos: " + nodos_expandidos);
+					System.out.println("Tamaño ruta: "+ acciones.size());
 					return acciones.get(pos_siguiente_accion);
 				} 
+				
 				visitados.add(nodo_actual);
+				
 				for (Nodo sucesor: getVecinos(stateObs, nodo_actual)) {
-					if (!visitados.contains(sucesor) && sucesor.g > nodo_actual.g + 1) {
-						//if(nodos_por_visitar.contains(sucesor)) {
-							nodos_por_visitar.remove(sucesor); // si existe, lo borra
-						//}
-						nodos_por_visitar.add(sucesor);
-						sucesor.g = nodo_actual.g + 1;
-						sucesor.padre = nodo_actual;
+					if (!visitados.contains(sucesor)) {
+					    float nuevoG = nodo_actual.g + 1;
+					    if (nuevoG < sucesor.g) {
+					        sucesor.g = nuevoG;
+					        nodos_por_visitar.add(sucesor);
+					    }
 					}
 				}
 				
@@ -209,17 +204,5 @@ public class AgenteDijkstra extends AbstractPlayer {
 		
 		return ACTIONS.ACTION_NIL;
 	}
-	
-	private int prioridadAccion(ACTIONS a, ACTIONS b) {
-        // Derecha > Izquierda > Arriba > Abajo
-        if (a == ACTIONS.ACTION_RIGHT && b != ACTIONS.ACTION_RIGHT) return -1;
-        if (b == ACTIONS.ACTION_RIGHT && a != ACTIONS.ACTION_RIGHT) return 1;
-        if (a == ACTIONS.ACTION_LEFT && b != ACTIONS.ACTION_LEFT) return -1;
-        if (b == ACTIONS.ACTION_LEFT && a != ACTIONS.ACTION_LEFT) return 1;
-        if (a == ACTIONS.ACTION_UP && b != ACTIONS.ACTION_UP) return -1;
-        if (b == ACTIONS.ACTION_UP && a != ACTIONS.ACTION_UP) return 1;
-        if (a == ACTIONS.ACTION_DOWN && b != ACTIONS.ACTION_DOWN) return -1;
-        return 1;
-    }
 	
 }

@@ -2,6 +2,7 @@ package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
 import ontology.Types;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
@@ -11,8 +12,8 @@ import ontology.Types.ACTIONS;
 public class Nodo implements Comparable<Nodo>{
 	public float g;
 	public float h;
-	public double x;
-	public double y;
+	public int x;
+	public int y;
 	public int antiguedad;
 	public ACTIONS accion;
 	public Nodo padre;
@@ -21,7 +22,7 @@ public class Nodo implements Comparable<Nodo>{
 	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
 	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
 	
-	public Nodo(double x, double y, ACTIONS a, Nodo p) {
+	public Nodo(int x, int y, ACTIONS a, Nodo p) {
 		this.x = x;
 		this.y = y;
 		g = Integer.MAX_VALUE;
@@ -33,13 +34,13 @@ public class Nodo implements Comparable<Nodo>{
 		else capa_azul = false;
 		if(p != null && p.capa_roja) capa_roja = true;
 		else capa_roja = false;
-		// añadir capas
+		// actualizar capas recogidas
 		anadirCapas();
 	}
 	
 	public Nodo(Vector2d v, ACTIONS a, Nodo p) {
-		this.x = v.x;
-		this.y = v.y;
+		this.x = (int)v.x;
+		this.y = (int)v.y;
 		g = Integer.MAX_VALUE;
 		h = 0; 
 		antiguedad = 0;
@@ -49,7 +50,7 @@ public class Nodo implements Comparable<Nodo>{
 		else capa_azul = false;
 		if(p != null && p.capa_roja) capa_roja = true;
 		else capa_roja = false;
-		// añadir capas
+		// actualizar capas recogidas
 		anadirCapas();
 	}
 	
@@ -59,13 +60,10 @@ public class Nodo implements Comparable<Nodo>{
 		    capasRojas = new HashSet<>(padre.capasRojas);
 		
 		    AbstractMap.SimpleEntry<Integer,Integer> par = new AbstractMap.SimpleEntry<>((int)x,(int) y);
-		    // si el padre no tenía capa azul y el hijo si que la tiene, eso es que la casilla del hijo tenía una capa
-			if (capasAzules.contains(par)) {
-				capasAzules.remove(par);
+			if (capasAzules.remove(par)) {
 				capa_azul = true;
 				capa_roja = false;
-			} else if(capasRojas.contains(par)) {
-				capasRojas.remove(par);
+			} else if(capasRojas.remove(par)) {
 				capa_roja = true;
 				capa_azul = false;
 			}
@@ -75,24 +73,15 @@ public class Nodo implements Comparable<Nodo>{
 		}
 	}
 	
-	public boolean hayCapaAzul(double a, double b) {
-		AbstractMap.SimpleEntry<Integer,Integer> par = new AbstractMap.SimpleEntry<>((int)a,(int) b);
-		if(capasAzules.contains(par)) return true;
-		else return false;
-	}
-	
-	public boolean hayCapaRoja(double a, double b) {
-		AbstractMap.SimpleEntry<Integer,Integer> par = new AbstractMap.SimpleEntry<>((int)a,(int) b);
-		if(capasRojas.contains(par)) return true;
-		else return false;
-	}
 	
 	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Nodo nodo = (Nodo) o;
-        return x == nodo.x && y == nodo.y && capa_azul == nodo.capa_azul && capa_roja == nodo.capa_roja && capasAzules.equals(nodo.capasAzules) && capasRojas.equals(nodo.capasRojas);
+	public boolean equals(Object o) {
+        Nodo otro = (Nodo) o;
+        return this.x == otro.x && this.y == otro.y &&
+               this.capa_azul == otro.capa_azul &&
+               this.capa_roja == otro.capa_roja &&
+               this.capasAzules.equals(otro.capasAzules) &&
+               this.capasRojas.equals(otro.capasRojas);
     }
 
 	
@@ -109,23 +98,30 @@ public class Nodo implements Comparable<Nodo>{
 			return -1;
 		} else if(this.antiguedad > o.antiguedad) { // comparamos la antiguedad
 			return 1;
+		}else if(this.antiguedad < o.antiguedad) { // comparamos la antiguedad
+			return -1;
 		} else if(this.accion == ACTIONS.ACTION_RIGHT && o.accion != ACTIONS.ACTION_RIGHT) {
-			return -1;
+			return 1;
 		} else if (o.accion == ACTIONS.ACTION_RIGHT && this.accion != ACTIONS.ACTION_RIGHT) {
-			return 1;
+			return -1;
 		} else if (this.accion == ACTIONS.ACTION_LEFT && o.accion != ACTIONS.ACTION_LEFT) {
-			return -1;
+			return 1;
 		} else if(o.accion == ACTIONS.ACTION_LEFT && this.accion != ACTIONS.ACTION_LEFT) {
-			return 1;
+			return -1;
 		} else if(this.accion == ACTIONS.ACTION_UP && o.accion != ACTIONS.ACTION_UP) {
-			return -1;
+			return 1;
 		} else if(o.accion == ACTIONS.ACTION_UP && this.accion != ACTIONS.ACTION_UP) {
-			return 1;
-		} else if(this.accion == ACTIONS.ACTION_DOWN && o.accion != ACTIONS.ACTION_DOWN) {
 			return -1;
-		} else {
+		} else if(this.accion == ACTIONS.ACTION_DOWN && o.accion != ACTIONS.ACTION_DOWN) {
 			return 1;
+		} else {
+			return -1;
 		}
+	}
+	
+	@Override
+	public int hashCode() {
+	    return Objects.hash(x, y, capa_azul, capa_roja, capasAzules, capasRojas);
 	}
 
 	
