@@ -1,6 +1,16 @@
 package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Set;
+import java.util.TreeSet;
 
 import core.game.Observation;
 import core.game.StateObservation;
@@ -10,7 +20,6 @@ import serialization.Vector2d;
 import tools.ElapsedCpuTimer;
 
 public class AgenteAStar extends AbstractPlayer {
-	
 	Vector2d fescala;
 	ArrayList<ACTIONS> acciones;
 	boolean ruta_calculada;
@@ -18,6 +27,9 @@ public class AgenteAStar extends AbstractPlayer {
 	tools.Vector2d portal;
 	int nodos_expandidos;
 	int pos_siguiente_accion;
+	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
+	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
+	
 	
 	public AgenteAStar(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 		fescala = new Vector2d(stateObs.getWorldDimension().width / stateObs.getObservationGrid().length, 
@@ -26,11 +38,7 @@ public class AgenteAStar extends AbstractPlayer {
 		ruta_calculada = false;
 
 		mapa = new int[stateObs.getObservationGrid().length][stateObs.getObservationGrid()[0].length];
-		for(int i = 0; i < mapa.length; i++) {
-			for(int j = 0; j < mapa[0].length; j++) {
-				mapa[i][j] = 7;
-			}
-		}
+		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
 		for(int i = 0; i < immovable.length; i++) {
@@ -39,229 +47,205 @@ public class AgenteAStar extends AbstractPlayer {
 				int x = (int) Math.floor(obs.position.x / fescala.x );
 				int y = (int) Math.floor(obs.position.y / fescala.y );
 		        // System.out.println("Inmovable iType: " + obs.itype + " at grid (" + x + "," + y + ")");
-		        if (obs.itype == 5) { // muro gris
-		            mapa[x][y] = 0;
-		        } else if (obs.itype == 7) { // muro azul -> necesita capa azul
-		            mapa[x][y] = 1;
-		        } else if (obs.itype == 6) { // muro marron -> necesita capa roja
-		            mapa[x][y] = 2;
-		        } else if (obs.itype == 3) { // pinchos
-		        	mapa[x][y] = 4;
+				switch(obs.itype) {
+		            case 5: mapa[x][y] = 0; break;  // Muro gris
+		            case 7: mapa[x][y] = 1; break;  // Muro azul
+		            case 6: mapa[x][y] = 2; break;  // Muro marrón
+		            case 3: mapa[x][y] = 4; break;  // Pinchos
 		        }
 			}
 		}
+		
+		capasAzules = new HashSet<>();
+		capasRojas = new HashSet<>();
 		ArrayList<Observation>[] recursos = stateObs.getResourcesPositions();
-		if(recursos != null) {
-			for (int i = 0; i < recursos.length; i++) {
-			    for (Observation obs : recursos[i]) {
-			        int x = (int) Math.floor(obs.position.x / fescala.x);
-			        int y = (int) Math.floor(obs.position.y / fescala.y);
-			        // System.out.println("Capa roja iType: " + obs.itype + " at grid (" + x + "," + y + ")");
-			        if (obs.itype == 8) { // capa roja
-			            mapa[x][y] = 5; 
-			        } else if (obs.itype == 9) { // capa azul
-			            mapa[x][y] = 6;
-			        }
-			    }
-			}
-		}		
+		if (recursos != null) {
+		    for (ArrayList<Observation> resourceList : recursos) {
+		        for (Observation obs : resourceList) {
+		            int x = (int)(obs.position.x / fescala.x);
+		            int y = (int)(obs.position.y / fescala.y);
+		            
+		            if (obs.itype == 8) { // Capa roja
+		                mapa[x][y] = 5;
+		                capasRojas.add(new AbstractMap.SimpleEntry<>(x, y));
+		            } else if (obs.itype == 9) { // Capa azul
+		                mapa[x][y] = 6;
+		                capasAzules.add(new AbstractMap.SimpleEntry<>(x, y));
+		            }
+		        }
+		    }
+		}
+		
 		
 		ArrayList<Observation>[] posiciones = stateObs.getPortalsPositions();
 		portal = posiciones[0].get(0).position;
-		portal.x = Math.floor(portal.x / fescala.x);
-		portal.y = Math.floor(portal.y / fescala.y);
+		portal.x = (int)(portal.x / fescala.x); // Cast directo en lugar de Math.floor
+		portal.y = (int)(portal.y / fescala.y);
 		
 		nodos_expandidos = 0;
 		pos_siguiente_accion = 0;
 	}
 	
-	private boolean nodoExpandible(Nodo n) {
-		int x = (int) n.x; 
-		int y = (int) n.y;
-		if(mapa[x][y] == 0 || mapa[x][y] == 4) return false;
-		else if(mapa[x][y] == 1 && !n.capa_azul) return false;
-		else if(mapa[x][y] == 2 && !n.capa_roja) return false;
-		else return true;
+	private List<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
+	    List<Nodo> vecinos = new ArrayList<>(4); // Capacidad fija para 4 direcciones
+	    int x = (int)nodo.x;
+	    int y = (int)nodo.y;
+
+	    // Derecha (x+1)
+	    if (x + 1 < mapa.length && esMovimientoValido(mapa[x+1][y], nodo)) {
+	        vecinos.add(new Nodo(x+1, y, ACTIONS.ACTION_RIGHT, nodo));
+	    }
+	    
+	    // Izquierda (x-1)
+	    if (x - 1 >= 0 && esMovimientoValido(mapa[x-1][y], nodo)) {
+	        vecinos.add(new Nodo(x-1, y, ACTIONS.ACTION_LEFT, nodo));
+	    }
+	    
+	    // Arriba (y-1)
+	    if (y - 1 >= 0 && esMovimientoValido(mapa[x][y-1], nodo)) {
+	        vecinos.add(new Nodo(x, y-1, ACTIONS.ACTION_UP, nodo));
+	    }
+	    
+	    // Abajo (y+1)
+	    if (y + 1 < mapa[0].length && esMovimientoValido(mapa[x][y+1], nodo)) {
+	        vecinos.add(new Nodo(x, y+1, ACTIONS.ACTION_DOWN, nodo));
+	    }
+	    
+	    return vecinos;
 	}
 
-	private ArrayList<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
-		ArrayList<Nodo> vecinos = new ArrayList<>();
-		
-		Vector2d avatar = new Vector2d(nodo.x, nodo.y);
-		Vector2d newPos_right = avatar, newPos_left = avatar, newPos_up = avatar, newPos_down = avatar;
-		
-		if (avatar.x +1 <= stateObs.getObservationGrid().length -1) {
-			newPos_right = new Vector2d(avatar.x+1, avatar.y);
-			Nodo hijo = new Nodo(newPos_right, ACTIONS.ACTION_RIGHT, nodo);
-			if(mapa[(int)avatar.x+1][(int)avatar.y] == 5) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x+1][(int)avatar.y] == 6) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo derecha es viable");
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-				//System.out.println("Expandido hijo derecha (" + (int)avatar.x+1 + "," + avatar.y + ")");
-			}
-		}
-		if (avatar.x -1 >= 0) {
-			newPos_left = new Vector2d(avatar.x-1, avatar.y);
-			Nodo hijo = new Nodo(newPos_left, ACTIONS.ACTION_LEFT, nodo);
-			if(mapa[(int)avatar.x-1][(int)avatar.y] == 5) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x-1][(int)avatar.y] == 6) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo izquierda es viable");
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-				//System.out.println("Expandido hijo izquierda (" + (int)avatar.x+1 + "," + avatar.y + ")");
-			}
-		}
-		
-		if (avatar.y -1 >= 0) {
-			newPos_up = new Vector2d(avatar.x, avatar.y-1);
-			Nodo hijo = new Nodo(newPos_up, ACTIONS.ACTION_UP, nodo);
-			if(mapa[(int)avatar.x][(int)avatar.y-1] == 5) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x][(int)avatar.y-1] == 6) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo arriba es viable");
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-				//System.out.println("Expandido hijo arriba (" + (int)avatar.x+1 + "," + avatar.y + ")");
-			}
-		}
-		
-		if (avatar.y +1 <= stateObs.getObservationGrid()[0].length -1) {
-			newPos_down = new Vector2d(avatar.x, avatar.y+1);
-			Nodo hijo = new Nodo(newPos_down, ACTIONS.ACTION_DOWN, nodo);
-			if(mapa[(int)avatar.x][(int)avatar.y+1] == 5) {
-				// System.out.println("Capa roja en (" + avatar.x+1 + ", " + avatar.y + ")");
-				hijo.capa_azul = false;
-				hijo.capa_roja = true;
-			} else if (mapa[(int)avatar.x][(int)avatar.y+1] == 6) {
-				hijo.capa_azul = true;
-				hijo.capa_roja = false;
-			}
-			// System.out.println("Comprueba si el hijo abajo es viable");
-			if(nodoExpandible(hijo)) {
-				vecinos.add(hijo);
-				//System.out.println("Expandido hijo abajo (" + (int)avatar.x+1 + "," + avatar.y + ")");
-			}
-		}
-		return vecinos;
+	private boolean esMovimientoValido(int tipoCelda, Nodo actual) {
+	    // 0: Pared sólida | 4: Obstáculo (no transitable)
+	    if (tipoCelda == 0 || tipoCelda == 4) return false;
+	    
+	    // 1: Pared azul (requiere capa azul)
+	    if (tipoCelda == 1 && !actual.capa_azul) return false;
+	    
+	    // 2: Pared roja (requiere capa roja)
+	    if (tipoCelda == 2 && !actual.capa_roja) return false;
+	    
+	    return true;
 	}
 	
-	private boolean contiene(Nodo nodo, ArrayList<Nodo> visitados) {
-		for(Nodo n: visitados) {
-			if(n.x == nodo.x && n.y == nodo.y && n.capa_azul == nodo.capa_azul && n.capa_roja == nodo.capa_roja) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	private void aumentarAntiguedad(ArrayList<Nodo> a) {
-		for (Nodo n: a) {
-			n.antiguedad++;
-		}
+	private String calcularClave(Nodo nodo) {
+		return String.format("%d,%d,%b,%b,%s,%s", 
+			    (int)nodo.x, (int)nodo.y, 
+			    nodo.capa_azul, nodo.capa_roja,
+			    nodo.capasAzules.toString(), 
+			    nodo.capasRojas.toString()
+			);
 	}
 	
 	private void calcularRuta(Nodo n) {
-		// System.out.print("Calculando ruta");
 		Nodo actual = n;
 		
 		ACTIONS accion;
 		while(actual != null) {
 			accion = actual.accion;
-			// System.out.print(accion);
 			if(accion != ACTIONS.ACTION_NIL) {
 				acciones.add(0,  accion);
 			}
 			actual = actual.padre;
 		}
-		// System.out.println(acciones);
 	}
 	
-	private void eliminar(Nodo n, ArrayList<Nodo> nodos) {
-		boolean encontrado = false;
-		for(int i = 0; i < nodos.size() && !encontrado; i++) {
-			Nodo aux = nodos.get(i);
-			if(aux.x == n.x && aux.y == n.y && aux.capa_azul == n.capa_azul && aux.capa_roja == n.capa_roja) {
-				encontrado = true;
-				nodos.remove(i);
-			}
+	private void aumentarAntiguedad(PriorityQueue<Nodo> a) {
+		for (Nodo n: a) {	
+			n.antiguedad++;
 		}
 	}
-
+	
+	private Nodo inicializarNodo(StateObservation stateObs) {
+		Nodo nodo_actual = new Nodo((int)(stateObs.getAvatarPosition().x / fescala.x), 
+				(int)(stateObs.getAvatarPosition().y / fescala.y), ACTIONS.ACTION_NIL, null);
+		nodo_actual.capasAzules = new HashSet<>(capasAzules);
+		nodo_actual.capasRojas = new HashSet<>(capasRojas);
+		nodo_actual.g = 0;
+		nodo_actual.h = distanciaManhattan(nodo_actual);
+		return nodo_actual;
+	}
+	
+	private int distanciaManhattan(Nodo n) {
+		return (int) (Math.abs(n.x - portal.x) + Math.abs(n.y - portal.y));
+	}
+	
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		// en el primer paso, se calcula la ruta
-		if(ruta_calculada) {
-			pos_siguiente_accion++;
-			return acciones.get(pos_siguiente_accion);
-		} else {
-			ArrayList<Nodo> visitados = new ArrayList<>();
-			ArrayList<Nodo> nodos_por_visitar = new ArrayList<>();
-			Nodo nodo_actual = new Nodo(stateObs.getAvatarPosition().x / fescala.x, 
-					stateObs.getAvatarPosition().y / fescala.y, ACTIONS.ACTION_NIL, null);
-			nodo_actual.g = 0;
-			nodo_actual.h = (float) Math.abs(nodo_actual.x - portal.x) + (float) Math.abs(nodo_actual.y - portal.y);
-			nodos_por_visitar.add(nodo_actual); // nodos_por_visitar = A, 
-			
-			while(nodos_por_visitar.size() > 0) {
-				// escogemos el siguiente nodo a visitar
-				aumentarAntiguedad(nodos_por_visitar);
-				nodos_por_visitar.sort( (a,b) -> {return a.compareTo(b); });	
-				nodo_actual = nodos_por_visitar.getFirst();
-				
-				nodos_expandidos++;
-				if(nodo_actual.x == portal.x && nodo_actual.y == portal.y) {
-					// System.out.println("Ruta calculada");
-					calcularRuta(nodo_actual);
-					ruta_calculada = true;
-					System.out.println("Nodos expandidos: " + nodos_expandidos);
-					return acciones.get(pos_siguiente_accion);
-				} 
-				nodos_por_visitar.remove(nodo_actual);
-				visitados.add(nodo_actual);
-				
-				for (Nodo sucesor: getVecinos(stateObs, nodo_actual)) {
-					// calcular la h
-					sucesor.h = (float) Math.abs(sucesor.x - portal.x) + (float) Math.abs(sucesor.y - portal.y);
-					
-					if (contiene(sucesor,visitados) && sucesor.g > nodo_actual.g + 1) {
-						eliminar(sucesor, visitados);
-						nodos_por_visitar.add(sucesor);
-						sucesor.g = nodo_actual.g + 1;
-						sucesor.padre = nodo_actual;
-					} else if(!contiene(sucesor,visitados) && !contiene(sucesor, nodos_por_visitar)) {
-						nodos_por_visitar.add(sucesor);
-						sucesor.g = nodo_actual.g + 1;
-						sucesor.padre = nodo_actual;
-					} else if(contiene(sucesor, nodos_por_visitar) && sucesor.g > nodo_actual.g + 1) {
-						eliminar(sucesor, nodos_por_visitar);
-						nodos_por_visitar.add(sucesor);
-						sucesor.g = nodo_actual.g + 1;
-						sucesor.padre = nodo_actual;
-					}
-				}
-				
-			}
-		}
-		
-		return ACTIONS.ACTION_NIL;
+	    if (ruta_calculada) {
+	        pos_siguiente_accion++;
+	        return acciones.get(pos_siguiente_accion);
+	    } else {
+	        Set<Nodo> cerrados = new HashSet<>();
+	        PriorityQueue<Nodo> abiertos = new PriorityQueue<>();
+	        Nodo nodo_actual = inicializarNodo(stateObs);
+	        
+	        abiertos.add(nodo_actual);
+
+	        while (!abiertos.isEmpty()) {
+	            aumentarAntiguedad(abiertos);
+	            nodo_actual = abiertos.poll();
+
+	            nodos_expandidos++;
+	            // ¿Es el objetivo?
+	            if (nodo_actual.x == portal.x && nodo_actual.y == portal.y) {
+	                calcularRuta(nodo_actual);
+	                ruta_calculada = true;
+	                System.out.println("Nodos expandidos: " + nodos_expandidos);
+	                System.out.println("Tamaño ruta: " + acciones.size());
+	                return acciones.get(pos_siguiente_accion);
+	            }
+
+	            cerrados.add(nodo_actual);
+	            
+	            for (Nodo sucesor : getVecinos(stateObs, nodo_actual)) {	            	
+	                // Calcular coste temporal para este camino
+	                float nuevoG = nodo_actual.g + 1;
+                	float antiguoG = Float.MAX_VALUE; // el g del sucesor en cerrados
+
+	                // Si ya está en cerrados pero encontramos un mejor camino
+	                if (cerrados.contains(sucesor)) {
+	                	for (Nodo obj : cerrados) {
+	                        if (obj.equals(sucesor))
+	                        	antiguoG = obj.g;
+	                        continue;
+	                    }
+	                    if (nuevoG < antiguoG) {
+	                        cerrados.remove(sucesor);
+	                        sucesor.g = nuevoG;
+	                        sucesor.h = distanciaManhattan(sucesor);
+	                        abiertos.add(sucesor);
+	                    }
+	                    continue;
+	                }
+	                
+	                // Si no está en abiertos ni en cerrados
+	                if (!abiertos.contains(sucesor) && !cerrados.contains(sucesor)) {
+	                    sucesor.g = nuevoG;
+	                    sucesor.h = distanciaManhattan(sucesor);
+	                    abiertos.add(sucesor);
+	                } 
+	                
+	                
+	                // Si ya está en abiertos pero encontramos un mejor camino
+	                else if (abiertos.contains(sucesor)) {
+	                	for (Nodo obj : abiertos) {
+	                        if (obj.equals(sucesor))
+	                        	antiguoG = obj.g;
+	                        continue;
+	                    }
+	                	if(nuevoG < antiguoG) {
+	                		abiertos.remove(sucesor);
+		                    sucesor.g = nuevoG;
+		                    sucesor.h = distanciaManhattan(sucesor);
+		                    abiertos.add(sucesor);
+	                	}
+	                }
+	            }
+	        }
+	    }
+
+	    return ACTIONS.ACTION_NIL;
 	}
+
 	
 }
