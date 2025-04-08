@@ -149,6 +149,12 @@ public class AgenteDijkstra extends AbstractPlayer {
 		}
 	}
 	
+	private void aumentarAntiguedad(PriorityQueue<Nodo> a) {
+		for (Nodo n: a) {	
+			n.antiguedad++;
+		}
+	}
+	
 	private Nodo inicializarNodo(StateObservation stateObs) {
 		Nodo nodo_actual = new Nodo((int)(stateObs.getAvatarPosition().x / fescala.x), 
 				(int)(stateObs.getAvatarPosition().y / fescala.y), ACTIONS.ACTION_NIL, null);
@@ -160,49 +166,52 @@ public class AgenteDijkstra extends AbstractPlayer {
 	
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		if(ruta_calculada) {
-			pos_siguiente_accion++;
-			return acciones.get(pos_siguiente_accion);
-			
-		} else {
-			Set<Nodo> visitados = new HashSet<>();
-			PriorityQueue<Nodo> nodos_por_visitar = new PriorityQueue<>();
-			Nodo nodo_actual = inicializarNodo(stateObs);
-			
-			nodos_por_visitar.add(nodo_actual);
-			
-			while(!nodos_por_visitar.isEmpty()) {
-				do {
-					nodo_actual = nodos_por_visitar.poll();
-				} while(visitados.contains(nodo_actual) || nodo_actual == null);	
-				
-				
-				nodos_expandidos++;
-				
-				if(nodo_actual.x == portal.x && nodo_actual.y == portal.y) {
-					calcularRuta(nodo_actual); // rellena el atributo acciones
-					ruta_calculada = true;
-					System.out.println("Nodos expandidos: " + nodos_expandidos);
-					System.out.println("Tamaño ruta: "+ acciones.size());
-					return acciones.get(pos_siguiente_accion);
-				} 
-				
-				visitados.add(nodo_actual);
-				
-				for (Nodo sucesor: getVecinos(stateObs, nodo_actual)) {
-					if (!visitados.contains(sucesor)) {
-					    float nuevoG = nodo_actual.g + 1;
-					    if (nuevoG < sucesor.g) {
-					        sucesor.g = nuevoG;
-					        nodos_por_visitar.add(sucesor);
-					    }
-					}
-				}
-				
-			}
-		}
-		
-		return ACTIONS.ACTION_NIL;
+	    if (ruta_calculada) {
+	        pos_siguiente_accion++;
+	        return acciones.get(pos_siguiente_accion);
+	    } else {
+	        Set<Nodo> visitados = new HashSet<>();
+	        PriorityQueue<Nodo> nodos_por_visitar = new PriorityQueue<>();
+	        Nodo nodo_actual = inicializarNodo(stateObs);
+
+	        nodos_por_visitar.add(nodo_actual);
+
+	        while (!nodos_por_visitar.isEmpty()) {
+	        	aumentarAntiguedad(nodos_por_visitar);
+	            nodo_actual = nodos_por_visitar.poll();
+
+	            // Si ya lo visitamos, lo saltamos
+	            if (visitados.contains(nodo_actual) || nodo_actual == null) continue;
+
+	            nodos_expandidos++;
+
+	            // ¿Es el objetivo?
+	            if (nodo_actual.x == portal.x && nodo_actual.y == portal.y) {
+	                calcularRuta(nodo_actual);
+	                ruta_calculada = true;
+	                System.out.println("Nodos expandidos: " + nodos_expandidos);
+	                System.out.println("Tamaño ruta: " + acciones.size());
+	                return acciones.get(pos_siguiente_accion);
+	            }
+
+	            visitados.add(nodo_actual);
+	            
+	            for (Nodo sucesor : getVecinos(stateObs, nodo_actual)) {
+	                if (!visitados.contains(sucesor)) {
+	                    float nuevoG = nodo_actual.g + 1;
+	                    if (nuevoG < sucesor.g) {
+	                    	//nodos_por_visitar.remove(sucesor);
+	                        sucesor.g = nuevoG;
+	                        sucesor.padre = nodo_actual;
+	                        nodos_por_visitar.add(sucesor);
+	                    }
+	                }
+	            }
+	        }
+	    }
+
+	    return ACTIONS.ACTION_NIL;
 	}
+
 	
 }
