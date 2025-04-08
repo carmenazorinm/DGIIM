@@ -1,5 +1,6 @@
 package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
+import java.awt.Dimension;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,12 +33,14 @@ public class AgenteAStar extends AbstractPlayer {
 	
 	
 	public AgenteAStar(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		fescala = new Vector2d(stateObs.getWorldDimension().width / stateObs.getObservationGrid().length, 
-				stateObs.getWorldDimension().height / stateObs.getObservationGrid()[0].length);
+		Dimension world = stateObs.getWorldDimension();
+		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
+		fescala = new Vector2d(world.width / grid.length, 
+				world.height / grid[0].length);
 		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
 
-		mapa = new int[stateObs.getObservationGrid().length][stateObs.getObservationGrid()[0].length];
+		mapa = new int[grid.length][grid[0].length];
 		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
