@@ -1,5 +1,6 @@
 package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
+import java.awt.Dimension;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,17 +28,21 @@ public class AgenteDijkstra extends AbstractPlayer {
 	tools.Vector2d portal;
 	int nodos_expandidos;
 	int pos_siguiente_accion;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
+	Set<Integer> capasAzules;
+	Set<Integer> capasRojas;
+	final int MAX_ANCHO;
 	
 	
 	public AgenteDijkstra(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		fescala = new Vector2d(stateObs.getWorldDimension().width / stateObs.getObservationGrid().length, 
-				stateObs.getWorldDimension().height / stateObs.getObservationGrid()[0].length);
+		Dimension world = stateObs.getWorldDimension();
+		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
+		MAX_ANCHO = grid[0].length;
+		Nodo.MAX_ANCHO = MAX_ANCHO;
+		fescala = new Vector2d(world.width / grid.length, world.height / grid[0].length);
 		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
 
-		mapa = new int[stateObs.getObservationGrid().length][stateObs.getObservationGrid()[0].length];
+		mapa = new int[grid.length][grid[0].length];
 		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
@@ -67,10 +72,10 @@ public class AgenteDijkstra extends AbstractPlayer {
 		            
 		            if (obs.itype == 8) { // Capa roja
 		                mapa[x][y] = 5;
-		                capasRojas.add(new AbstractMap.SimpleEntry<>(x, y));
+		                capasRojas.add(x * MAX_ANCHO + y);
 		            } else if (obs.itype == 9) { // Capa azul
 		                mapa[x][y] = 6;
-		                capasAzules.add(new AbstractMap.SimpleEntry<>(x, y));
+		                capasAzules.add(x * MAX_ANCHO + y);
 		            }
 		        }
 		    }
@@ -171,6 +176,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 	        return acciones.get(pos_siguiente_accion);
 	    } else {
 	        Set<Nodo> visitados = new HashSet<>();
+	        // matriz binaria para saber si un nodo esta visitado o no
 	        PriorityQueue<Nodo> nodos_por_visitar = new PriorityQueue<>();
 	        Nodo nodo_actual = inicializarNodo(stateObs);
 
@@ -197,7 +203,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 	            visitados.add(nodo_actual);
 	            
 	            for (Nodo sucesor : getVecinos(stateObs, nodo_actual)) {
-	                if (!visitados.contains(sucesor)) {
+	                //if (!visitados.contains(sucesor)) {
 	                    float nuevoG = nodo_actual.g + 1;
 	                    if (nuevoG < sucesor.g) {
 	                    	//nodos_por_visitar.remove(sucesor);
@@ -205,7 +211,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 	                        sucesor.padre = nodo_actual;
 	                        nodos_por_visitar.add(sucesor);
 	                    }
-	                }
+	                //}
 	            }
 	        }
 	    }
