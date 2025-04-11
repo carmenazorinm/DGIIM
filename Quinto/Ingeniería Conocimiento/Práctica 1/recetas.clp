@@ -22,6 +22,12 @@
 (slot Colesterol) ; calculado necesario
 )
 
+(deftemplate propiedad_receta
+   (slot tipo)
+   (slot receta)
+   (slot ingrediente))
+
+
 (deftemplate es-carne (slot name))
 (deftemplate es-pescado (slot name))
 (deftemplate es-marisco (slot name))
@@ -31,6 +37,10 @@
 (deftemplate es-embutido (slot name))
 (deftemplate es-picante (slot name))
 (deftemplate con-gluten (slot name))
+(deftemplate es-legumbre (slot name))
+(deftemplate es-fruta (slot name))
+(deftemplate es-verdura (slot name))
+(deftemplate es-condimento (slot name))
 ;;;; Para los datos calculados se puede utilizar: https://www.labdeiters.com/nutricalculadora/ o https://fitia.app/buscar/alimentos-y-recetas/
 
 ; (receta
@@ -147,6 +157,7 @@
   (es-reposteria (name vainilla))
   (es-reposteria (name miel))
   (es-reposteria (name fruta))
+  (es-reposteria (name levadura))
 
   (es-pasta (name macarrones))
   (es-pasta (name lasania))
@@ -174,6 +185,40 @@
   (con-gluten (name harina))
   (con-gluten (name trigo))
   (con-gluten (name pan))
+
+  (es-legumbre (name garbanzos))
+  (es-legumbre (name lenteja))
+  (es-legumbre (name frijoles))
+  (es-legumbre (name guisante))
+  (es-legumbre (name judia))
+  (es-legumbre (name tomate))
+
+  (es-fruta (name mora))
+  (es-fruta (name fresa))
+  (es-fruta (name coco))
+  (es-fruta (name platano))
+  (es-fruta (name limon))
+
+  (es-condimento (name sal))
+    (es-condimento (name pimienta))
+    (es-condimento (name ketchup))
+    (es-condimento (name mayonesa))
+    (es-condimento (name mostaza))
+    (es-condimento (name aceite))
+    (es-condimento (name vinagre))
+    (es-condimento (name ajo))
+    (es-condimento (name perejil))
+    (es-condimento (name pimenton))
+    (es-condimento (name comino))
+    (es-condimento (name canela))
+    (es-condimento (name nuez_moscada))
+    (es-condimento (name azucar))
+    (es-condimento (name miel))
+    (es-condimento (name soja))
+    (es-condimento (name guindilla))
+    (es-condimento (name orégano))
+    (es-condimento (name albahaca))
+
 )
 
 (defrule determinar-carnes
@@ -265,6 +310,19 @@
     ;(printout t "Lacteo identificado (por patrón): " ?i crlf)
 )
 
+
+(defrule determinar-legumbre
+(declare (salience 996))
+    (es-legumbre (name ?p)) 
+    (ingrediente ?i&:(str-index (lowcase (sym-cat ?p)) 
+                               (lowcase (sym-cat ?i))))
+    (not (es-legumbre (name ?i)))  
+    => 
+    (assert (es-legumbre (name ?i)))
+    ;(printout t "Lacteo identificado (por patrón): " ?i crlf)
+)
+
+
 ;;;EJERCICIO: Añadir reglas para  deducir tal y como tu lo harias (usando razonamiento basado en conocimiento):
 ;;;  1) cual o cuales son los ingredientes relevantes de una receta
 
@@ -296,10 +354,11 @@
 (defrule ingrediente_relevante_por_nombre
 (declare (salience 80))
     ?receta <- (receta (nombre ?nombre) (ingredientes $? ?ingrediente $?))
-    (test (alguna-palabra-en-ingrediente ?nombre ?ingrediente))
     =>
-    (assert (propiedad_receta ingrediente_relevante ?receta ?ingrediente))
-    (printout t "Receta: " ?nombre " Ingrediente relevante: " ?ingrediente crlf)
+    (if (alguna-palabra-en-ingrediente ?nombre ?ingrediente) then 
+        (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?receta) (ingrediente ?ingrediente)))
+    )
+    ;(printout t "Receta: " ?nombre " Ingrediente relevante: " ?ingrediente crlf)
 )
 
 ; si es paella -> ingrediente relevante es arroz
@@ -307,11 +366,12 @@
 (declare (salience 80))
     ?r <- (receta (nombre ?nombre) (ingredientes $? ?i $?))
     (test (or (eq (lowcase ?nombre) "paella") 
-              (str-index "paella" (lowcase ?nombre))))
+              (str-index "paella" (lowcase ?nombre))
+              (str-index "risotto" (lowcase ?nombre))))
     (test (eq (lowcase ?i) arroz))
     =>
-    (assert (propiedad_receta ingrediente_relevante ?r ?i))
-    (printout t "Receta: " ?nombre " Ingrediente relevante: " ?i crlf)
+    (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?i)))
+    ;(printout t "Receta: " ?nombre " Ingrediente relevante: " ?i crlf)
 )
 
 ; si es jugo -> agua es relevante
@@ -322,8 +382,8 @@
               (str-index "jugo" (lowcase ?nombre))))
     (test (eq (lowcase ?i) agua))
     =>
-    (assert (propiedad_receta ingrediente_relevante ?r ?i))
-    (printout t "Receta: " ?nombre " Ingrediente relevante: " ?i crlf)
+    (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?i)))
+    ;(printout t "Receta: " ?nombre " Ingrediente relevante: " ?i crlf)
 )
 
 ; en una receta donde hay 4 ingredientes o menos -> todos los ingredientes son relevantes
@@ -332,16 +392,94 @@
     ?r <- (receta (nombre ?n) (ingredientes $?i&:(<= (length$ ?i) 4)))
     =>
     (foreach ?ing ?i
-        (assert (propiedad_receta ingrediente_relevante ?r ?ing))
-        (printout t "Receta: " ?n " Ingrediente relevante: " ?ing crlf))
+        (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing)))
+        ;(printout t "Receta: " ?n " Ingrediente relevante: " ?ing crlf)
+        )
 )
+
+; poner que se quiten los condimentos
+(defrule eliminar-condimento-de-ingredientes-relevantes
+   ?pr <- (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing))
+   (es-condimento (name ?ing))
+   =>
+   (retract ?pr)
+   ;(printout t "Eliminado ingrediente relevante por ser condimento: " ?ing " de la receta " ?r crlf)
+)
+
+; si es postre -> los ingredientes de reposteria y la fruta son relevantes
+(defrule ingredientes-relevantes-postre
+(declare (salience 80))
+   ?r <- (receta (nombre ?nombre) (tipo_plato postre) (ingredientes $? ?ing $?))
+   (or (es-reposteria (name ?ing)) (es-fruta (name ?ing)) (eq pan ?ing))
+   =>
+   (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing)))
+)
+; si es entrante -> los mariscos y embutidos son relevantes
+(defrule ingredientes-relevantes-entrante-marisco
+(declare (salience 80))
+   ?r <- (receta (nombre ?nombre) (tipo_plato entrante) (ingredientes $? ?ing $?))
+   (or (es-marisco (name ?ing)) (es-embutido (name ?ing)))
+   =>
+   (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing)))
+)
+
+
+; si es desayuno_merienda ->  los lacteos, frutas, reposteria y embutidos son relevantes
+(defrule ingredientes-relevantes-desayuno
+(declare (salience 80))
+   ?r <- (receta (nombre ?nombre) (tipo_plato desayuno_merienda) (ingredientes $? ?ing $?))
+   (or (es-lacteo (name ?ing)) (es-embutido (name ?ing)) (es-fruta (name ?ing)) (es-reposteria (name ?ing)))
+   =>
+   (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing)))
+)
+
+
+; si es plato_principal -> la carne y el pescado son relevantes
+(defrule ingredientes-relevantes-principal
+(declare (salience 80))
+   ?r <- (receta (nombre ?nombre) (tipo_plato plato_principal) (ingredientes $? ?ing $?))
+   (or (es-carne (name ?ing)) (es-pescado (name ?ing)))
+   =>
+   (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing)))
+)
+; si es primer_plato -> la verdura y la legumbre es relevante 
+(defrule ingredientes-relevantes-primer-plato
+(declare (salience 80))
+   ?r <- (receta (nombre ?nombre) (tipo_plato primer_plato) (ingredientes $? ?ing $?))
+   (or (es-legumbre (name ?ing)) (es-verdura (name ?ing)))
+   =>
+   (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing)))
+)
+; si es acompañamiento (como paatas fritas, ensalada...) -> todos menos los condimentos son relevantes
+(defrule ingredientes-relevantes-acompanamiento
+(declare (salience 80))
+   ?r <- (receta (nombre ?nombre) (tipo_plato acompanamiento) (ingredientes $?ings))
+   =>
+   (foreach ?i ?ings
+      (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?i))))
+)
+
+; si no tiene ingredientes relevantes -> todos los no condiemtnos son relevantes
+(defrule marcar-no-condimentos-como-relevantes-si-no-hay-otros
+   (declare (salience 79))
+   ?r <- (receta (nombre ?nombre) (ingredientes $?ings))
+   ;; No hay ningún ingrediente relevante para esta receta
+   (not (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?)))
+   =>
+   (foreach ?ing ?ings
+      (if (not (any-factp ((?f es-condimento)) (eq ?f:name ?ing)))
+         then
+            (assert (propiedad_receta (tipo ingrediente_relevante) (receta ?r) (ingrediente ?ing)))))
+)
+
+
 
 
 ;;;  2) modificar las recetas completando cual seria el/los tipo_plato asociados a una receta, SOLO PUEDE SER UN TIPO DE PLATO
 ;;;;;;;; especialmente para el caso de que no incluya ninguno
 
 ;;; Reglas de inferencia para tipo_plato
-(deffunction ingredientes-postre? ($?ingredientes)
+(deffunction ingredientes_postre ($?ingredientes)
    (bind ?count 0)
 
    ;; Si hay al menos un ingrediente que sea carne/pescado/marisco → false
@@ -362,7 +500,7 @@
    (return (>= ?count 2))
 )
 
-(deffunction ingredientes-entrante? ($?ingredientes)
+(deffunction ingredientes_entrante ($?ingredientes)
    ;; Si no contiene carne, pescado, ni repostería, ni pasta -> marisco es normal que tenga un entrante
    (foreach ?ing $?ingredientes
       (if (or
@@ -378,14 +516,18 @@
 )
 
 (defrule es-postre
-(declare (salience 99))
+(declare (salience 90))
     ?receta <- (receta (nombre ?nombre)
                       (ingredientes $?ingredientes)
                       (tipo_plato $?tp&:(= (length$ $?tp) 0))) ; que no tenga tipo de plato
-    (test (ingredientes-postre? $?ingredientes)) 
     =>
-    (modify ?receta (tipo_plato postre))
-    ;(printout t "Identificado como POSTRE: " ?nombre crlf)
+    (if (ingredientes_postre $?ingredientes) then
+        ;(modify ?receta (tipo_plato postre))
+        ;(printout t "Identificado como POSTRE: " ?nombre crlf)
+    )
+    (if (ingredientes_postre $?ingredientes) then
+        (modify ?receta (tipo_plato postre))
+    )
 )
 
 (defrule es-entrante
@@ -393,16 +535,108 @@
     ?receta <- (receta (nombre ?nombre)
                       (ingredientes $?ingredientes)
                       (tipo_plato $?tp&:(= (length$ $?tp) 0))
-                      )  ; que no tenga tipo de plato
-    (or
-        ;; Caso 1: El nombre contiene "ensalad" (ensalada/ensaladilla)
-        (test (str-index "ensalad" (lowcase (sym-cat ?nombre))))
-        ;; Caso 2: No contiene carne, pescado, ni repostería -> marisco es normal que tenga un entrante
-        (test (ingredientes-entrante? $?ingredientes))
-        )
+                      )  ; que no tenga tipo de plato    
     =>
-    (modify ?receta (tipo_plato entrante))
-    ;(printout t "Identificado como ENTRANTE: " ?nombre crlf)
+    (if (ingredientes_entrante $?ingredientes) then 
+        ;(printout t "Voy a identificar como ENTRANTE: " ?nombre crlf)
+        )
+    (if (ingredientes_entrante $?ingredientes) then 
+        (modify ?receta (tipo_plato entrante))
+    )
+)
+
+(deffunction ingredientes_primer_plato ($?ingredientes)
+   (bind ?tiene_base FALSE)
+   (bind ?tiene_proteina FALSE)
+
+    ; si tiene pasta, legumbres o arroz y NO tiene proteina
+   (foreach ?ing $?ingredientes
+      (if (or 
+            (any-factp ((?f es-pasta)) (eq ?f:name ?ing))
+            (any-factp ((?f es-legumbre)) (eq ?f:name ?ing))
+            (eq ?ing arroz))
+         then (bind ?tiene_base TRUE))
+
+      (if (or 
+            (any-factp ((?f es-carne)) (eq ?f:name ?ing))
+            (any-factp ((?f es-pescado)) (eq ?f:name ?ing)))
+         then (bind ?tiene_proteina TRUE)))
+
+   (return (and ?tiene_base (not ?tiene_proteina)))
+)
+
+(defrule es-primer-plato
+(declare (salience 90))
+   ?receta <- (receta (nombre ?nombre)
+                      (ingredientes $?ingredientes)
+                      (tipo_plato $?tp&:(= (length$ $?tp) 0)))
+   =>
+   (if (ingredientes_primer_plato $?ingredientes) then
+      ;(printout t "Identificado como PRIMER PLATO: " ?nombre crlf)
+      (modify ?receta (tipo_plato primer_plato)))
+)
+
+
+(deffunction ingredientes_acompanamiento ($?ingredientes)
+   (bind ?n (length$ $?ingredientes))
+   (return (or (= ?n 2) (= ?n 3)))
+)
+
+(defrule es-acompanamiento
+(declare (salience 90))
+    ?receta <- (receta (nombre ?nombre)
+                       (ingredientes $?ingredientes)
+                       (tipo_plato $?tp&:(= (length$ $?tp) 0)))
+    =>
+    (if (ingredientes_acompanamiento $?ingredientes) then
+        ;(printout t "Identificado como ACOMPAÑAMIENTO: " ?nombre crlf)
+        (modify ?receta (tipo_plato acompanamiento))
+    )
+)
+
+
+(deffunction ingredientes_desayuno_merienda ($?ingredientes)
+   (bind ?es_dulce TRUE)
+   (bind ?es_salado TRUE)
+
+   ;; Comprobamos si todos los ingredientes son fruta o lacteo (dulce)
+   (foreach ?ing $?ingredientes
+      (if (not (or
+            (any-factp ((?f es-fruta)) (eq ?f:name ?ing))
+            (any-factp ((?f es-lacteo)) (eq ?f:name ?ing))))
+         then
+            (bind ?es_dulce FALSE)))
+
+   ;; Comprobamos si todos los ingredientes son pan o embutido (salado)
+   (foreach ?ing $?ingredientes
+      (if (not (or
+            (eq ?ing pan)
+            (any-factp ((?f es-embutido)) (eq ?f:name ?ing))))
+         then
+            (bind ?es_salado FALSE)))
+
+   (return (or ?es_dulce ?es_salado))
+)
+
+(defrule es-desayuno-merienda
+(declare (salience 90))
+    ?receta <- (receta (nombre ?nombre)
+                       (ingredientes $?ingredientes)
+                       (tipo_plato $?tp&:(= (length$ $?tp) 0)))
+    =>
+    (if (ingredientes_desayuno_merienda $?ingredientes) then
+        ;(printout t "Identificado como DESAYUNO/MERIENDA: " ?nombre crlf)
+        (modify ?receta (tipo_plato desayuno_merienda))
+    )
+)
+
+(defrule es-plato-principal
+(declare (salience 89)) ; prioridad baja para que se aplique al final
+    ?receta <- (receta (nombre ?nombre)
+                       (tipo_plato $?tp&:(= (length$ $?tp) 0)))
+    =>
+    ;(printout t "Identificado como PLATO PRINCIPAL (por defecto): " ?nombre crlf)
+    (modify ?receta (tipo_plato plato_principal))
 )
 
 
@@ -420,7 +654,7 @@
    (not (es-embutido (name ?i&:(member$ ?i $?ingredientes))))
    (not (find$ "huevo" $?ingredientes))
    =>
-   (assert (propiedad_receta es_vegana ?n))
+   (assert (propiedad_receta (tipo es_vegana) (receta ?n)))
    ;(printout t "La receta " ?n " es vegana." crlf)
 )
 
@@ -432,7 +666,7 @@
    (not (es-marisco (name ?i&:(member$ ?i $?ingredientes))))
    (not (es-embutido (name ?i&:(member$ ?i $?ingredientes))))
    =>
-   (assert (propiedad_receta es_vegetariana ?n))
+   (assert (propiedad_receta (tipo es_vegetariana) (receta ?n)))
    ;(printout t "La receta " ?n " es vegetariana." crlf)
 )
 
@@ -447,7 +681,7 @@
    (not (find$ "azucar" $?ingredientes))
    (test (neq ?tipo_copcion frito))
    =>
-   (assert (propiedad_receta es_de_dieta ?n))
+   (assert (propiedad_receta (tipo es_de_dieta) (receta ?n)))
    ;(printout t "La receta " ?n " es de dieta." crlf)
 )
 
@@ -457,7 +691,7 @@
    (receta (nombre ?n) (ingredientes $? ?ingrediente $?))
    (es-picante (name ?ingrediente))
    =>
-   (assert (propiedad_receta es_vegetariana ?n))
+   (assert (propiedad_receta (tipo es_picante) (receta ?n)))
    ;(printout t "La receta " ?n " es picante." crlf)
 )
 
@@ -467,7 +701,7 @@
    (not (con-gluten (name ?i&:(member$ ?i $?ingredientes))))
    (not (es-pasta (name ?i&:(member$ ?i $?ingredientes))))
    =>
-   (assert (propiedad_receta es_sin_gluten ?n))
+   (assert (propiedad_receta (tipo es_sin_gluten) (receta ?n)))
    ;(printout t "La receta " ?n " es sin gluten." crlf)
 )
 
@@ -476,7 +710,7 @@
    (receta (nombre ?n) (ingredientes $?ingredientes))
    (not (es-lacteo (name ?i&:(member$ ?i $?ingredientes))))
    =>
-   (assert (propiedad_receta es_sin_lactosa ?n))
+   (assert (propiedad_receta (tipo es_sin_lactosa)(receta ?n)))
    ;(printout t "La receta " ?n " es sin lactosa." crlf)
 )
 
@@ -487,10 +721,11 @@
 (defrule solicitar-nombre-receta
 (declare (salience 10))
    =>
+   (printout t "=================================" crlf)
    (printout t "Introduce el nombre de la receta: ")
-   (bind ?nombre (read))
+   (bind ?nombre (readline))
    (assert (receta_solicitada ?nombre))  ; Almacena el nombre de la receta solicitada
-   (printout t "Buscando la receta: " ?nombre crlf)
+   ;(printout t "Buscando la receta: " ?nombre crlf)
    (assert (Tarea recetaNoEncontrada))
 )
 
@@ -501,7 +736,7 @@
    (receta_solicitada ?nombre)
    ?f <- (Tarea recetaNoEncontrada)
    =>
-   (printout t "La receta " ?nombre " existe." crlf)
+   (printout t "Receta " ?nombre " encontrada." crlf)
    (retract ?f)
 )
 
@@ -514,27 +749,43 @@
    (printout t "La receta " ?nombre " no se encuentra en la base de datos." crlf)
 )
 
-; Regla para mostrar las propiedades de la receta (si existe)
-(defrule mostrar-propiedades-receta
+(deffunction mostrar-ingredientes-relevantes (?receta ?lista-ingredientes)
+   (printout t "Ingredientes relevantes de la receta:" crlf)
+   (foreach ?ing ?lista-ingredientes
+      (if (any-factp ((?f propiedad_receta))
+            (and (eq ?f:tipo ingrediente_relevante)
+                 (eq ?f:receta ?receta)
+                 (eq ?f:ingrediente ?ing)))
+         then
+            (printout t " - " ?ing crlf))))
+
+(deffunction mostrar-propiedades-extra (?receta)
+   (bind ?prop-list (create$)) ; lista vacía
+
+   (foreach ?tipo (create$ es_vegana es_vegetariana es_sin_gluten es_picante es_sin_lactosa es_de_dieta)
+      (if (any-factp ((?f propiedad_receta))
+            (and (eq ?f:tipo ?tipo)
+                 (eq ?f:receta ?receta)))
+         then
+            (bind ?prop-list (insert$ ?prop-list 1 ?tipo))))
+
+   (if (neq (length$ ?prop-list) 0)
+      then
+         (printout t "Propiedades adicionales: " (implode$ ?prop-list ) crlf)
+      else
+         (printout t "Sin propiedades especiales." crlf)))
+
+
+(defrule mostrar-ingredientes
 (declare (salience 7))
-   ?r <- (receta (nombre ?n) )
-   (receta_solicitada ?n)
+   (receta_solicitada ?nombre)
+   ?r <- (receta (nombre ?nombre) (ingredientes $?ings) (tipo_plato ?tipo))
    =>
-   ; Aquí se mostrarían todas las propiedades de la receta
-   (printout t "Propiedades dietéticas:" crlf)
-    (if (any-factp ((?v propiedad_receta es_vegana ?n)) then
-        (printout t "- Vegana" crlf)))
-    (if (any-factp ((?v propiedad_receta es_vegetariana ?n)) then
-        (printout t "- Vegetariana" crlf)))
-    (if (any-factp ((?v propiedad_receta es_de_dieta ?n)) then
-        (printout t "- De dieta" crlf)))
-    (if (any-factp ((?v propiedad_receta es_picante ?n)) then
-        (printout t "- Picante" crlf)))
-    (if (any-factp ((?v propiedad_receta es_sin_gluten ?n)) then
-        (printout t "- Sin gluten" crlf)))
-    (if (any-factp ((?v propiedad_receta es_sin_lactosa ?n)) then
-        (printout t "- Sin lactosa" crlf)))
+   (printout t "Tipo de plato: " ?tipo crlf)
+   (mostrar-propiedades-extra ?nombre)
+   (mostrar-ingredientes-relevantes ?r $?ings)
 )
+
 
 ;;;FORMATO DE LOS HECHOS: 
 ;  
