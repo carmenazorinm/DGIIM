@@ -1,5 +1,6 @@
 package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
+import java.awt.Dimension;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +21,7 @@ import serialization.Vector2d;
 import tools.ElapsedCpuTimer;
 
 public class AgenteDijkstra extends AbstractPlayer {
+	public static int MAX_ANCHO;
 	Vector2d fescala;
 	ArrayList<ACTIONS> acciones;
 	boolean ruta_calculada;
@@ -27,13 +29,17 @@ public class AgenteDijkstra extends AbstractPlayer {
 	tools.Vector2d portal;
 	int nodos_expandidos;
 	int pos_siguiente_accion;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
+	Set<Integer> capasAzules;
+	Set<Integer> capasRojas;
 	
 	
 	public AgenteDijkstra(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		fescala = new Vector2d(stateObs.getWorldDimension().width / stateObs.getObservationGrid().length, 
-				stateObs.getWorldDimension().height / stateObs.getObservationGrid()[0].length);
+		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
+		Dimension world = stateObs.getWorldDimension();
+		MAX_ANCHO = grid[0].length;
+		Nodo.MAX_ANCHO =MAX_ANCHO;
+		fescala = new Vector2d(world.width / grid.length, 
+				world.height / grid[0].length);
 		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
 
@@ -46,8 +52,8 @@ public class AgenteDijkstra extends AbstractPlayer {
 		    ArrayList<Observation> list = immovable[i];
 		    for (int j = 0; j < list.size(); j++) {
 		        Observation obs = list.get(j);
-		        int x = (int)(obs.position.x * inv_escala_x);
-		        int y = (int)(obs.position.y * inv_escala_y);
+		        int x = (int)(obs.position.x/fescala.x);
+		        int y = (int)(obs.position.y /fescala.y);
 		        Integer nuevoValor = tipoMapa.get(obs.itype);
 		        if (nuevoValor != null) {
 		            mapa[x][y] = nuevoValor;
@@ -66,11 +72,11 @@ public class AgenteDijkstra extends AbstractPlayer {
 		            int y = (int)(obs.position.y / fescala.y);
 		            
 		            if (obs.itype == 8) { // Capa roja
-		                mapa[x][y] = 5;
-		                capasRojas.add(new AbstractMap.SimpleEntry<>(x, y));
+		                //mapa[x][y] = 5;
+		                capasRojas.add(x*MAX_ANCHO+y);
 		            } else if (obs.itype == 9) { // Capa azul
-		                mapa[x][y] = 6;
-		                capasAzules.add(new AbstractMap.SimpleEntry<>(x, y));
+		                //mapa[x][y] = 6;
+		                capasAzules.add(x*MAX_ANCHO+y);
 		            }
 
 		        }
@@ -79,8 +85,8 @@ public class AgenteDijkstra extends AbstractPlayer {
 
 		ArrayList<Observation> posiciones = stateObs.getPortalsPositions()[0];
 		portal = posiciones.get(0).position;
-		portal.x = (int)(portal.x * inv_escala_x);
-		portal.y = (int)(portal.y * inv_escala_y);
+		portal.x = (int)(portal.x /fescala.x);
+		portal.y = (int)(portal.y /fescala.y);
 
 		nodos_expandidos = 0;
 		pos_siguiente_accion = 0;
@@ -94,7 +100,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 	    int y = nodo.y;
 
 	    // Derecha (x+1)
-	    if (x + 1 < ancho_mapa && esMovimientoValido(mapa[x+1][y], nodo)) {
+	    if (x + 1 < mapa.length && esMovimientoValido(mapa[x+1][y], nodo)) {
 	        vecinos.add(new Nodo(x+1, y, ACTIONS.ACTION_RIGHT, nodo));
 	    }
 	    
@@ -109,7 +115,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 	    }
 	    
 	    // Abajo (y+1)
-	    if (y + 1 < alto_mapa && esMovimientoValido(mapa[x][y+1], nodo)) {
+	    if (y + 1 < mapa[0].length && esMovimientoValido(mapa[x][y+1], nodo)) {
 	        vecinos.add(new Nodo(x, y+1, ACTIONS.ACTION_DOWN, nodo));
 	    }
 	    

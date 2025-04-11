@@ -21,6 +21,7 @@ import serialization.Vector2d;
 import tools.ElapsedCpuTimer;
 
 public class AgenteAStar extends AbstractPlayer {
+	public static int MAX_ANCHO;
 	Vector2d fescala;
 	ArrayList<ACTIONS> acciones;
 	boolean ruta_calculada;
@@ -28,13 +29,15 @@ public class AgenteAStar extends AbstractPlayer {
 	tools.Vector2d portal;
 	int nodos_expandidos;
 	int pos_siguiente_accion;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
+	Set<Integer> capasAzules;
+	Set<Integer> capasRojas;
 	
 	
 	public AgenteAStar(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		Dimension world = stateObs.getWorldDimension();
 		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
+		Dimension world = stateObs.getWorldDimension();
+		MAX_ANCHO = grid[0].length;
+		Nodo.MAX_ANCHO =MAX_ANCHO;
 		fescala = new Vector2d(world.width / grid.length, 
 				world.height / grid[0].length);
 		acciones = new ArrayList<ACTIONS>();
@@ -49,8 +52,8 @@ public class AgenteAStar extends AbstractPlayer {
 		    ArrayList<Observation> list = immovable[i];
 		    for (int j = 0; j < list.size(); j++) {
 		        Observation obs = list.get(j);
-		        int x = (int)(obs.position.x * inv_escala_x);
-		        int y = (int)(obs.position.y * inv_escala_y);
+		        int x = (int)(obs.position.x /fescala.x);
+		        int y = (int)(obs.position.y /fescala.y);
 		        Integer nuevoValor = tipoMapa.get(obs.itype);
 		        if (nuevoValor != null) {
 		            mapa[x][y] = nuevoValor;
@@ -64,15 +67,15 @@ public class AgenteAStar extends AbstractPlayer {
 		if (recursos != null) {
 		    for (ArrayList<Observation> resourceList : recursos) {
 		        for (Observation obs : resourceList) {
-		            int x = (int)(obs.position.x*inv_escala_x);
-		            int y = (int)(obs.position.y*inv_escala_y);
+		            int x = (int)(obs.position.x/fescala.x);
+		            int y = (int)(obs.position.y/fescala.y);
 		            
 		            if (obs.itype == 8) { // Capa roja
 		                mapa[x][y] = 5;
-		                capasRojas.add(new AbstractMap.SimpleEntry<>(x, y));
+		                capasRojas.add(x*MAX_ANCHO+y);
 		            } else if (obs.itype == 9) { // Capa azul
 		                mapa[x][y] = 6;
-		                capasAzules.add(new AbstractMap.SimpleEntry<>(x, y));
+		                capasAzules.add(x*MAX_ANCHO+y);
 		            }
 		        }
 		    }
@@ -81,8 +84,8 @@ public class AgenteAStar extends AbstractPlayer {
 		
 		ArrayList<Observation>[] posiciones = stateObs.getPortalsPositions();
 		portal = posiciones[0].get(0).position;
-		portal.x = (int)(portal.x *inv_escala_x); // Cast directo en lugar de Math.floor
-		portal.y = (int)(portal.y*inv_escala_y);
+		portal.x = (int)(portal.x /fescala.x); // Cast directo en lugar de Math.floor
+		portal.y = (int)(portal.y/fescala.y);
 		
 		nodos_expandidos = 0;
 		pos_siguiente_accion = 0;

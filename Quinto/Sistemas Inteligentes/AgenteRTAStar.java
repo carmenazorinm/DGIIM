@@ -21,15 +21,18 @@ public class AgenteRTAStar extends AbstractPlayer{
 	int[][] mapa;
 	tools.Vector2d portal;
 	int nodos_expandidos;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
-	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
-	private HashMap<String, Float> tablaHeuristica = new HashMap<>();
+	Set<Integer> capasAzules;
+	Set<Integer> capasRojas;
+	private HashMap<Nodo, Float> tablaHeuristica;
+	final int MAX_ANCHO;
 	
 	
 	public AgenteRTAStar(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 		fescala = new Vector2d(stateObs.getWorldDimension().width / stateObs.getObservationGrid().length, 
 				stateObs.getWorldDimension().height / stateObs.getObservationGrid()[0].length);
 		nodos_expandidos = 0;
+		MAX_ANCHO = stateObs.getObservationGrid().length;
+		Nodo.MAX_ANCHO = MAX_ANCHO;
 		mapa = new int[stateObs.getObservationGrid().length][stateObs.getObservationGrid()[0].length];
 		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
@@ -60,10 +63,10 @@ public class AgenteRTAStar extends AbstractPlayer{
 		            
 		            if (obs.itype == 8) { // Capa roja
 		                mapa[x][y] = 5;
-		                capasRojas.add(new AbstractMap.SimpleEntry<>(x, y));
+		                capasRojas.add(x*MAX_ANCHO +y);
 		            } else if (obs.itype == 9) { // Capa azul
 		                mapa[x][y] = 6;
-		                capasAzules.add(new AbstractMap.SimpleEntry<>(x, y));
+		                capasAzules.add(x*MAX_ANCHO +y);
 		            }
 		        }
 		    }
@@ -80,14 +83,7 @@ public class AgenteRTAStar extends AbstractPlayer{
 		actual = new Nodo((int)(stateObs.getAvatarPosition().x / fescala.x),
                 (int)(stateObs.getAvatarPosition().y / fescala.y),
                 ACTIONS.ACTION_NIL, null);
-//		AbstractMap.SimpleEntry<Integer, Integer>pos = new AbstractMap.SimpleEntry<>((int)actual.x, (int)actual.y);
-//		if(capasAzules.remove(pos)) {
-//			actual.capa_azul = true;
-//			actual.capa_roja = false;
-//		} else if(capasRojas.remove(pos)) {
-//			actual.capa_roja = true;
-//			actual.capa_azul = false;
-//		}
+
 		actual.capasAzules = new HashSet<>(capasAzules);
 		actual.capasRojas = new HashSet<>(capasRojas);
 	}
@@ -97,28 +93,32 @@ public class AgenteRTAStar extends AbstractPlayer{
 	    int x = (int)nodo.x;
 	    int y = (int)nodo.y;
 
-	    if (x + 1 < mapa.length) {
-	    	Nodo vecino = new Nodo(x+1, y, ACTIONS.ACTION_RIGHT, nodo);
-	    	if(esMovimientoValido(mapa[x+1][y], nodo))
-	    		vecinos.add(vecino);
+	    // Derecha (x+1)
+	    if (x + 1 < mapa.length && esMovimientoValido(mapa[x+1][y], nodo)) {
+	    	Nodo n = new Nodo(x+1, y, ACTIONS.ACTION_RIGHT, nodo);
+	        vecinos.add(n);
+	        tablaHeuristica.put(n,obtenerHeuristica(n));
 	    }
 	    
-	    if (x - 1 >= 0) {
-	        Nodo vecino = new Nodo(x-1, y, ACTIONS.ACTION_LEFT, nodo);
-	    	if(esMovimientoValido(mapa[x-1][y], nodo))
-	    		vecinos.add(vecino);
+	    // Izquierda (x-1)
+	    if (x - 1 >= 0 && esMovimientoValido(mapa[x-1][y], nodo)) {
+	    	Nodo n = new Nodo(x-1, y, ACTIONS.ACTION_LEFT, nodo);
+	        vecinos.add(n);
+	        tablaHeuristica.put(n,obtenerHeuristica(n));
 	    }
 	    
-	    if (y - 1 >= 0) {
-	        Nodo vecino = new Nodo(x, y-1, ACTIONS.ACTION_UP, nodo);
-	    	if(esMovimientoValido(mapa[x][y-1], nodo))
-	    		vecinos.add(vecino);
+	    // Arriba (y-1)
+	    if (y - 1 >= 0 && esMovimientoValido(mapa[x][y-1], nodo)) {
+	    	Nodo n = new Nodo(x, y-1, ACTIONS.ACTION_UP, nodo);
+	        vecinos.add(n);
+	    	tablaHeuristica.put(n,obtenerHeuristica(n));
 	    }
 	    
-	    if (y + 1 < mapa[0].length) {
-	        Nodo vecino = new Nodo(x, y+1, ACTIONS.ACTION_DOWN, nodo);
-	    	if(esMovimientoValido(mapa[x][y+1], nodo))
-	    		vecinos.add(vecino);
+	    // Abajo (y+1)
+	    if (y + 1 < mapa[0].length && esMovimientoValido(mapa[x][y+1], nodo)) {
+	    	Nodo n =  new Nodo(x, y+1, ACTIONS.ACTION_DOWN, nodo);
+	        vecinos.add(n);
+	        tablaHeuristica.put(n,obtenerHeuristica(n));
 	    }
 	    
 	    return vecinos;
@@ -146,56 +146,23 @@ public class AgenteRTAStar extends AbstractPlayer{
 	}
 	
 	private void inicializarHeuristicas(StateObservation stateObs) {
-	    // Inicializar todas las heuristicas con distancia Manhattan
-	    for (int x = 0; x < mapa.length; x++) {
-	        for (int y = 0; y < mapa[0].length; y++) {
-	        	float h = (float) (Math.abs(x - portal.x) + Math.abs(y - portal.y));
-	        	if(mapa[x][y] == 0 || mapa[x][y] == 4) {
-	        		tablaHeuristica.put(generarClave(x, y, false, false), Float.MAX_VALUE);
-	        		tablaHeuristica.put(generarClave(x, y, true, false), Float.MAX_VALUE);
-	        		tablaHeuristica.put(generarClave(x, y, false, true), Float.MAX_VALUE);
-	        	} if (mapa[x][y] == 1) {
-	        		tablaHeuristica.put(generarClave(x, y, true, false), h);
-	        		tablaHeuristica.put(generarClave(x, y, false, false), Float.MAX_VALUE);
-	        		tablaHeuristica.put(generarClave(x, y, false, true), Float.MAX_VALUE);
-	        	} else if(mapa[x][y] == 2) {
-	        		tablaHeuristica.put(generarClave(x, y, false, true), h);
-	        		tablaHeuristica.put(generarClave(x, y, false, false), Float.MAX_VALUE);
-	        		tablaHeuristica.put(generarClave(x, y, true, false), Float.MAX_VALUE);
-	        	}else {
-		            tablaHeuristica.put(generarClave(x, y, false, false), h);
-		            tablaHeuristica.put(generarClave(x, y, true, false), h);
-		            tablaHeuristica.put(generarClave(x, y, false, true), h);
-	        	}
-	        	
-	        }
-	    }
+		tablaHeuristica = new HashMap<>();
 	}
 	
+	private float distanciaManhattan(Nodo n) {
+		return (float) (Math.abs(n.x - portal.x) + Math.abs(n.y - portal.y));
+	}
 	
 	private float obtenerHeuristica(Nodo n) {
-	    String clave = generarClave(n);
-	    return tablaHeuristica.get(clave);
+		return tablaHeuristica.getOrDefault(n, distanciaManhattan(n));
 	}
-	
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 	    // 2. Actualizar las capas
 		int pos = actual.x *MAX_ANCHO +actual.y;
 		capasAzules.remove(pos);
 		capasRojas.remove(pos);
-//		if (capasAzules.contains(pos)) {
-//		    actual.capa_azul = true;
-//		    actual.capa_roja = false;
-//		    actual.capasAzules.remove(pos);
-//		}
-//		if (capasRojas.contains(pos)) {
-//		    actual.capa_roja = true;
-//		    actual.capa_azul = false;
-//		    actual.capasRojas.remove(pos);
-//		}
-
-
+		
 	    // 3. Verificación de objetivo
 		nodos_expandidos++;
 
@@ -211,6 +178,8 @@ public class AgenteRTAStar extends AbstractPlayer{
 	        float coste = 1; // c(actual,vecino) - asumimos coste uniforme 1
 	        float h = obtenerHeuristica(vecino);
 	        float f = coste + h;
+	        vecino.g = coste;
+	        vecino.h = h;
 
 	        // Actualizar mejor y segundo mejor
 	        if (f < mejorValor) {
@@ -225,12 +194,12 @@ public class AgenteRTAStar extends AbstractPlayer{
 	    // 6. Regla de aprendizaje (actualizar heurística del nodo actual)
 	    
 	    if (segundoMejor != Float.MAX_VALUE) {
-    		tablaHeuristica.put(generarClave(actual), Math.max(
+    		tablaHeuristica.put(actual, Math.max(
     	            obtenerHeuristica(actual),
     	            segundoMejor
     	        ));
 	    } else {	    	
-	    	tablaHeuristica.put(generarClave(actual), Math.max(
+	    	tablaHeuristica.put(actual, Math.max(
 		            obtenerHeuristica(actual),
 		            mejorValor
 		        ));
@@ -241,6 +210,10 @@ public class AgenteRTAStar extends AbstractPlayer{
 	    if (actual.x == portal.x && actual.y == portal.y) {
 	        System.out.println("Nodos expandidos: " + nodos_expandidos); // Llegamos al objetivo
 	    }
+	    
+//	    for (Nodo sucesor : vecinos) {
+//			System.out.println("Posición: (" + sucesor.x +","+ sucesor.y + ") , Heuristica: " + sucesor.h + "G:"+sucesor.g+ "Capa roja: " + sucesor.capa_roja + ", Capa azul: " + sucesor.capa_azul);
+//		}
 	    return mejorVecino != null ? mejorVecino.accion : ACTIONS.ACTION_NIL;
 	}
 
