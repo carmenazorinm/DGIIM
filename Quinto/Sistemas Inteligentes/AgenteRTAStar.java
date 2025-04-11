@@ -159,7 +159,7 @@ public class AgenteRTAStar extends AbstractPlayer{
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 	    // 2. Actualizar las capas
-		AbstractMap.SimpleEntry<Integer, Integer>pos = new AbstractMap.SimpleEntry<>((int)actual.x, (int)actual.y);
+		int pos = actual.x *MAX_ANCHO +actual.y;
 		capasAzules.remove(pos);
 		capasRojas.remove(pos);
 		
@@ -211,9 +211,9 @@ public class AgenteRTAStar extends AbstractPlayer{
 	        System.out.println("Nodos expandidos: " + nodos_expandidos); // Llegamos al objetivo
 	    }
 	    
-	    for (Nodo sucesor : vecinos) {
-			System.out.println("Posición: (" + sucesor.x +","+ sucesor.y + ") , Heuristica: " + sucesor.h + "G:"+sucesor.g+ "Capa roja: " + sucesor.capa_roja + ", Capa azul: " + sucesor.capa_azul);
-		}
+//	    for (Nodo sucesor : vecinos) {
+//			System.out.println("Posición: (" + sucesor.x +","+ sucesor.y + ") , Heuristica: " + sucesor.h + "G:"+sucesor.g+ "Capa roja: " + sucesor.capa_roja + ", Capa azul: " + sucesor.capa_azul);
+//		}
 	    return mejorVecino != null ? mejorVecino.accion : ACTIONS.ACTION_NIL;
 	}
 

@@ -38,28 +38,28 @@ public class AgenteAStar extends AbstractPlayer {
 		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
 		MAX_ANCHO = grid[0].length;
 		Nodo.MAX_ANCHO = MAX_ANCHO;
-		fescala = new Vector2d(world.width / grid.length, 
-				world.height / grid[0].length);
+		fescala = new Vector2d(world.width / grid.length, world.height / grid[0].length);
+		float inv_escala_x = (float) (1/fescala.x);
+		float inv_escala_y = (float) (1/fescala.y);
 		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
 
 		mapa = new int[grid.length][grid[0].length];
 		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
+		Map<Integer, Integer> tipoMapa = Map.of(5, 0, 7, 1, 6, 2, 3, 4);
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
-		for(int i = 0; i < immovable.length; i++) {
-			for (int j = 0; j < immovable[i].size(); j++) {
-				Observation obs = immovable[i].get(j);
-				int x = (int) Math.floor(obs.position.x / fescala.x );
-				int y = (int) Math.floor(obs.position.y / fescala.y );
-		        // System.out.println("Inmovable iType: " + obs.itype + " at grid (" + x + "," + y + ")");
-				switch(obs.itype) {
-		            case 5: mapa[x][y] = 0; break;  // Muro gris
-		            case 7: mapa[x][y] = 1; break;  // Muro azul
-		            case 6: mapa[x][y] = 2; break;  // Muro marrón
-		            case 3: mapa[x][y] = 4; break;  // Pinchos
+		for (int i = 0; i < immovable.length; i++) {
+		    ArrayList<Observation> list = immovable[i];
+		    for (int j = 0; j < list.size(); j++) {
+		        Observation obs = list.get(j);
+		        int x = (int)(obs.position.x * inv_escala_x);
+		        int y = (int)(obs.position.y * inv_escala_y);
+		        Integer nuevoValor = tipoMapa.get(obs.itype);
+		        if (nuevoValor != null) {
+		            mapa[x][y] = nuevoValor;
 		        }
-			}
+		    }
 		}
 		
 		capasAzules = new HashSet<>();
@@ -68,8 +68,8 @@ public class AgenteAStar extends AbstractPlayer {
 		if (recursos != null) {
 		    for (ArrayList<Observation> resourceList : recursos) {
 		        for (Observation obs : resourceList) {
-		            int x = (int)(obs.position.x / fescala.x);
-		            int y = (int)(obs.position.y / fescala.y);
+		            int x = (int)(obs.position.x*inv_escala_x);
+		            int y = (int)(obs.position.y*inv_escala_y);
 		            
 		            if (obs.itype == 8) { // Capa roja
 		                mapa[x][y] = 5;
@@ -85,8 +85,8 @@ public class AgenteAStar extends AbstractPlayer {
 		
 		ArrayList<Observation>[] posiciones = stateObs.getPortalsPositions();
 		portal = posiciones[0].get(0).position;
-		portal.x = (int)(portal.x / fescala.x); // Cast directo en lugar de Math.floor
-		portal.y = (int)(portal.y / fescala.y);
+		portal.x = (int)(portal.x *inv_escala_x); // Cast directo en lugar de Math.floor
+		portal.y = (int)(portal.y*inv_escala_y);
 		
 		nodos_expandidos = 0;
 		pos_siguiente_accion = 0;
@@ -162,12 +162,13 @@ public class AgenteAStar extends AbstractPlayer {
 	}
 	
 	private Nodo inicializarNodo(StateObservation stateObs) {
-		Nodo nodo_actual = new Nodo((int)(stateObs.getAvatarPosition().x / fescala.x), 
-				(int)(stateObs.getAvatarPosition().y / fescala.y), ACTIONS.ACTION_NIL, null);
-		nodo_actual.capasAzules = new HashSet<>(capasAzules);
-		nodo_actual.capasRojas = new HashSet<>(capasRojas);
-		nodo_actual.g = 0;
+		tools.Vector2d posicion = stateObs.getAvatarPosition();
+		Nodo nodo_actual = new Nodo((int)(posicion.x / fescala.x), 
+				(int)(posicion.y / fescala.y), ACTIONS.ACTION_NIL, null);
+		nodo_actual.capasAzules = capasAzules;
+		nodo_actual.capasRojas = capasRojas;
 		nodo_actual.h = distanciaManhattan(nodo_actual);
+		nodo_actual.g = 0;
 		return nodo_actual;
 	}
 	
@@ -232,20 +233,20 @@ public class AgenteAStar extends AbstractPlayer {
 	                } 
 	                
 	                
-	                // Si ya está en abiertos pero encontramos un mejor camino
-	                else if (abiertos.contains(sucesor)) {
-	                	for (Nodo obj : abiertos) {
-	                        if (obj.equals(sucesor))
-	                        	antiguoG = obj.g;
-	                        continue;
-	                    }
-	                	if(nuevoG < antiguoG) {
-	                		abiertos.remove(sucesor);
-		                    sucesor.g = nuevoG;
-		                    sucesor.h = distanciaManhattan(sucesor);
-		                    abiertos.add(sucesor);
-	                	}
-	                }
+//	                // Si ya está en abiertos pero encontramos un mejor camino
+//	                else if (abiertos.contains(sucesor)) {
+//	                	for (Nodo obj : abiertos) {
+//	                        if (obj.equals(sucesor))
+//	                        	antiguoG = obj.g;
+//	                        continue;
+//	                    }
+//	                	if(nuevoG < antiguoG) {
+//	                		abiertos.remove(sucesor);
+//		                    sucesor.g = nuevoG;
+//		                    sucesor.h = distanciaManhattan(sucesor);
+//		                    abiertos.add(sucesor);
+//	                	}
+//	                }
 	            }
 	        }
 	    }
