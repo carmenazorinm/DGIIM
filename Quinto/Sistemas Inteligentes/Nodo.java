@@ -1,14 +1,15 @@
 package tracks.singlePlayer.evaluacion.src_azorinmarticarmen;
 
+import ontology.Types;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.AbstractMap;
+import java.util.AbstractMap.SimpleEntry;
 import serialization.Vector2d;
 import ontology.Types.ACTIONS;
 
 public class Nodo implements Comparable<Nodo>{
-	static int MAX_ANCHO;
 	public float g;
 	public float h;
 	public int x;
@@ -18,8 +19,8 @@ public class Nodo implements Comparable<Nodo>{
 	public Nodo padre;
 	boolean capa_azul;
 	boolean capa_roja;
-	Set<Integer> capasAzules;
-	Set<Integer> capasRojas;
+	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
+	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
 	
 	public Nodo(int x, int y, ACTIONS a, Nodo p) {
 		this.x = x;
@@ -58,7 +59,7 @@ public class Nodo implements Comparable<Nodo>{
 			capasAzules = new HashSet<>(padre.capasAzules);
 		    capasRojas = new HashSet<>(padre.capasRojas);
 		
-		    Integer par = x*MAX_ANCHO+y;
+		    AbstractMap.SimpleEntry<Integer,Integer> par = new AbstractMap.SimpleEntry<>((int)x,(int) y);
 			if (capasAzules.remove(par)) {
 				capa_azul = true;
 				capa_roja = false;
@@ -82,12 +83,6 @@ public class Nodo implements Comparable<Nodo>{
                this.capasAzules.equals(otro.capasAzules) &&
                this.capasRojas.equals(otro.capasRojas);
     }
-	
-//	@Override
-//	public int compareTo(Nodo o) {
-//	    return Float.compare(this.g+this.h, o.g+o.h);
-//	}
-
 
 	
 	@Override
@@ -102,27 +97,26 @@ public class Nodo implements Comparable<Nodo>{
 		} else if(this.g < o.g) {
 			return -1;
 		} else if(this.antiguedad > o.antiguedad) { // comparamos la antiguedad
-			return -1;
+			return 1;
 		}else if(this.antiguedad < o.antiguedad) { // comparamos la antiguedad
-			return 1;
-		}else if(this.accion == ACTIONS.ACTION_RIGHT && o.accion != ACTIONS.ACTION_RIGHT) {
 			return -1;
+		} else if(this.accion == ACTIONS.ACTION_RIGHT && o.accion != ACTIONS.ACTION_RIGHT) {
+			return 1;
 		} else if (o.accion == ACTIONS.ACTION_RIGHT && this.accion != ACTIONS.ACTION_RIGHT) {
-			return 1;
+			return -1;
 		} else if (this.accion == ACTIONS.ACTION_LEFT && o.accion != ACTIONS.ACTION_LEFT) {
-			return -1;
+			return 1;
 		} else if(o.accion == ACTIONS.ACTION_LEFT && this.accion != ACTIONS.ACTION_LEFT) {
-			return 1;
+			return -1;
 		} else if(this.accion == ACTIONS.ACTION_UP && o.accion != ACTIONS.ACTION_UP) {
-			return -1;
+			return 1;
 		} else if(o.accion == ACTIONS.ACTION_UP && this.accion != ACTIONS.ACTION_UP) {
-			return 1;
-		} else if(this.accion == ACTIONS.ACTION_DOWN && o.accion != ACTIONS.ACTION_DOWN) {
 			return -1;
-		} else if(o.accion == ACTIONS.ACTION_DOWN && this.accion != ACTIONS.ACTION_DOWN){
+		} else if(this.accion == ACTIONS.ACTION_DOWN && o.accion != ACTIONS.ACTION_DOWN) {
 			return 1;
+		} else {
+			return -1;
 		}
-		return 0;
 	}
 	
 	@Override

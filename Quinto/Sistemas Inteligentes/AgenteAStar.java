@@ -28,19 +28,15 @@ public class AgenteAStar extends AbstractPlayer {
 	tools.Vector2d portal;
 	int nodos_expandidos;
 	int pos_siguiente_accion;
-	Set<Integer> capasAzules;
-	Set<Integer> capasRojas;
-	final int MAX_ANCHO;
+	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasAzules;
+	Set<AbstractMap.SimpleEntry<Integer, Integer>> capasRojas;
 	
 	
 	public AgenteAStar(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 		Dimension world = stateObs.getWorldDimension();
 		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
-		MAX_ANCHO = grid[0].length;
-		Nodo.MAX_ANCHO = MAX_ANCHO;
-		fescala = new Vector2d(world.width / grid.length, world.height / grid[0].length);
-		float inv_escala_x = (float) (1/fescala.x);
-		float inv_escala_y = (float) (1/fescala.y);
+		fescala = new Vector2d(world.width / grid.length, 
+				world.height / grid[0].length);
 		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
 
@@ -73,10 +69,10 @@ public class AgenteAStar extends AbstractPlayer {
 		            
 		            if (obs.itype == 8) { // Capa roja
 		                mapa[x][y] = 5;
-		                capasRojas.add(x*MAX_ANCHO +y);
+		                capasRojas.add(new AbstractMap.SimpleEntry<>(x, y));
 		            } else if (obs.itype == 9) { // Capa azul
 		                mapa[x][y] = 6;
-		                capasAzules.add(x*MAX_ANCHO+y);
+		                capasAzules.add(new AbstractMap.SimpleEntry<>(x, y));
 		            }
 		        }
 		    }
