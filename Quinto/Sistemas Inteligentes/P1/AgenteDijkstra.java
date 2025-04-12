@@ -21,34 +21,42 @@ import serialization.Vector2d;
 import tools.ElapsedCpuTimer;
 
 public class AgenteDijkstra extends AbstractPlayer {
-	public static int MAX_ANCHO;
-	Vector2d fescala;
-	ArrayList<ACTIONS> acciones;
-	boolean ruta_calculada;
-	int[][] mapa;
-	tools.Vector2d portal;
-	int nodos_expandidos;
-	int pos_siguiente_accion;
-	Set<Integer> capasAzules;
-	Set<Integer> capasRojas;
-	long tInit;
-	long tFin;
+	public static int MAX_ANCHO; // ancho del mapa
+	Vector2d fescala; 
+	ArrayList<ACTIONS> acciones; // array de las acciones desde el inicio al portal
+	boolean ruta_calculada; // al principio, no está calculada (FALSE)
+	int[][] mapa; // guarda los muros grises, marrones y azules y los pinchos
+	tools.Vector2d portal; // posición del portal
+	int nodos_expandidos; // al principio, 0
+	int pos_siguiente_accion; // para seguir el array de acciones
+	Set<Integer> capasAzules; // guarda las posiciones iniciales de todas las capas azules
+	Set<Integer> capasRojas; // guarda las posiciones iniciales de todas las capas rojas
+	long tInit; // para calcular el tiempo de ejecución
+	long tFin; // para calcular el tiempo de ejecución
 	
-	
+	// Constructor del Dijkstra
 	public AgenteDijkstra(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
-		Dimension world = stateObs.getWorldDimension();
+		ArrayList<Observation>[][] grid = stateObs.getObservationGrid(); // para evitar llamadas repetidas
+		Dimension world = stateObs.getWorldDimension(); // para evitar llamadas repetidas
+		
 		MAX_ANCHO = grid[0].length;
-		Nodo.MAX_ANCHO =MAX_ANCHO;
-		fescala = new Vector2d(world.width / grid.length, 
-				world.height / grid[0].length);
+		Nodo.MAX_ANCHO =MAX_ANCHO; // para calcular la clave de las capas de los nodos
+		fescala = new Vector2d(world.width / grid.length, world.height / grid[0].length);
 		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
 
-		mapa = new int[stateObs.getObservationGrid().length][stateObs.getObservationGrid()[0].length];
+		// rellenamos el mapa. Para eso usamos los itype de los immovable
+		/*
+		 * 7 -> cesped, se puede pasar sin problema
+		 * 0 -> muro gris
+		 * 1 -> muro azul
+		 * 2 -> muro marrón
+		 * 4 -> pinchos
+		 */
+		mapa = new int[grid.length][grid[0].length];
 		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
-    Map<Integer, Integer> tipoMapa = Map.of(5, 0, 7, 1, 6, 2, 3, 4);
+	    Map<Integer, Integer> tipoMapa = Map.of(5, 0, 7, 1, 6, 2, 3, 4);
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
 		for (int i = 0; i < immovable.length; i++) {
 		    ArrayList<Observation> list = immovable[i];
@@ -63,7 +71,9 @@ public class AgenteDijkstra extends AbstractPlayer {
 		    }
 		}
 
-
+		// inicializamos los sets que contendran las posiciones de las capas azules y rojas originales
+		// como tenemos el ancho del mapa, podemos calcular las posiciones como x*MAX_ANCHO+y 
+		// y asegura biyectividad entre posicion y dicho valor
 		capasAzules = new HashSet<>();
 		capasRojas = new HashSet<>();
 		ArrayList<Observation>[] recursos = stateObs.getResourcesPositions();
@@ -84,7 +94,8 @@ public class AgenteDijkstra extends AbstractPlayer {
 		        }
 		    }
 		}
-
+		
+		// posicion del portal
 		ArrayList<Observation> posiciones = stateObs.getPortalsPositions()[0];
 		portal = posiciones.get(0).position;
 		portal.x = (int)(portal.x /fescala.x);
@@ -92,10 +103,11 @@ public class AgenteDijkstra extends AbstractPlayer {
 
 		nodos_expandidos = 0;
 		pos_siguiente_accion = 0;
-
-
 	}
 	
+	// método optimizado por Chatgpt. Calculamos los vecinos según la capa del nodo actual
+	// y el muro en la dirección que quiera traspasar. También evitamos que se creen vecinos
+	// que se salen del mapa.
 	private List<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
 	    List<Nodo> vecinos = new ArrayList<>(4); // Capacidad fija para 4 direcciones
 	    int x = nodo.x;
@@ -137,6 +149,10 @@ public class AgenteDijkstra extends AbstractPlayer {
 	    return true;
 	}
 	
+	/*
+	 * Cada nodo guarda su padre y la accion que ha usado el padre para llegar al hijo.
+	 * Se pasa como parámetro el último nodo que se visita, cuya posición coincide con el portal.
+	 */
 	private void calcularRuta(Nodo n) {
 		Nodo actual = n;
 		
@@ -150,16 +166,23 @@ public class AgenteDijkstra extends AbstractPlayer {
 		}
 	}
 	
+	/*
+	 * Llevamos la cuenta de cuantas iteraciones lleva cada nodo en la cola
+	 */
 	private void aumentarAntiguedad(PriorityQueue<Nodo> a) {
 		for (Nodo n: a) {	
 			n.antiguedad++;
 		}
 	}
 	
+	/*
+	 * Inicializamos el primer nodo desde el que se empieza. Las capas que tiene son las 
+	 * del mapa original, ya que todavía no se ha movido. En Dijkstra la heurística es 0
+	 * para todos los nodos. El coste g es 0, porque se empieza desde esta posición.
+	 */
 	private Nodo inicializarNodo(StateObservation stateObs) {
 		tools.Vector2d posicion = stateObs.getAvatarPosition();
-		Nodo nodo_actual = new Nodo((int)(posicion.x / fescala.x), 
-				(int)(posicion.y / fescala.y), ACTIONS.ACTION_NIL, null);
+		Nodo nodo_actual = new Nodo((int)(posicion.x / fescala.x), (int)(posicion.y / fescala.y), ACTIONS.ACTION_NIL, null);
 		nodo_actual.capasAzules = capasAzules;
 		nodo_actual.capasRojas = capasRojas;
 		nodo_actual.g = 0;
@@ -168,20 +191,23 @@ public class AgenteDijkstra extends AbstractPlayer {
 	
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
+		// cuando la ruta está calculada, solo tenemos que sacar la siguiente posición
 	    if (ruta_calculada) {
 	        pos_siguiente_accion++;
 	        return acciones.get(pos_siguiente_accion);
+	        
+	    // si no se ha calculado la ruta, es que es la primera iteración y hay que calcularla.
 	    } else {
 	    	tInit = System.nanoTime();
 	        Set<Nodo> visitados = new HashSet<>();
 	        PriorityQueue<Nodo> nodos_por_visitar = new PriorityQueue<>();
 	        Nodo nodo_actual = inicializarNodo(stateObs);
 
-	        nodos_por_visitar.add(nodo_actual);
+	        nodos_por_visitar.add(nodo_actual); // al principio, el nodo_actual es donde empieza
 	        
 	        while (!nodos_por_visitar.isEmpty()) {
 	        	aumentarAntiguedad(nodos_por_visitar);
-	            nodo_actual = nodos_por_visitar.poll();
+	            nodo_actual = nodos_por_visitar.poll(); // sacamos el nodo con menor valor y lo elimina
 
 	            // Si ya lo visitamos, lo saltamos
 	            if (visitados.contains(nodo_actual) || nodo_actual == null) continue;
@@ -206,7 +232,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 	                if (!visitados.contains(sucesor)) {
 	                    float nuevoG = nodo_actual.g + 1;
 	                    if (nuevoG < sucesor.g) {
-	                    	//nodos_por_visitar.remove(sucesor);
+	                    	//nodos_por_visitar.remove(sucesor); // no hace falta porque la priority queue los ordena automáticamente
 	                        sucesor.g = nuevoG;
 	                        sucesor.padre = nodo_actual;
 	                        nodos_por_visitar.add(sucesor);

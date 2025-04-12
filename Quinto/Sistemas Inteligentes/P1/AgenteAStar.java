@@ -21,33 +21,40 @@ import serialization.Vector2d;
 import tools.ElapsedCpuTimer;
 
 public class AgenteAStar extends AbstractPlayer {
-	public static int MAX_ANCHO;
-	Vector2d fescala;
-	ArrayList<ACTIONS> acciones;
-	boolean ruta_calculada;
-	int[][] mapa;
-	tools.Vector2d portal;
-	int nodos_expandidos;
-	int pos_siguiente_accion;
-	Set<Integer> capasAzules;
-	Set<Integer> capasRojas;
-	long tInit;
-	long tFin;
+	public static int MAX_ANCHO; // ancho del grid para calcular la clave del nodo
+	Vector2d fescala; 
+	ArrayList<ACTIONS> acciones; // acciones del agente desde la pos inicial hasta el portal
+	boolean ruta_calculada; // al principio, no está calculada (FALSE)
+	int[][] mapa; // mapa que guarda los muros grises, marrones y azules y los pinchos
+	tools.Vector2d portal; // posición del portal
+	int nodos_expandidos; // al principio, 0
+	int pos_siguiente_accion; // para seguir el array de acciones
+	Set<Integer> capasAzules; // guarda las posiciones de las capas azules iniciales
+	Set<Integer> capasRojas; // guarda las posiciones de las capas rojas iniciales
+	long tInit; // para calcular runtime
+	long tFin; // para calcular runtime
 	
 	
 	public AgenteAStar(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
-		ArrayList<Observation>[][] grid = stateObs.getObservationGrid();
-		Dimension world = stateObs.getWorldDimension();
+		ArrayList<Observation>[][] grid = stateObs.getObservationGrid(); // para evitar llamadas repetidas
+		Dimension world = stateObs.getWorldDimension(); // para evitar llamadas repetidas
 		MAX_ANCHO = grid[0].length;
-		Nodo.MAX_ANCHO =MAX_ANCHO;
-		fescala = new Vector2d(world.width / grid.length, 
-				world.height / grid[0].length);
+		Nodo.MAX_ANCHO =MAX_ANCHO; // porque el nodo necesita el ancho del mapa para calcular su clave
+		fescala = new Vector2d(world.width / grid.length,  world.height / grid[0].length);
 		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
 
 		mapa = new int[grid.length][grid[0].length];
 		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
+		// rellenamos el mapa. Para eso usamos los itype de los immovable
+				/*
+				 * 7 -> cesped, se puede pasar sin problema
+				 * 0 -> muro gris
+				 * 1 -> muro azul
+				 * 2 -> muro marrón
+				 * 4 -> pinchos
+		*/
 		Map<Integer, Integer> tipoMapa = Map.of(5, 0, 7, 1, 6, 2, 3, 4);
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
 		for (int i = 0; i < immovable.length; i++) {
@@ -63,6 +70,9 @@ public class AgenteAStar extends AbstractPlayer {
 		    }
 		}
 		
+		// guardamos las capas azules y rojas iniciales
+		// como tenemos el ancho del mapa, podemos calcular las posiciones como x*MAX_ANCHO+y 
+		// y asegura biyectividad entre posicion y dicho valor
 		capasAzules = new HashSet<>();
 		capasRojas = new HashSet<>();
 		ArrayList<Observation>[] recursos = stateObs.getResourcesPositions();
@@ -73,10 +83,8 @@ public class AgenteAStar extends AbstractPlayer {
 		            int y = (int)(obs.position.y/fescala.y);
 		            
 		            if (obs.itype == 8) { // Capa roja
-		                mapa[x][y] = 5;
-		                capasRojas.add(x*MAX_ANCHO+y);
+		                capasRojas.add(x*MAX_ANCHO+y); 
 		            } else if (obs.itype == 9) { // Capa azul
-		                mapa[x][y] = 6;
 		                capasAzules.add(x*MAX_ANCHO+y);
 		            }
 		        }
@@ -84,15 +92,19 @@ public class AgenteAStar extends AbstractPlayer {
 		}
 		
 		
+		// guardamos posición del portal
 		ArrayList<Observation>[] posiciones = stateObs.getPortalsPositions();
 		portal = posiciones[0].get(0).position;
-		portal.x = (int)(portal.x /fescala.x); // Cast directo en lugar de Math.floor
+		portal.x = (int)(portal.x /fescala.x); 
 		portal.y = (int)(portal.y/fescala.y);
 		
 		nodos_expandidos = 0;
 		pos_siguiente_accion = 0;
 	}
 	
+	// método optimizado por Chatgpt. Calculamos los vecinos según la capa del nodo actual
+	// y el muro en la dirección que quiera traspasar. También evitamos que se creen vecinos
+	// que se salen del mapa.
 	private List<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
 	    List<Nodo> vecinos = new ArrayList<>(4); // Capacidad fija para 4 direcciones
 	    int x = (int)nodo.x;
@@ -134,15 +146,10 @@ public class AgenteAStar extends AbstractPlayer {
 	    return true;
 	}
 	
-	private String calcularClave(Nodo nodo) {
-		return String.format("%d,%d,%b,%b,%s,%s", 
-			    (int)nodo.x, (int)nodo.y, 
-			    nodo.capa_azul, nodo.capa_roja,
-			    nodo.capasAzules.toString(), 
-			    nodo.capasRojas.toString()
-			);
-	}
-	
+	/*
+	 * Cada nodo guarda su padre y la accion que ha usado el padre para llegar al hijo.
+	 * Se pasa como parámetro el último nodo que se visita, cuya posición coincide con el portal.
+	 */
 	private void calcularRuta(Nodo n) {
 		Nodo actual = n;
 		
@@ -156,12 +163,20 @@ public class AgenteAStar extends AbstractPlayer {
 		}
 	}
 	
+	/*
+	 * Llevamos la cuenta de cuantas iteraciones lleva cada nodo en la cola
+	 */
 	private void aumentarAntiguedad(PriorityQueue<Nodo> a) {
 		for (Nodo n: a) {	
 			n.antiguedad++;
 		}
 	}
 	
+	/*
+	 * Inicializamos el primer nodo desde el que se empieza. Las capas que tiene son las 
+	 * del mapa original, ya que todavía no se ha movido. En Dijkstra la heurística es 0
+	 * para todos los nodos. El coste g es 0, porque se empieza desde esta posición.
+	 */
 	private Nodo inicializarNodo(StateObservation stateObs) {
 		tools.Vector2d posicion = stateObs.getAvatarPosition();
 		Nodo nodo_actual = new Nodo((int)(posicion.x / fescala.x), 
@@ -173,15 +188,18 @@ public class AgenteAStar extends AbstractPlayer {
 		return nodo_actual;
 	}
 	
+	// Heurística del A*
 	private int distanciaManhattan(Nodo n) {
 		return (int) (Math.abs(n.x - portal.x) + Math.abs(n.y - portal.y));
 	}
 	
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
+		// si la ruta ya se ha calculado, solo buscamos la siguiente posición
 	    if (ruta_calculada) {
 	        pos_siguiente_accion++;
 	        return acciones.get(pos_siguiente_accion);
+	    // si la ruta no se ha calculado, es porque acaba de empezar y ha que rellenar el array acciones
 	    } else {
 	    	tInit = System.nanoTime();
 	        Set<Nodo> cerrados = new HashSet<>();
@@ -191,8 +209,8 @@ public class AgenteAStar extends AbstractPlayer {
 	        abiertos.add(nodo_actual);
 
 	        while (!abiertos.isEmpty()) {
-	            aumentarAntiguedad(abiertos);
-	            nodo_actual = abiertos.poll();
+	            aumentarAntiguedad(abiertos); // llevamos la cuenta de cuantas iteraciones lleva cada nodo
+	            nodo_actual = abiertos.poll(); // saca el nodo con menor valor y lo elimina de abiertos
 
 	            nodos_expandidos++;
 	            // ¿Es el objetivo?
@@ -216,12 +234,12 @@ public class AgenteAStar extends AbstractPlayer {
 
 	                // Si ya está en cerrados pero encontramos un mejor camino
 	                if (cerrados.contains(sucesor)) {
-	                	for (Nodo obj : cerrados) {
+	                	for (Nodo obj : cerrados) { // calculamos la g del sucesor guardado en cerrados
 	                        if (obj.equals(sucesor))
 	                        	antiguoG = obj.g;
 	                        continue;
 	                    }
-	                    if (nuevoG < antiguoG) {
+	                    if (nuevoG < antiguoG) { // comparamos la g del sucesor en cerrados y del sucesor recién creado
 	                        cerrados.remove(sucesor);
 	                        sucesor.g = nuevoG;
 	                        sucesor.h = distanciaManhattan(sucesor);
@@ -237,8 +255,9 @@ public class AgenteAStar extends AbstractPlayer {
 	                    abiertos.add(sucesor);
 	                } 
 	                
-	                
-//	                // Si ya está en abiertos pero encontramos un mejor camino
+	                // Si ya está en abiertos pero encontramos un mejor camino -> como el coste de movimeinto es
+	                // constante (siempre 1) y la cola de prioridad actualiza automáticamente las prioridades,
+	                // nunca entrará en este if y podemos mejorar la eficiencia
 //	                else if (abiertos.contains(sucesor)) {
 //	                	for (Nodo obj : abiertos) {
 //	                        if (obj.equals(sucesor))

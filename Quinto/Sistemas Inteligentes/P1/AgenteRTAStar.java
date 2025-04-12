@@ -17,17 +17,17 @@ import tools.ElapsedCpuTimer;
 
 public class AgenteRTAStar extends AbstractPlayer{
 	Vector2d fescala;
-	Nodo actual;
-	int[][] mapa;
-	tools.Vector2d portal;
+	Nodo actual; 
+	int[][] mapa; // guarda los muros grises, marrones y azules y los pinchos
+	tools.Vector2d portal; // posicion del portal
 	int nodos_expandidos;
-	Set<Integer> capasAzules;
-	Set<Integer> capasRojas;
-	private HashMap<Nodo, Float> tablaHeuristica;
-	final int MAX_ANCHO;
+	Set<Integer> capasAzules; // guarda las posiciones de las capas azules iniciales
+	Set<Integer> capasRojas; // guarda las posiciones de las capas rojas iniciales
+	private HashMap<Nodo, Float> tablaHeuristica; // guarda las heurísticas de cada nodo -> al principio vacía
+	final int MAX_ANCHO; // ancho del mapa para calcular la clave de los nodos
 	long tInit;
 	long tFin;
-	long tAcumulado;
+	long tAcumulado; // para calcular el runtime de SOLAMENTE la busqueda de la ruta
 	
 	
 	public AgenteRTAStar(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
@@ -35,10 +35,18 @@ public class AgenteRTAStar extends AbstractPlayer{
 				stateObs.getWorldDimension().height / stateObs.getObservationGrid()[0].length);
 		nodos_expandidos = 0;
 		MAX_ANCHO = stateObs.getObservationGrid().length;
-		Nodo.MAX_ANCHO = MAX_ANCHO;
+		Nodo.MAX_ANCHO = MAX_ANCHO; // el ancho del mapa servirá para calcular la clave de cada nodo
 		mapa = new int[stateObs.getObservationGrid().length][stateObs.getObservationGrid()[0].length];
 		Arrays.stream(mapa).forEach(row -> Arrays.fill(row, 7)); // Inicializa todo a 7 en una línea
 		
+		// rellenamos el mapa. Para eso usamos los itype de los immovable
+				/*
+				 * 7 -> cesped, se puede pasar sin problema
+				 * 0 -> muro gris
+				 * 1 -> muro azul
+				 * 2 -> muro marrón
+				 * 4 -> pinchos
+		*/
 		ArrayList<Observation>[] immovable = stateObs.getImmovablePositions();
 		for(int i = 0; i < immovable.length; i++) {
 			for (int j = 0; j < immovable[i].size(); j++) {
@@ -55,6 +63,9 @@ public class AgenteRTAStar extends AbstractPlayer{
 			}
 		}
 		
+		// inicializamos los sets que contendran las posiciones de las capas azules y rojas originales
+		// como tenemos el ancho del mapa, podemos calcular las posiciones como x*MAX_ANCHO+y 
+		// y asegura biyectividad entre posicion y dicho valor
 		capasAzules = new HashSet<>();
 		capasRojas = new HashSet<>();
 		ArrayList<Observation>[] recursos = stateObs.getResourcesPositions();
@@ -75,14 +86,16 @@ public class AgenteRTAStar extends AbstractPlayer{
 		    }
 		}
 		
+		// calculamos la posicion del portal
 		ArrayList<Observation>[] posiciones = stateObs.getPortalsPositions();
 		portal = posiciones[0].get(0).position;
-		portal.x = (int)(portal.x / fescala.x); // Cast directo en lugar de Math.floor
+		portal.x = (int)(portal.x / fescala.x); 
 		portal.y = (int)(portal.y / fescala.y);
 		
+		// se inicializan a un HashSet vacío que se irá rellenando conforme se crean los nodos
 		inicializarHeuristicas(stateObs);
 		
-		
+		// inicializamos el nodo actual, por el que se empieza. Sus capas serán las iniciales del mapa
 		actual = new Nodo((int)(stateObs.getAvatarPosition().x / fescala.x),
                 (int)(stateObs.getAvatarPosition().y / fescala.y),
                 ACTIONS.ACTION_NIL, null);
@@ -92,6 +105,9 @@ public class AgenteRTAStar extends AbstractPlayer{
 		tAcumulado = 0;
 	}
 	
+	// método optimizado por Chatgpt. Calculamos los vecinos según la capa del nodo actual
+	// y el muro en la dirección que quiera traspasar. También evitamos que se creen vecinos
+	// que se salen del mapa.
 	private List<Nodo> getVecinos(StateObservation stateObs, Nodo nodo) {
 	    List<Nodo> vecinos = new ArrayList<>(4); // Capacidad fija para 4 direcciones
 	    int x = (int)nodo.x;
@@ -141,44 +157,42 @@ public class AgenteRTAStar extends AbstractPlayer{
 	    return true;
 	}
 	
-	private String generarClave(Nodo n) {
-	    return String.format("%d,%d,%b,%b", (int)n.x, (int)n.y,n.capa_azul, n.capa_roja);
-	}
-	
-	private String generarClave(int x, int y, boolean capaAzul, boolean capaRoja) {
-	    return String.format("%d,%d,%b,%b", x, y, capaAzul,capaRoja);
-	}
-	
+	// las heuristicas son vacias y se iran rellenando a medida que se creen los nodos. Ya que hay que crear
+	// una heuristica por cada posible nodo (posicion, capa actual y capas restantes) y calcularlas por defecto
+	// no es eficiente. Puede haber nodos que nunca se visiten y hayamos calculado su heurística en vano.
 	private void inicializarHeuristicas(StateObservation stateObs) {
 		tablaHeuristica = new HashMap<>();
 	}
 	
+	// la heuristica del nodo
 	private float distanciaManhattan(Nodo n) {
 		return (float) (Math.abs(n.x - portal.x) + Math.abs(n.y - portal.y));
 	}
 	
+	// la heuristica del nodo será la que este guardada en el hashset y, si no esta guardada en el hashset,
+	// entonces es la distancia manhattan (es la primera vez que se calcula)
 	private float obtenerHeuristica(Nodo n) {
 		return tablaHeuristica.getOrDefault(n, distanciaManhattan(n));
 	}
 	@Override
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 		tInit = System.nanoTime();
-	    // 2. Actualizar las capas
+	    // actualizamos las capas
 		int pos = actual.x *MAX_ANCHO +actual.y;
 		capasAzules.remove(pos);
 		capasRojas.remove(pos);
 		
-	    // 3. Verificación de objetivo
 		nodos_expandidos++;
 
-	    // 4. Espacio local de búsqueda (vecinos)
+	    // calculamos los vecinos
 	    List<Nodo> vecinos = getVecinos(stateObs, actual);
 
-	    // 5. Estrategia de movimiento: calcular f(y) = h(y) + c(actual,y)
+	    // calculamos f(y) = h(y) + c(actual,y) = h(y) + 1
 	    Nodo mejorVecino = null;
 	    float mejorValor = Float.MAX_VALUE;
 	    float segundoMejor = Float.MAX_VALUE;
 
+	    // vamos a guardar el mejor vecino (para movernos) y la f del segundo mejor vecino (para actualizar la tabla) 
 	    for (Nodo vecino : vecinos) {
 	        float coste = 1; // c(actual,vecino) - asumimos coste uniforme 1
 	        float h = obtenerHeuristica(vecino);
@@ -196,8 +210,7 @@ public class AgenteRTAStar extends AbstractPlayer{
 	        }
 	    }
 
-	    // 6. Regla de aprendizaje (actualizar heurística del nodo actual)
-	    
+	    // actualizamos la heuristica del nodo_actual. Si no hay segundo mejor vecino, se queda con el primero
 	    if (segundoMejor != Float.MAX_VALUE) {
     		tablaHeuristica.put(actual, Math.max(
     	            obtenerHeuristica(actual),
@@ -210,17 +223,19 @@ public class AgenteRTAStar extends AbstractPlayer{
 		        ));
 	    }
 
-	    // 7. Devolver acción correspondiente al mejor vecino
+	    // comprobamos que el mejorVecino no sea el portal. Si lo es, ya hemos terminado.
 	    actual = mejorVecino;
 	    if (actual.x == portal.x && actual.y == portal.y) {
 	    	tFin = System.nanoTime();
 		    tAcumulado += (tFin - tInit);
-	        System.out.println("Nodos expandidos: " + nodos_expandidos); // Llegamos al objetivo
+	        System.out.println("Nodos expandidos: " + nodos_expandidos); 
 	        System.out.println("Tiempo busqueda: " + tAcumulado/1000000);
 	    }
 	    
 	    tFin = System.nanoTime();
 	    tAcumulado += (tFin - tInit);
+	    
+	    // devolvemos la accion correspondiente al mejor vecino
 	    return mejorVecino != null ? mejorVecino.accion : ACTIONS.ACTION_NIL;
 	}
 

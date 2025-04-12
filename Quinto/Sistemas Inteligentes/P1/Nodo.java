@@ -10,18 +10,18 @@ import serialization.Vector2d;
 import ontology.Types.ACTIONS;
 
 public class Nodo implements Comparable<Nodo>{
-	public static int MAX_ANCHO;
-	public float g;
-	public float h;
-	public int x;
-	public int y;
-	public int antiguedad;
-	public ACTIONS accion;
-	public Nodo padre;
-	boolean capa_azul;
-	boolean capa_roja;
-	Set<Integer> capasAzules;
-	Set<Integer> capasRojas;
+	public static int MAX_ANCHO; // ancho del mapa para calcular la clave del nodo
+	public float g; // el coste desde el inicio
+	public float h; // la heurístcia hasta el portal
+	public int x; // coordenada x de la posicion
+	public int y; // coordenada y de la posicion
+	public int antiguedad; // antiguedad en la cola de prioridad de A* y Dijkstra
+	public ACTIONS accion; // accion que ha hecho el padre para llegar al nodo
+	public Nodo padre; // nodo padre
+	boolean capa_azul; // false si no lleva la capa azul
+	boolean capa_roja; // false si no lleva la capa roja
+	Set<Integer> capasAzules; // capas azules que le quedan por recoger
+	Set<Integer> capasRojas; // capas rojas que le quedan por recoger
 	
 	public Nodo(int x, int y, ACTIONS a, Nodo p) {
 		this.x = x;
@@ -31,7 +31,8 @@ public class Nodo implements Comparable<Nodo>{
 		antiguedad = 0;
 		accion = a;
 		padre = p;
-		if(p != null && p.capa_azul) capa_azul = true;
+		// si el padre tiene capa, la hereda. Aunque puede cambiarla en el método anadirCapas()
+		if(p != null && p.capa_azul) capa_azul = true; 
 		else capa_azul = false;
 		if(p != null && p.capa_roja) capa_roja = true;
 		else capa_roja = false;
@@ -47,6 +48,7 @@ public class Nodo implements Comparable<Nodo>{
 		antiguedad = 0;
 		accion = a;
 		padre = p;
+		// si el padre tiene capa, la hereda. Aunque puede cambiarla en el método anadirCapas()
 		if(p != null && p.capa_azul) capa_azul = true;
 		else capa_azul = false;
 		if(p != null && p.capa_roja) capa_roja = true;
@@ -56,12 +58,13 @@ public class Nodo implements Comparable<Nodo>{
 	}
 	
 	private void anadirCapas() {
+		// si tiene padre, hereda sus capas restantes.
 		if(padre != null) {
 			capasAzules = new HashSet<>(padre.capasAzules);
 		    capasRojas = new HashSet<>(padre.capasRojas);
 		
-		    //AbstractMap.SimpleEntry<Integer,Integer> par = new AbstractMap.SimpleEntry<>((int)x,(int) y);
-			int par = x*MAX_ANCHO +y;
+		    // si está en una posición donde había una capa, la acaba de coger y actualiza el set
+			int par = x*MAX_ANCHO +y; // clave del hashSet
 		    if (capasAzules.remove(par)) {
 				capa_azul = true;
 				capa_roja = false;
@@ -69,13 +72,14 @@ public class Nodo implements Comparable<Nodo>{
 				capa_roja = true;
 				capa_azul = false;
 			}
-		} else {
+		} else { // si no tiene padre, las capas restantes se le añadirán en el Agente
 			capasAzules = new HashSet<>();
 		    capasRojas = new HashSet<>();
 		}
 	}
 	
 	
+	// el estado del nodo depende de la posicion, la capa actual y las cpas restantes
 	@Override
 	public boolean equals(Object o) {
         Nodo otro = (Nodo) o;
@@ -86,7 +90,8 @@ public class Nodo implements Comparable<Nodo>{
                this.capasRojas.equals(otro.capasRojas);
     }
 
-	
+	// el orden de los nodos depende de la f, después de la g, después de la antiguedad (a mayor antiguedad, menos valor)
+	// y después de la accion (right, left, up, down)
 	@Override
 	public int compareTo(Nodo o) {
 		// comparamos la f
@@ -122,6 +127,7 @@ public class Nodo implements Comparable<Nodo>{
 		return 0;
 	}
 	
+	// para poder usar el hashSet en los agentes
 	@Override
 	public int hashCode() {
 	    return Objects.hash(x, y, capa_azul, capa_roja, capasAzules, capasRojas);
