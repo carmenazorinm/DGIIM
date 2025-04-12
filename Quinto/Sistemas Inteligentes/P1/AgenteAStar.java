@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeSet;
 
 import core.game.Observation;
@@ -23,12 +24,11 @@ import tools.ElapsedCpuTimer;
 public class AgenteAStar extends AbstractPlayer {
 	public static int MAX_ANCHO; // ancho del grid para calcular la clave del nodo
 	Vector2d fescala; 
-	ArrayList<ACTIONS> acciones; // acciones del agente desde la pos inicial hasta el portal
+	Stack<ACTIONS> pila_acciones; // pila acciones desde el inicial al portal
 	boolean ruta_calculada; // al principio, no está calculada (FALSE)
 	int[][] mapa; // mapa que guarda los muros grises, marrones y azules y los pinchos
 	tools.Vector2d portal; // posición del portal
 	int nodos_expandidos; // al principio, 0
-	int pos_siguiente_accion; // para seguir el array de acciones
 	Set<Integer> capasAzules; // guarda las posiciones de las capas azules iniciales
 	Set<Integer> capasRojas; // guarda las posiciones de las capas rojas iniciales
 	long tInit; // para calcular runtime
@@ -41,7 +41,7 @@ public class AgenteAStar extends AbstractPlayer {
 		MAX_ANCHO = grid[0].length;
 		Nodo.MAX_ANCHO =MAX_ANCHO; // porque el nodo necesita el ancho del mapa para calcular su clave
 		fescala = new Vector2d(world.width / grid.length,  world.height / grid[0].length);
-		acciones = new ArrayList<ACTIONS>();
+		pila_acciones = new Stack<>();
 		ruta_calculada = false;
 
 		mapa = new int[grid.length][grid[0].length];
@@ -99,7 +99,6 @@ public class AgenteAStar extends AbstractPlayer {
 		portal.y = (int)(portal.y/fescala.y);
 		
 		nodos_expandidos = 0;
-		pos_siguiente_accion = 0;
 	}
 	
 	// método optimizado por Chatgpt. Calculamos los vecinos según la capa del nodo actual
@@ -157,7 +156,7 @@ public class AgenteAStar extends AbstractPlayer {
 		while(actual != null) {
 			accion = actual.accion;
 			if(accion != ACTIONS.ACTION_NIL) {
-				acciones.add(0,  accion);
+				pila_acciones.add(accion);
 			}
 			actual = actual.padre;
 		}
@@ -197,8 +196,7 @@ public class AgenteAStar extends AbstractPlayer {
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 		// si la ruta ya se ha calculado, solo buscamos la siguiente posición
 	    if (ruta_calculada) {
-	        pos_siguiente_accion++;
-	        return acciones.get(pos_siguiente_accion);
+	        return pila_acciones.pop();
 	    // si la ruta no se ha calculado, es porque acaba de empezar y ha que rellenar el array acciones
 	    } else {
 	    	tInit = System.nanoTime();
@@ -219,10 +217,10 @@ public class AgenteAStar extends AbstractPlayer {
 	                ruta_calculada = true;
 	                tFin = System.nanoTime();
 	                System.out.println("Nodos expandidos: " + nodos_expandidos);
-	                System.out.println("Tamaño ruta: " + acciones.size());
+	                System.out.println("Tamaño ruta: " + pila_acciones.size());
 	                System.out.println("Tiempo ejecucion: "+ (tFin - tInit)/1000000);
 	                System.out.println("Abiertos/Cerrados: " + abiertos.size() + " / " + cerrados.size());
-	                return acciones.get(pos_siguiente_accion);
+	                return pila_acciones.pop();
 	            }
 
 	            cerrados.add(nodo_actual);

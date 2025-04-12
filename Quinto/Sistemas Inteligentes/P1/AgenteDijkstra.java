@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeSet;
 
 import core.game.Observation;
@@ -23,12 +24,11 @@ import tools.ElapsedCpuTimer;
 public class AgenteDijkstra extends AbstractPlayer {
 	public static int MAX_ANCHO; // ancho del mapa
 	Vector2d fescala; 
-	ArrayList<ACTIONS> acciones; // array de las acciones desde el inicio al portal
+	Stack<ACTIONS> pila_acciones; // pila de acciones desde el inicio al portal
 	boolean ruta_calculada; // al principio, no está calculada (FALSE)
 	int[][] mapa; // guarda los muros grises, marrones y azules y los pinchos
 	tools.Vector2d portal; // posición del portal
 	int nodos_expandidos; // al principio, 0
-	int pos_siguiente_accion; // para seguir el array de acciones
 	Set<Integer> capasAzules; // guarda las posiciones iniciales de todas las capas azules
 	Set<Integer> capasRojas; // guarda las posiciones iniciales de todas las capas rojas
 	long tInit; // para calcular el tiempo de ejecución
@@ -42,8 +42,8 @@ public class AgenteDijkstra extends AbstractPlayer {
 		MAX_ANCHO = grid[0].length;
 		Nodo.MAX_ANCHO =MAX_ANCHO; // para calcular la clave de las capas de los nodos
 		fescala = new Vector2d(world.width / grid.length, world.height / grid[0].length);
-		acciones = new ArrayList<ACTIONS>();
 		ruta_calculada = false;
+		pila_acciones = new Stack<>();
 
 		// rellenamos el mapa. Para eso usamos los itype de los immovable
 		/*
@@ -102,7 +102,6 @@ public class AgenteDijkstra extends AbstractPlayer {
 		portal.y = (int)(portal.y /fescala.y);
 
 		nodos_expandidos = 0;
-		pos_siguiente_accion = 0;
 	}
 	
 	// método optimizado por Chatgpt. Calculamos los vecinos según la capa del nodo actual
@@ -160,7 +159,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 		while(actual != null) {
 			accion = actual.accion;
 			if(accion != ACTIONS.ACTION_NIL) {
-				acciones.add(0,  accion);
+				pila_acciones.add(accion);
 			}
 			actual = actual.padre;
 		}
@@ -193,8 +192,7 @@ public class AgenteDijkstra extends AbstractPlayer {
 	public ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
 		// cuando la ruta está calculada, solo tenemos que sacar la siguiente posición
 	    if (ruta_calculada) {
-	        pos_siguiente_accion++;
-	        return acciones.get(pos_siguiente_accion);
+	    	return pila_acciones.pop();
 	        
 	    // si no se ha calculado la ruta, es que es la primera iteración y hay que calcularla.
 	    } else {
@@ -216,14 +214,13 @@ public class AgenteDijkstra extends AbstractPlayer {
 
 	            // ¿Es el objetivo?
 	            if (nodo_actual.x == portal.x && nodo_actual.y == portal.y) {
-	            	
 	                calcularRuta(nodo_actual);
 	                ruta_calculada = true;
 	                tFin = System.nanoTime();
 	                System.out.println("Nodos expandidos: " + nodos_expandidos);
-	                System.out.println("Tamaño ruta: " + acciones.size());
+	                System.out.println("Tamaño ruta: " + pila_acciones.size());
 	                System.out.println("Tiempo ejecucion: "+ (tFin - tInit)/1000000);
-	                return acciones.get(pos_siguiente_accion);
+	                return pila_acciones.pop();
 	            }
 
 	            visitados.add(nodo_actual);
