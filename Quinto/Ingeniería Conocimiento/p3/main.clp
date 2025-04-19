@@ -156,6 +156,9 @@
 (deftemplate recomendacion
    (slot receta))
 
+(deftemplate propuesta
+   (slot receta))
+
 ; COMIENZAN LAS REGLAS
 (defrule carga-modulos
     (declare (salience 1000))
@@ -168,6 +171,7 @@
 )
 
 (defrule iniciar-sistema
+(declare (salience 100))
    =>
    (printout t crlf "🎉 Bienvenido al sistema de recomendación de recetas 🎉" crlf)
    (assert (estado activo))
@@ -178,6 +182,7 @@
 )
 
 (defrule control-informacion
+(declare (salience 90))
    (estado activo)
    (info-faltante (campo ?x))
    =>
@@ -185,7 +190,23 @@
 )
 
 (defrule control-compatibles
+(declare (salience 80))
    (estado activo)
    (not (info-faltante (campo ?)))
    =>
-   (focus obtener-compatibles))
+   (focus obtener-compatibles)
+   (assert (estado recomendar))
+   )
+
+(defrule buscar-siguiente-propuesta
+(declare (salience 70))
+   (estado recomendar)
+   (not (propuesta (receta ?)))
+   ?r <- (recomendacion (receta ?rec))
+   =>
+   (retract ?r)
+   (assert (propuesta (receta ?rec)))
+   (focus proponer-receta))
+
+
+
