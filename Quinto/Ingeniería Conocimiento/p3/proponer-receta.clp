@@ -23,24 +23,31 @@
 
 
 (defrule aceptar-receta
-(declare (salience 90))
-   (propuesta (receta ?rec-fact))
+   (declare (salience 90))
+   ?p <- (propuesta (receta ?rec-fact))
    (respuesta-cambio ninguno)
+   ?e <- (estado recomendar)
    =>
    (bind ?nombre (fact-slot-value ?rec-fact nombre))
-   (assert (aceptada aceptada))
    (printout t crlf "🎉 ¡Perfecto! Disfruta la receta " ?nombre crlf)
+   (assert (aceptada aceptada))
+   (assert (estado justificar-con-receta))
+   (retract ?e)
+   (retract ?p)
 )
+
 
 ; si quiere cambair la dificultad
 (defrule cambiar-por-dificultad
 (declare (salience 90))
    ?rc <- (respuesta-cambio dificultad)
+   (not (dificultad-preferida ?))
    =>
    (printout t "¿Qué dificultad prefieres? (muy_baja / baja / media / alta): ")
    (bind ?dif (read))
    (assert (dificultad-preferida ?dif))
    (retract ?rc)
+   (assert (justificacion (campo dificultad) (valor ?dif)))
 )
 
 (defrule filtrar-por-dificultad
@@ -55,10 +62,12 @@
 )
 
 (defrule eliminar-dificultad
-(declare (salience 77))
-?d <- (dificultad-preferida ?dif)
-=>
-(retract ?d)
+   (declare (salience 91))
+   ?rc <- (respuesta-cambio dificultad)
+   (dificultad-preferida ?dif)
+   =>
+   (printout t "Ya se ha indicado que se busca la dificultad: " ?dif crlf)
+   (retract ?rc)
 )
 
 
@@ -71,6 +80,7 @@
    (bind ?ing (read))
    (assert (evitar-ingrediente ?ing))
    (retract ?rc)
+   (assert (justificacion (campo alimento-evitado) (valor ?ing)))
 )
 
 (defrule filtrar-por-ingrediente-evitado
@@ -101,6 +111,7 @@
    (bind ?ing (read))
    (assert (ingrediente-preferido ?ing))
    (retract ?rc)
+   (assert (justificacion (campo alimento-priorizado) (valor ?ing)))
 )
 
 (defrule filtrar-por-prioridad
@@ -130,6 +141,7 @@
    (bind ?max (read))
    (assert (duracion-maxima ?max))
    (retract ?rc)
+   (assert (justificacion (campo tiempo-max) (valor ?max)))
 )
 
 (defrule filtrar-por-duracion
@@ -145,11 +157,13 @@
    (retract ?r)
 )
 
-(defrule eliminar-diracion
-(declare (salience 77))
+(defrule eliminar-duracion
+(declare (salience 91))
+?rc <- (respuesta-cambio tiempo)
 ?f <- (duracion-maxima ?max)
 =>
-(retract ?f)
+(printout t "Ya se ha indicado que la duración máxima es de " ?max " minutos."crlf)
+(retract ?rc)
 )
 
 
@@ -160,14 +174,35 @@
    (not (recomendacion (receta ?)))
    (not (aceptada aceptada))
    =>
-   (printout t crlf "❌ No hay recetas que cumplan con esas restricciones." crlf)
-
+   (printout t crlf "⚠️  No se encontró ninguna receta compatible con tus preferencias." crlf)
+   (assert (estado justificar-sin-receta))
    )
 
-; finalizar
+; finalizar y proponer la siguiente receta
 (defrule limpiar-propuesta-y-volver
    ?p <- (propuesta (receta ?))
    =>
    (retract ?p)
    (focus MAIN))
 
+; hacer la justifiación necesaria
+(defrule justificar-con-receta
+(declare (salience 60))
+   ?e <- (estado justificar-con-receta)
+   =>
+   (retract ?e)
+   (printout t crlf "📝 Justificación de la recomendación: " crlf)
+   (do-for-all-facts ((?j justificacion)) TRUE
+      (printout t "- Se tuvo en cuenta el " ?j:campo ": " ?j:valor crlf))
+)
+
+(defrule justificar-sin-receta
+(declare (salience 60))
+   ?e <- (estado justificar-sin-receta)
+   =>
+   (retract ?e)
+   (printout t crlf "📝 Justificación del resultado:" crlf)
+   (do-for-all-facts ((?j justificacion)) TRUE
+      (printout t "- Se tuvo en cuenta el " ?j:campo ": " ?j:valor crlf))
+   (printout t "🔍 Sin embargo, no se encontraron recetas que cumplieran con todas las preferencias indicadas." crlf)
+)

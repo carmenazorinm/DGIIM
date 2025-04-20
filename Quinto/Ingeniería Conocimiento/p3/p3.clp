@@ -4,6 +4,7 @@
 
 ; DEFINO LOS TEMPLATES
 (deftemplate info-faltante (slot campo))
+(deftemplate justificacion (slot campo) (slot valor))
 
 (deftemplate receta
 (slot nombre)   ; necesario
@@ -165,7 +166,6 @@
     =>
     (load "cargar-recetas.clp")
     (load "pedir-informacion.clp")
-    (load "deducir-propiedades.clp")
     (load "obtener-compatibles.clp")
     (load "proponer-receta.clp")
 )
@@ -207,6 +207,4 @@
    (retract ?r)
    (assert (propuesta (receta ?rec)))
    (focus proponer-receta))
-
-
 
