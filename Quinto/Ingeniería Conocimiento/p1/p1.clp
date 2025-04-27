@@ -196,7 +196,7 @@
 ; aquí se lee el alimento
 (defrule preguntar_alimento
 =>
-(printout t crlf "Indica el alimento del que deseas saber la cantidad recomendada: " )
+(printout t crlf "Indica el alimento del que deseas listar alimentos parecidos: " )
 (assert (alimento (read)))
 )
 
@@ -339,7 +339,7 @@
     (declare (salience -7))
     (alimento ?a)
     =>
-    (printout t crlf "También puedes considerar: " crlf)
+    (printout t crlf "Lista de alimentos parecidos: " crlf)
 )
 (defrule listar_alimentos_parecidos
     (declare (salience -8))
