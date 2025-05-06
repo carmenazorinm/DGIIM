@@ -1,22 +1,23 @@
-#include "AGG2.h"
-#include "snimp_problem.h"
+#include "AGG1.h"
+#include <iostream>
+#include <iostream>
 #include <random.hpp>
 #include <algorithm>
 #include <numeric>
 #include <set>
 #include <chrono>
+#include <snimp_problem.h>
 
 using namespace std;
 
-ResultMH AGG_conorden::optimize(Problem *problem, int maxevals) {
-    const int popSize = 30;
-    const double Pc = 0.7;
-    const double Pm = 0.1;
+ResultMH AGG_sinorden::optimize(Problem *problem, int maxevals) {
+    const int popSize = 30; // es M en el seminario
+    const double Pc = 0.7; // probabilidad de cruce
+    const double Pm = 0.1; // probabilidad de mutacion
+    const int cromSize = problem->getSize(); // tamaño del cromosoma
     int evals = 0;
 
-    const int cromSize = problem->getSize();
-
-    // Inicializar poblacion
+    // Inicializar poblacion -> M soluciones aleatorias
     vector<tSolution> poblacion;
     vector<float> fitnesses;
     for (int i = 0; i < popSize; ++i) {
@@ -29,9 +30,19 @@ ResultMH AGG_conorden::optimize(Problem *problem, int maxevals) {
 
     tSolution bestSol = poblacion[0];
     float bestFit = fitnesses[0];
+    // Buscamos la mejor solucion inicial
+    for (int i = 1; i < popSize; ++i) {
+        if (fitnesses[i] > bestFit) {
+            bestFit = fitnesses[i];
+            bestSol = poblacion[i];
+        }
+    }
 
     while (evals < maxevals) {
-        // Seleccion por torneo k=3
+        // mostrar mejor fitness
+        //if(evals %40 == 0) cout << "Eval: " << evals << "Mejor fitness AGG_sinorden: " << bestFit << endl;
+
+        // Torneo k=3 para seleccionar padres -> algunos pueden repetirse y otros no aparecer nunca
         vector<tSolution> padres;
         for (int i = 0; i < popSize; ++i) {
             int i1 = Random::get(0, popSize - 1);
@@ -49,7 +60,7 @@ ResultMH AGG_conorden::optimize(Problem *problem, int maxevals) {
 
         for (int i = 0; i < popSize; i += 2) {
             if (i / 2 < numCruces) {
-                auto [h1, h2] = dynamic_cast<Snimp*>(problem)->crossoverOrden(padres[i], padres[i + 1]);
+                auto [h1, h2] = dynamic_cast<Snimp*>(problem)->crossover2Puntos(padres[i], padres[i + 1]);
                 hijos.push_back(h1);
                 hijos.push_back(h2);
             } else {
@@ -60,7 +71,7 @@ ResultMH AGG_conorden::optimize(Problem *problem, int maxevals) {
 
         // Mutacion (número esperado de individuos a mutar)
         int numMutaciones = round(Pm * popSize);
-        set<int> indices;
+        set<int> indices; // indices de los hijos a mutar
         while (indices.size() < numMutaciones) {
             indices.insert(Random::get(0, popSize - 1));
         }
@@ -69,12 +80,15 @@ ResultMH AGG_conorden::optimize(Problem *problem, int maxevals) {
             hijos[i] = dynamic_cast<Snimp*>(problem)->mutate(hijos[i]);
         }
 
-        // Evaluar nueva poblacion
+        // Evaluar nueva poblacion con límite de evaluaciones
         vector<float> newFitnesses;
+        int hijosEvaluados = 0;
         for (auto &h : hijos) {
+            if (evals >= maxevals) break;
             float fit = problem->fitness(h);
             newFitnesses.push_back(fit);
             evals++;
+            hijosEvaluados++;
             if (fit > bestFit) {
                 bestFit = fit;
                 bestSol = h;

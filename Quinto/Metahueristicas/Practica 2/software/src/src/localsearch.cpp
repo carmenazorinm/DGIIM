@@ -117,9 +117,55 @@ ResultMH BLsmall::optimize(Problem *problem, const int maxevals) {
         evalsSinMejora++;
       }
 
-      // if (evals%20 == 0) {
-      //   cout << fit << " ";
-      // }
+      if (evals >= maxevals || evalsSinMejora >= 20) break;
+    }
+  }
+
+  return ResultMH(sel, bestFitness, evals);
+}
+
+ResultMH BLsmall::optimize(Problem *problem, const tSolution &current, const tFitness fitness, const int maxevals) {
+  assert(maxevals > 0);
+  Snimp *snimp = dynamic_cast<Snimp *>(problem);
+  assert(snimp != nullptr);
+
+  tSolution sel = current;
+  tFitness bestFitness = fitness;
+  int evals = 0;
+  int evalsSinMejora = 0;
+
+  bool improvement = true;
+
+  while (improvement && evals < maxevals && evalsSinMejora < 20) {
+    improvement = false;
+
+    // Nodos que no están en la solución actual
+    auto nodos_totales = snimp->nodos();
+    vector<int> noSel;
+    for (int n : nodos_totales) {
+      if (find(sel.begin(), sel.end(), n) == sel.end()) {
+        noSel.push_back(n);
+      }
+    }
+
+    // Generar vecinos aleatorios por intercambio
+    auto vecinos = generarVecinosAleatorios(sel, noSel);
+
+    for (auto [i, j] : vecinos) {
+      tSolution nueva = sel;
+      nueva[i] = j;
+      tFitness fit = snimp->fitness(nueva);
+      evals++;
+
+      if (fit > bestFitness) {
+        sel = nueva;
+        bestFitness = fit;
+        improvement = true;
+        evalsSinMejora = 0;
+        break;
+      } else {
+        evalsSinMejora++;
+      }
 
       if (evals >= maxevals || evalsSinMejora >= 20) break;
     }

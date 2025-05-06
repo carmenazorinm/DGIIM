@@ -25,4 +25,5 @@ public:
     tSolution mutate(tSolution &sol);
     pair<tSolution, tSolution> crossover2Puntos(tSolution &sol1, tSolution &sol2);
     pair<tSolution, tSolution> crossoverOrden( tSolution &p1,  tSolution &p2);
+    void repararHijo(tSolution &hijo, const vector<int> &todosNodos);
 };

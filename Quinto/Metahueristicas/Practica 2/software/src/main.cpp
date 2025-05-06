@@ -14,6 +14,8 @@
 #include "AGE1.h"
 #include "AGE2.h"
 #include "AM1.h"
+#include "AM2.h"
+#include "AM3.h"
 
 using namespace std;
 
@@ -44,13 +46,18 @@ int main(int argc, char *argv[]) {
   AGE_sinorden age2;
   // Crear el algoritmo AM1
   AM1 am1;
+  // Crear el algoritmo AM2
+  AM2 am2;
+  // Crear el algoritmo AM3
+  AM3 am3;
   vector<pair<string, MH *>> algoritmos = {
     make_pair("AGG_sinorden", &agg1),
     make_pair("AGG_conorden", &agg2),
     make_pair("AGE_sinorden", &age2),
     make_pair("AGE_conorden", &age1),
-    make_pair("AM1", &am1)
-    
+    make_pair("AM1", &am1),
+    make_pair("AM2", &am2),
+    make_pair("AM3", &am3)    
   };
 
   // Ejecutar 5 veces con diferente semilla

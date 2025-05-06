@@ -119,78 +119,83 @@ pair<tSolution, tSolution> Snimp::crossover2Puntos( tSolution &p1, tSolution &p2
     int punto1 = Random::get(0, n - 2);
     int punto2 = Random::get(punto1 + 1, n - 1);
 
+    //cout << "\nCruce entre " << punto1 << " y " << punto2;
+
     tSolution hijo1(n, -1), hijo2(n, -1);
     set<int> usados1, usados2;
 
     // Copiar segmentos cruzados
-    for (int i = punto1; i <= punto2; ++i) {
-        hijo1[i] = p2[i];
-        hijo2[i] = p1[i];
+    for (int i = 0; i < p1.size(); ++i) {
+        if(i >= punto1 && i <= punto2) {
+            hijo1[i] = p2[i];
+            hijo2[i] = p1[i];
+        } else {
+            hijo1[i] = p1[i];
+            hijo2[i] = p2[i];
+        }
         usados1.insert(hijo1[i]);
         usados2.insert(hijo2[i]);
     }
 
-    // Completar resto del hijo1 con genes de p1
-    int idx1 = 0; // índice para recorrer p1
-    for (int i = 0; i < n; ++i) {
-        if (i >= punto1 && i <= punto2) continue; // ya está copiado
-        while (idx1 < n && usados1.count(p1[idx1])) ++idx1; // avanzar hasta encontrar un gen no usado
-        if (idx1 < n) {
-            hijo1[i] = p1[idx1];
-            ++idx1; 
-        }
-    }
+    // Completar los hijos con nodos no usados
+    vector<int> todosNodos = nodos();
+    repararHijo(hijo1, todosNodos);
+    repararHijo(hijo2, todosNodos);
 
-    // Completar resto del hijo2 con genes de p2
-    int idx2 = 0;
-    for (int i = 0; i < n; ++i) {
-        if (i >= punto1 && i <= punto2) continue;
-        while (idx2 < n && usados2.count(p2[idx2])) ++idx2;
-        if (idx2 < n) {
-            hijo2[i] = p2[idx2];
-            ++idx2;
-        }
-    }
-
-    // Reparar hijo1 si quedan -1
-    if (count(hijo1.begin(), hijo1.end(), -1) > 0) {
-        vector<int> restantes;
-        for (int node : nodos()) {
-            if (!usados1.count(node)) restantes.push_back(node);
-        }
-        Random::shuffle(restantes.begin(), restantes.end());
-
-        int r = 0;
-        for (int &v : hijo1) {
-            if (v == -1 && r < restantes.size()) {
-                v = restantes[r++];
-            }
-        }
-    }
-
-    // Reparar hijo2 si quedan -1
-    if (count(hijo2.begin(), hijo2.end(), -1) > 0) {
-        vector<int> restantes;
-        for (int node : nodos()) {
-            if (!usados2.count(node)) restantes.push_back(node);
-        }
-        Random::shuffle(restantes.begin(), restantes.end());
-
-        int r = 0;
-        for (int &v : hijo2) {
-            if (v == -1 && r < restantes.size()) {
-                v = restantes[r++];
-            }
-        }
-    }
+    // imprimir padres e hijos
+    // cout << "\nPadre 1: " << p1.size() << " nodos: ";
+    // for (int i : p1) cout << i << " ";
+    // cout << "\nPadre 2: " << p2.size() << " nodos: ";
+    // for (int i : p2) cout << i << " ";
+    // cout << "\nHijo 1: " << hijo1.size() << " nodos: ";
+    // for (int i : hijo1) cout << i << " ";
+    // cout << "\nHijo 2: " << hijo2.size() << " nodos: ";
+    // for (int i : hijo2) cout << i << " " ;
+    // cout << endl;  
 
     return {hijo1, hijo2};
 }
 
+void Snimp::repararHijo(tSolution &hijo, const vector<int> &todosNodos) {
+    set<int> vistos;
+    vector<int> duplicados;
+
+    // Identificar duplicados
+    for (int v : hijo) {
+        if (vistos.count(v))
+            duplicados.push_back(v);
+        else
+            vistos.insert(v);
+    }
+
+    // Obtener nodos no usados
+    vector<int> disponibles;
+    for (int nodo : todosNodos) {
+        if (!vistos.count(nodo)) {
+            disponibles.push_back(nodo);
+        }
+    }
+
+    // Sustituir los duplicados por nodos disponibles
+    int r = 0;
+    set<int> yaCambiados;
+    for (int &v : hijo) {
+        if (count(hijo.begin(), hijo.end(), v) > 1 && !yaCambiados.count(v)) {
+            if (r < disponibles.size()) {
+                v = disponibles[r++];
+            }
+            yaCambiados.insert(v); // Para no sustituir dos veces el mismo valor
+        }
+    }
+}
+
 
 pair<tSolution, tSolution> Snimp::crossoverOrden( tSolution &p1,  tSolution &p2) {
-    set<int> conjunto(p1.begin(), p1.end());
-    conjunto.insert(p2.begin(), p2.end());
+    vector<int> conjunto(p1.begin(), p1.end());
+    for (int i : p2) {
+        conjunto.push_back(i);
+    }
+
 
     vector<int> ordenado(conjunto.begin(), conjunto.end());
     sort(ordenado.begin(), ordenado.end());
@@ -201,26 +206,6 @@ pair<tSolution, tSolution> Snimp::crossoverOrden( tSolution &p1,  tSolution &p2)
             h1.push_back(ordenado[i]);
         else if (h2.size() < solSize)
             h2.push_back(ordenado[i]);
-    }
-
-    // Si faltan nodos, completar aleatoriamente
-    vector<int> disponibles = nodos();
-    Random::shuffle(disponibles.begin(), disponibles.end());
-
-    set<int> usados1(h1.begin(), h1.end());
-    for (int node : disponibles) {
-        if (h1.size() < solSize && !usados1.count(node)) {
-            h1.push_back(node);
-            usados1.insert(node);
-        }
-    }
-
-    set<int> usados2(h2.begin(), h2.end());
-    for (int node : disponibles) {
-        if (h2.size() < solSize && !usados2.count(node)) {
-            h2.push_back(node);
-            usados2.insert(node);
-        }
     }
 
     return {h1, h2};

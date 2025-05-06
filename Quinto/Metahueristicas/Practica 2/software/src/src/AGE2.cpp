@@ -1,4 +1,5 @@
 #include "AGE2.h"
+#include <iostream>
 #include <random.hpp>
 #include <algorithm>
 #include <numeric>
@@ -27,27 +28,36 @@ ResultMH AGE_sinorden::optimize(Problem *problem, int maxevals) {
     tSolution bestSol = poblacion[0];
     float bestFit = fitnesses[0];
 
+    // Buscamos la mejor solucion inicial
+    for (int i = 1; i < popSize; ++i) {
+        if (fitnesses[i] > bestFit) {
+            bestFit = fitnesses[i];
+            bestSol = poblacion[i];
+        }
+    }
+
     while (evals < maxevals) {
+        //if(evals %40 == 0) cout <<"Eval: " << evals <<  "Mejor fitness AGE_sinorden: " << bestFit << endl;
         // Seleccion de 2 padres por torneo k=3
-        auto torneo = [&](const vector<float>& fits) -> int {
+        vector<tSolution> padres;
+        for (int i = 0; i < 2; ++i) {
             int i1 = Random::get(0, popSize - 1);
             int i2 = Random::get(0, popSize - 1);
             int i3 = Random::get(0, popSize - 1);
-            int best = (fits[i1] > fits[i2]) ? i1 : i2;
-            return (fits[best] > fits[i3]) ? best : i3;
-        };
 
-        int idx1 = torneo(fitnesses);
-        int idx2 = torneo(fitnesses);
+            int best = (fitnesses[i1] > fitnesses[i2]) ? i1 : i2;
+            best = (fitnesses[best] > fitnesses[i3]) ? best : i3;
+            padres.push_back(poblacion[best]);
+        }
 
-        // Cruce en dos puntos sin orden con reparacion (Pc = 1 en AGE)
-        auto [h1, h2] = dynamic_cast<Snimp*>(problem)->crossover2Puntos(poblacion[idx1], poblacion[idx2]);
+        // Cruce con orden (Pc = 1 en AGE)
+        auto [h1, h2] = dynamic_cast<Snimp*>(problem)->crossover2Puntos(padres[0], padres[1]);
 
         // Mutacion con Pm
-        if (Random::get(0.0, 1.0) < Pm) {
+        if (Random::get<double>(0.0, 1.0) < Pm) {
             h1 = dynamic_cast<Snimp*>(problem)->mutate(h1);
         }
-        if (Random::get(0.0, 1.0) < Pm) {
+        if (Random::get<double>(0.0, 1.0) < Pm) {
             h2 = dynamic_cast<Snimp*>(problem)->mutate(h2);
         }
 

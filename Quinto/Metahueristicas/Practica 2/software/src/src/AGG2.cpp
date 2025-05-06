@@ -1,6 +1,6 @@
-#include "AM1.h"
+#include "AGG2.h"
+#include <iostream>
 #include "snimp_problem.h"
-#include "blsmall.h"
 #include <random.hpp>
 #include <algorithm>
 #include <numeric>
@@ -9,13 +9,11 @@
 
 using namespace std;
 
-ResultMH AM1::optimize(Problem *problem, int maxevals) {
+ResultMH AGG_conorden::optimize(Problem *problem, int maxevals) {
     const int popSize = 30;
     const double Pc = 0.7;
     const double Pm = 0.1;
-    const int generacionesBL = 10;
     int evals = 0;
-    int generation = 0;
 
     const int cromSize = problem->getSize();
 
@@ -33,8 +31,16 @@ ResultMH AM1::optimize(Problem *problem, int maxevals) {
     tSolution bestSol = poblacion[0];
     float bestFit = fitnesses[0];
 
+    // Buscamos la mejor solucion inicial
+    for (int i = 1; i < popSize; ++i) {
+        if (fitnesses[i] > bestFit) {
+            bestFit = fitnesses[i];
+            bestSol = poblacion[i];
+        }
+    }
+
     while (evals < maxevals) {
-        generation++;
+        //if(evals %40 == 0) cout << "Eval: " << evals << "Mejor fitness AGG_conorden: " << bestFit << endl;
 
         // Seleccion por torneo k=3
         vector<tSolution> padres;
@@ -74,23 +80,15 @@ ResultMH AM1::optimize(Problem *problem, int maxevals) {
             hijos[i] = dynamic_cast<Snimp*>(problem)->mutate(hijos[i]);
         }
 
-        // Aplicar BL cada 10 generaciones sobre todos los hijos
-        if (generation % generacionesBL == 0) {
-            for (int i = 0; i < popSize; ++i) {
-                BLsmall bl;
-                ResultMH resultBL = bl.optimize(problem, 20);
-                hijos[i] = resultBL.solution;
-                evals += resultBL.evaluations;
-            }
-        }
-
-
-        // Evaluar nueva poblacion
+        // Evaluar nueva poblacion con limite en maxevals
         vector<float> newFitnesses;
+        int hijosEvaluados = 0;
         for (auto &h : hijos) {
+            if (evals >= maxevals) break;
             float fit = problem->fitness(h);
             newFitnesses.push_back(fit);
             evals++;
+            hijosEvaluados++;
             if (fit > bestFit) {
                 bestFit = fit;
                 bestSol = h;

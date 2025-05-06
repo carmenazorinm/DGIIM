@@ -1,19 +1,24 @@
-#include "AGG1.h"
+#include "AM1.h"
+#include <iostream>
+#include "snimp_problem.h"
+#include "blsmall.h"
 #include <random.hpp>
 #include <algorithm>
 #include <numeric>
 #include <set>
 #include <chrono>
-#include <snimp_problem.h>
 
 using namespace std;
 
-ResultMH AGG_sinorden::optimize(Problem *problem, int maxevals) {
+ResultMH AM1::optimize(Problem *problem, int maxevals) {
     const int popSize = 30;
     const double Pc = 0.7;
     const double Pm = 0.1;
-    const int cromSize = problem->getSize();
+    const int generacionesBL = 10;
     int evals = 0;
+    int generation = 0;
+
+    const int cromSize = problem->getSize();
 
     // Inicializar poblacion
     vector<tSolution> poblacion;
@@ -29,8 +34,19 @@ ResultMH AGG_sinorden::optimize(Problem *problem, int maxevals) {
     tSolution bestSol = poblacion[0];
     float bestFit = fitnesses[0];
 
+    // Buscamos la mejor solucion inicial
+    for (int i = 1; i < popSize; ++i) {
+        if (fitnesses[i] > bestFit) {
+            bestFit = fitnesses[i];
+            bestSol = poblacion[i];
+        }
+    }
+
     while (evals < maxevals) {
-        // Torneo k=3 para seleccionar padres
+        //if(evals %40 == 0) cout <<"Eval: " << evals <<  "Mejor fitness AM1: " << bestFit << endl;
+        generation++;
+
+        // Seleccion por torneo k=3
         vector<tSolution> padres;
         for (int i = 0; i < popSize; ++i) {
             int i1 = Random::get(0, popSize - 1);
@@ -48,7 +64,7 @@ ResultMH AGG_sinorden::optimize(Problem *problem, int maxevals) {
 
         for (int i = 0; i < popSize; i += 2) {
             if (i / 2 < numCruces) {
-                auto [h1, h2] = dynamic_cast<Snimp*>(problem)->crossover2Puntos(padres[i], padres[i + 1]);
+                auto [h1, h2] = dynamic_cast<Snimp*>(problem)->crossoverOrden(padres[i], padres[i + 1]);
                 hijos.push_back(h1);
                 hijos.push_back(h2);
             } else {
@@ -71,12 +87,27 @@ ResultMH AGG_sinorden::optimize(Problem *problem, int maxevals) {
         // Evaluar nueva poblacion
         vector<float> newFitnesses;
         for (auto &h : hijos) {
+            if (evals >= maxevals) break;
             float fit = problem->fitness(h);
             newFitnesses.push_back(fit);
             evals++;
             if (fit > bestFit) {
                 bestFit = fit;
                 bestSol = h;
+            }
+        }
+
+        // Aplicar BL cada 10 generaciones sobre todos los hijos
+        if (generation % generacionesBL == 0) {
+            for (int i = 0; i < popSize; ++i) {
+                if (evals >= maxevals) break;
+                BLsmall bl;
+                ResultMH resultBL = bl.optimize(problem, hijos[i], newFitnesses[i], min(maxevals - evals, 20));
+                if(resultBL.fitness > newFitnesses[i]) {
+                    hijos[i] = resultBL.solution;
+                    newFitnesses[i] = resultBL.fitness;
+                }
+                evals += resultBL.evaluations;
             }
         }
 
