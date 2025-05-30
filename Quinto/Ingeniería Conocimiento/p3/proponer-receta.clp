@@ -1,208 +1,147 @@
 (defmodule proponer-receta (export ?ALL) (import MAIN ?ALL))
 
-(defrule proponer-receta-inicial
-(declare (salience 100))
-   (propuesta (receta ?rec-fact))
+; vemos si se busca alguna dificultad especifica
+(deftemplate dificultad-encontrada
+   (slot valor))
+
+; se cuentan si hay dificultades distintas para pregntar por la dificultad o no
+(defrule buscar-dificultades-distintas
+   (declare (salience 100))
+   ?r <- (recomendacion (receta ?rec-fact))
    =>
-   (bind ?nombre       (fact-slot-value ?rec-fact nombre))
-   (bind ?ingredientes (fact-slot-value ?rec-fact ingredientes))
-   (bind ?dificultad   (fact-slot-value ?rec-fact dificultad))
-   (bind ?duracion     (fact-slot-value ?rec-fact duracion))
+   (assert (dificultad-encontrada (valor (fact-slot-value ?rec-fact dificultad)))))
 
-   (printout t crlf "🍽️ ¿Qué te parece esta receta?: " ?nombre crlf)
-   (printout t "📋 Ingredientes: " (implode$ ?ingredientes) crlf)
-   (printout t "📊 Dificultad: " ?dificultad crlf)
-   (printout t "⏱️ Tiempo estimado: " ?duracion crlf)
-
-   (printout t crlf "¿Te gusta o quieres cambiar algo?" crlf)
-   (printout t "(Responde: ninguno / dificultad / evitar alimento / priorizar alimento / tiempo): ")
-   (bind ?resp (lowcase (read)))
-   (assert (respuesta-cambio ?resp))
-   
-   )
-
-
-(defrule aceptar-receta
+; si hay recetas compatbles con dificultades distintas -> se pregunta por la dificultad
+(defrule preguntar-si-cambiar-dificultad
    (declare (salience 90))
-   ?p <- (propuesta (receta ?rec-fact))
-   (respuesta-cambio ninguno)
-   ?e <- (estado recomendar)
+   (not (respuesta-cambio dificultad))
+   (dificultad-encontrada (valor ?v1))
+   (dificultad-encontrada (valor ?v2&:(neq ?v1 ?v2))) ; si hay al menos dos dificultades distintas
    =>
-   (bind ?nombre (fact-slot-value ?rec-fact nombre))
-   (printout t crlf "🎉 ¡Perfecto! Disfruta la receta " ?nombre crlf)
-   (assert (aceptada aceptada))
-   (assert (estado justificar-con-receta))
-   (retract ?e)
-   (retract ?p)
+   ;(printout t crlf " Se han encontrado recetas con distintos niveles de dificultad." crlf)
+   (printout t "¿Quieres filtrar por un nivel de dificultad específico? Estas son las opciones disponibles:" crlf)
+   (do-for-all-facts ((?d dificultad-encontrada)) TRUE
+      (printout t " - " ?d:valor crlf))
+   (printout t "Escribe una de las opciones anteriores o 'no' para continuar sin filtrar: ")
+   (bind ?resp (lowcase (read)))
+   (if (member$ ?resp (create$ baja muy_baja media alta)) then
+      (assert (dificultad-preferida ?resp))
+      (assert (justificacion (campo dificultad) (valor ?resp)))
+   else
+      (if (eq ?resp "no") then
+         (assert (dificultad-preferida no))
+      else
+         (printout t "Opción no válida. No se tendrá en cuenta la dificultad." crlf)
+         (assert (dificultad-preferida no))))
+   (assert (respuesta-cambio dificultad))
 )
 
 
-; si quiere cambair la dificultad
-(defrule cambiar-por-dificultad
-(declare (salience 90))
-   ?rc <- (respuesta-cambio dificultad)
-   (not (dificultad-preferida ?))
-   =>
-   (printout t "¿Qué dificultad prefieres? (muy_baja / baja / media / alta): ")
-   (bind ?dif (read))
-   (assert (dificultad-preferida ?dif))
-   (retract ?rc)
-   (assert (justificacion (campo dificultad) (valor ?dif)))
-)
-
-(defrule filtrar-por-dificultad
-   (declare (salience 80))
+(defrule filtrar-por-dificultad-seleccionada
+   (declare (salience 90))
    (dificultad-preferida ?dif)
    ?r <- (recomendacion (receta ?rec-fact))
+   (test (neq ?dif no)) ; si se ha respondido no -> no se hace nada
    (test (neq (fact-slot-value ?rec-fact dificultad) ?dif))
    =>
    (bind ?nombre (fact-slot-value ?rec-fact nombre))
-   (printout t "❌ Elimino la receta por DIFICULTAD: " ?nombre crlf)
+   ;(printout t ":( Se descarta la receta '" ?nombre "' por no tener dificultad " ?dif crlf)
    (retract ?r)
 )
 
-(defrule eliminar-dificultad
-   (declare (salience 91))
-   ?rc <- (respuesta-cambio dificultad)
+(defrule mostrar-recetas-compatibles
+   (declare (salience 86))
    (dificultad-preferida ?dif)
+   (recomendacion (receta ?r))
    =>
-   (printout t "Ya se ha indicado que se busca la dificultad: " ?dif crlf)
-   (retract ?rc)
-)
-
-
-; si quiere evitar un alimento
-(defrule cambiar-por-evitar
-(declare (salience 90))
-   ?rc <- (respuesta-cambio evitar)
-   =>
-   (printout t "¿Qué ingrediente quieres evitar?: ")
-   (bind ?ing (read))
-   (assert (evitar-ingrediente ?ing))
-   (retract ?rc)
-   (assert (justificacion (campo alimento-evitado) (valor ?ing)))
-)
-
-(defrule filtrar-por-ingrediente-evitado
-   (declare (salience 80))
-   (evitar-ingrediente ?ing)
-   ?r <- (recomendacion (receta ?rec-fact))
-   (test (member$ ?ing (fact-slot-value ?rec-fact ingredientes)))
-   =>
-   (bind ?nombre (fact-slot-value ?rec-fact nombre))
-   (printout t "❌ Elimino la receta por INGREDIENTE evitado: " ?nombre crlf)
-   (retract ?r)
-)
-
-(defrule eliminar-evitar-ing
-(declare (salience 77))
-?e <- (evitar-ingrediente ?ing)
-=>
-(retract ?e)
-)
-
-
-; si quiere priorizar un ingrediente
-(defrule cambiar-por-priorizar
-   (declare (salience 90))
-   ?rc <- (respuesta-cambio priorizar)
-   =>
-   (printout t "¿Qué ingrediente te gusta especialmente?: ")
-   (bind ?ing (read))
-   (assert (ingrediente-preferido ?ing))
-   (retract ?rc)
-   (assert (justificacion (campo alimento-priorizado) (valor ?ing)))
-)
-
-(defrule filtrar-por-prioridad
-   (declare (salience 80))
-   (ingrediente-preferido ?ing)
-   ?r <- (recomendacion (receta ?rec-fact))
-   (test (not (member$ ?ing (fact-slot-value ?rec-fact ingredientes))))
-   =>
-   (bind ?nombre (fact-slot-value ?rec-fact nombre))
-   (printout t "❌ Elimino la receta por NO tener el ingrediente preferido (" ?ing "): " ?nombre crlf)
-   (retract ?r)
-)
-
-(defrule limpiar-ingrediente-preferido
-   (declare (salience 77))
-   ?e <- (ingrediente-preferido ?)
-   =>
-   (retract ?e)
-)
-
-; si quiere filtrar por tiempo
-(defrule cambiar-por-tiempo
-(declare (salience 90))
-   ?rc <- (respuesta-cambio tiempo)
-   =>
-   (printout t "¿Cuál es la duración máxima que prefieres (en minutos)?: ")
-   (bind ?max (read))
-   (assert (duracion-maxima ?max))
-   (retract ?rc)
-   (assert (justificacion (campo tiempo-max) (valor ?max)))
-)
-
-(defrule filtrar-por-duracion
-   (declare (salience 80))
-   (duracion-maxima ?max)
-   ?r <- (recomendacion (receta ?rec-fact))
-   (test (numberp (eval (sub-string 1 (- (str-length (fact-slot-value ?rec-fact duracion)) 1) (fact-slot-value ?rec-fact duracion)))))
-   (test (> (eval (sub-string 1 (- (str-length (fact-slot-value ?rec-fact duracion)) 1) (fact-slot-value ?rec-fact duracion))) ?max))
-   =>
-   (bind ?nombre (fact-slot-value ?rec-fact nombre))
-   (bind ?dur-str (fact-slot-value ?rec-fact duracion))
-   (printout t "❌ Elimino la receta por DURACIÓN: " ?nombre " (" ?dur-str ")" crlf)
-   (retract ?r)
-)
-
-(defrule eliminar-duracion
-(declare (salience 91))
-?rc <- (respuesta-cambio tiempo)
-?f <- (duracion-maxima ?max)
-=>
-(printout t "Ya se ha indicado que la duración máxima es de " ?max " minutos."crlf)
-(retract ?rc)
-)
-
-
-; si no quedan recetas compatibles con las especificaciones
-(defrule sin-recetas-disponibles
-(declare (salience 70))
-   ;?e <- (estado recomendar)
-   (not (recomendacion (receta ?)))
-   (not (aceptada aceptada))
-   =>
-   (printout t crlf "⚠️  No se encontró ninguna receta compatible con tus preferencias." crlf)
-   (assert (estado justificar-sin-receta))
+   (bind ?nombre (fact-slot-value ?r nombre))
+   (printout t "✅ Receta compatible: " ?nombre crlf)
    )
 
-; finalizar y proponer la siguiente receta
-(defrule limpiar-propuesta-y-volver
-   ?p <- (propuesta (receta ?))
+; si solo hay una receta compatible -> se propone directamente
+(defrule proponer-si-solo-una-recomendacion
+   (declare (salience 85))
+   (not (propuesta (receta ?)))
+   (recomendacion (receta ?rec))
+   (not (recomendacion (receta ?otra&:(neq ?otra ?rec)))) ; solo una recomendación
    =>
+   (bind ?nombre       (fact-slot-value ?rec nombre))
+
+   (assert (propuesta (receta ?rec)))
+
+   (printout t crlf "Propuesta basada en las especificaciones indicadas: " ?nombre crlf))
+
+
+; ahora vemos si se quiere priorizar algun ingrediente
+(defrule preguntar-por-prioridad-ingrediente
+   (declare (salience 80))
+   (not (ingrediente-priorizado))
+   (not (propuesta (receta ?)))
+   (exists (recomendacion (receta ?))) ; se activa solo una vez si existe alguna recomendación
+   =>
+   (printout t crlf "¿Te gustaría priorizar algún ingrediente en la receta? (Escribe 'ninguno' si no): ")
+   (bind ?resp (lowcase (read)))
+   (if (neq ?resp "ninguno") then
+      (assert (ingrediente-priorizado ?resp))
+   else
+      (assert (ingrediente-priorizado ninguno)))
+
+)
+
+(defrule marcar-recetas-con-ingrediente-priorizado
+   (declare (salience 75))
+   (ingrediente-priorizado ?ing)
+   (test (neq ?ing ninguno))
+   (recomendacion (receta ?rec-fact))
+   (test (or
+           (member$ ?ing (fact-slot-value ?rec-fact ingredientes))
+           (neq FALSE
+                (str-index (lowcase ?ing)
+                           (lowcase (implode$ (fact-slot-value ?rec-fact ingredientes)))))))
+   =>
+   (assert (receta-preferida ?rec-fact))
+   (assert (justificacion (campo ingrediente-priorizado) (valor ?ing)))
+)
+
+(defrule proponer-receta-prioritaria
+(declare (salience 73))
+   ?p <- (receta-preferida ?rec) ; si hay alguna receta con el ingrediente a priorizar
+   (not (propuesta (receta ?))) ; si todavía no se ha propuesto ninguna receta
+   =>
+   (bind ?nombre       (fact-slot-value ?rec nombre))
+
+   (assert (propuesta (receta ?rec)))
    (retract ?p)
-   (focus MAIN))
 
-; hacer la justifiación necesaria
-(defrule justificar-con-receta
-(declare (salience 60))
-   ?e <- (estado justificar-con-receta)
+   (printout t crlf "Propuesta basada en tu ingrediente preferido:" ?nombre crlf))
+
+; si no se ha hecho ninguna propuesta todavia -> que se haga
+(defrule proponer-cualquier-receta
+   (declare (salience 70))
+   (not (propuesta (receta ?)))
+   ?r <- (recomendacion (receta ?rec))
    =>
-   (retract ?e)
-   (printout t crlf "📝 Justificación de la recomendación: " crlf)
+   (bind ?nombre       (fact-slot-value ?rec nombre))
+
+   (assert (propuesta (receta ?rec)))
+   (retract ?r)
+
+   (printout t crlf "No se encuentran recetas con el ingrediente indicado. Te propongo esta receta:" ?nombre crlf)
+)
+
+; Mostrar justificación de la receta propuesta
+(defrule justificar-recomendacion
+   (declare (salience 50))
+   ?p <- (propuesta (receta ?rec))
+   =>
+   (bind ?nombre       (fact-slot-value ?rec nombre))
+   (bind ?ingredientes (fact-slot-value ?rec ingredientes))
+
+   (printout t crlf " Justificación de la recomendación de la receta: " ?nombre crlf)
+   (printout t "- Ingredientes: " (implode$ ?ingredientes) crlf)
+
    (do-for-all-facts ((?j justificacion)) TRUE
       (printout t "- Se tuvo en cuenta el " ?j:campo ": " ?j:valor crlf))
 )
 
-(defrule justificar-sin-receta
-(declare (salience 60))
-   ?e <- (estado justificar-sin-receta)
-   =>
-   (retract ?e)
-   (printout t crlf "📝 Justificación del resultado:" crlf)
-   (do-for-all-facts ((?j justificacion)) TRUE
-      (printout t "- Se tuvo en cuenta el " ?j:campo ": " ?j:valor crlf))
-   (printout t "🔍 Sin embargo, no se encontraron recetas que cumplieran con todas las preferencias indicadas." crlf)
-)
+

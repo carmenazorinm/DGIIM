@@ -1,3 +1,5 @@
+; CARMEN AZORÍN MARTÍ
+
 ;;;; AÑADIR LA INFORMACION DE AL MENOS 2 RECETAS NUEVAS al archivo compartido recetas.txt (https://docs.google.com/document/d/15zLHIeCEUplwsxUxQU66LsyKPY9n9p5v1bmi8M85YlU/edit?usp=sharing)
 ;;;;;recoger los datos de https://www.recetasgratis.net  en el siguiente formato
 (deftemplate receta
@@ -482,7 +484,7 @@
 (deffunction ingredientes_postre ($?ingredientes)
    (bind ?count 0)
 
-   ;; Si hay al menos un ingrediente que sea carne/pescado/marisco → false
+   ;; Si hay al menos un ingrediente que sea carne/pescado/marisco -> false
    (foreach ?ing $?ingredientes
       (if (or
             (any-factp ((?f es-carne)) (eq ?f:name ?ing))
@@ -491,7 +493,7 @@
          then
             (return FALSE)))
 
-   ;; Si hay al menos 2 ingredientes de repostería → true
+   ;; Si hay al menos 2 ingredientes de repostería -> true
    (foreach ?ing $?ingredientes
       (if (any-factp ((?f es-reposteria)) (eq ?f:name ?ing))
          then
@@ -717,19 +719,19 @@
 
 ;; AHORA PEDIR LA RECETA Y DECIR LAS PROPIEDADES
 
-; Regla para solicitar el nombre de la receta
+; para solicitar el nombre de la receta
 (defrule solicitar-nombre-receta
 (declare (salience 10))
    =>
    (printout t "=================================" crlf)
    (printout t "Introduce el nombre de la receta: ")
    (bind ?nombre (readline))
-   (assert (receta_solicitada ?nombre))  ; Almacena el nombre de la receta solicitada
+   (assert (receta_solicitada ?nombre))  
    ;(printout t "Buscando la receta: " ?nombre crlf)
    (assert (Tarea recetaNoEncontrada))
 )
 
-; Regla para verificar si la receta existe
+; verificar si la receta existe
 (defrule verificar-existencia-receta
 (declare (salience 9))
    (receta (nombre ?nombre))
@@ -740,7 +742,7 @@
    (retract ?f)
 )
 
-; Regla para manejar el caso en que la receta no exista
+; manejar el caso en que la receta no exista
 (defrule receta-no-encontrada
 (declare (salience 8))
    (Tarea recetaNoEncontrada)

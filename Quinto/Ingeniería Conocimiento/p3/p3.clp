@@ -1,3 +1,5 @@
+; CARMEN AZORÍN MARTÍ
+
 (defmodule MAIN
    (export ?ALL)
 )
@@ -201,10 +203,10 @@
 (defrule buscar-siguiente-propuesta
 (declare (salience 70))
    (estado recomendar)
-   (not (propuesta (receta ?)))
-   ?r <- (recomendacion (receta ?rec))
+   ;(not (propuesta (receta ?)))
+   ;?r <- (recomendacion (receta ?rec))
    =>
-   (retract ?r)
-   (assert (propuesta (receta ?rec)))
+   ;(retract ?r)
+   ;(assert (propuesta (receta ?rec)))
    (focus proponer-receta))
 

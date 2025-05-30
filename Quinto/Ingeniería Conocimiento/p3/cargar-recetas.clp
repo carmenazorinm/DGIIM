@@ -1,5 +1,7 @@
 (defmodule cargar-recetas (import MAIN ?ALL) (export ?ALL))
 
+; ESTE MÓDULO SERÍA EL DE obtener-propiedades, le he cambiado el nombre porque es el mismo archivo que el de la p2
+
 (defrule carga_recetas
 (declare (salience 1000))
 =>

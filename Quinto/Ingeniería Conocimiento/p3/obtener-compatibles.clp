@@ -6,7 +6,7 @@
    (receta (nombre ?n))
    (not (propiedad_receta (tipo es_vegana) (receta ?n)))
    =>
-   ;(printout t "✅ Receta NO compatible por VEGANA: " ?n  crlf)
+   ;(printout t "Receta NO compatible por VEGANA: " ?n  crlf)
    (assert (no_compatible ?n)))
 
 (defrule marcar-no-compatible-por-vegetariana
@@ -15,7 +15,7 @@
    (receta (nombre ?n))
    (not (propiedad_receta (tipo es_vegetariana) (receta ?n)))
    =>
-   ;(printout t "✅ Receta NO compatible por VEGETARIANA: " ?n  crlf)
+   ;(printout t "Receta NO compatible por VEGETARIANA: " ?n  crlf)
    (assert (no_compatible ?n)))
 
 (defrule marcar-no-compatible-por-sin-gluten
@@ -24,7 +24,7 @@
    (receta (nombre ?n))
    (not (propiedad_receta (tipo es_sin_gluten) (receta ?n)))
    =>
-   ;(printout t "✅ Receta NO compatible por SIN GLUTEN: " ?n  crlf)
+   ;(printout t "Receta NO compatible por SIN GLUTEN: " ?n  crlf)
    (assert (no_compatible ?n)))
 
 (defrule marcar-no-compatible-por-sin-lactosa
@@ -33,7 +33,7 @@
    (receta (nombre ?n))
    (not (propiedad_receta (tipo es_sin_lactosa) (receta ?n)))
    =>
-   ;(printout t "✅ Receta NO compatible por SIN LACTOSA: " ?n crlf)
+   ;(printout t "Receta NO compatible por SIN LACTOSA: " ?n crlf)
    (assert (no_compatible ?n)))
 
 (defrule marcar-no-compatible-por-picante
@@ -42,7 +42,7 @@
    (receta (nombre ?n))
    (not (propiedad_receta (tipo es_picante) (receta ?n)))
    =>
-   ;(printout t "✅ Receta NO compatible por PICANTE: " ?n   crlf)
+   ;(printout t "Receta NO compatible por PICANTE: " ?n   crlf)
    (assert (no_compatible ?n))
 )
 
@@ -52,22 +52,20 @@
    (receta (nombre ?n))
    (propiedad_receta (tipo es_picante) (receta ?n))
    =>
-   ;(printout t "✅ Receta NO compatible por PICANTE: " ?n   crlf)
+   ;(printout t "Receta NO compatible por PICANTE: " ?n   crlf)
    (assert (no_compatible ?n))
 )
 
-;; ❌ No compatible si NO contiene desayuno_merienda ni entrante
 (defrule no-compatible-por-momento-desayuno
    (declare (salience 89))
    (momento (tipo desayuno))
    (receta (nombre ?n) (tipo_plato $?tipos))
    (test (not (member$ desayuno_merienda $?tipos)))
    =>
-   ;(printout t "❌ Receta NO compatible por DESAYUNO: " ?n " (" $?tipos ")" crlf)
+   ;(printout t "Receta NO compatible por DESAYUNO: " ?n " (" $?tipos ")" crlf)
    (assert (no_compatible ?n))
 )
 
-;; ❌ No compatible si NO contiene plato_principal ni primer_plato
 (defrule no-compatible-por-momento-comida
    (declare (salience 89))
    (momento (tipo comida))
@@ -76,22 +74,21 @@
                   (member$ primer_plato $?tipos)
                   (member$ entrante $?tipos))))
    =>
-   ;(printout t "❌ Receta NO compatible por COMIDA: " ?n " (" $?tipos ")" crlf)
+   ;(printout t "Receta NO compatible por COMIDA: " ?n " (" $?tipos ")" crlf)
    (assert (no_compatible ?n))
 )
 
-;; ❌ No compatible si NO contiene postre
 (defrule no-compatible-por-momento-postre
    (declare (salience 89))
    (momento (tipo postre))
    (receta (nombre ?n) (tipo_plato $?tipos))
    (test (not (member$ postre $?tipos)))
    =>
-   ;(printout t "❌ Receta NO compatible por POSTRE: " ?n " (" $?tipos ")" crlf)
+   ;(printout t "Receta NO compatible por POSTRE: " ?n " (" $?tipos ")" crlf)
    (assert (no_compatible ?n))
 )
 
-
+; marcamos la recetas compatibles gracias a las no_compatibles
 (defrule marcar-compatible
 (declare(salience 80))
    (receta (nombre ?n))
@@ -99,6 +96,7 @@
    =>
    (assert (compatible ?n)))
 
+; añadimos cada receta comptabible al fact recomendacion
 (defrule mostrar-recetas-compatibles
    (declare (salience 70))
    (compatible ?n)
@@ -108,9 +106,10 @@
    (printout t "✅ Receta compatible: " ?n crlf)
    )
 
+; esta regla no se ejecutará nunca -> pq no esta la opcion de que no haya recetas disponibles
 (defrule sin-recetas-compatibles
    (declare (salience 60))
    (not (compatible ?))
    =>
-   (printout t "⚠️  No se encontró ninguna receta compatible con tus preferencias." crlf))
+   (printout t " No se encontró ninguna receta compatible con tus preferencias." crlf))
 
