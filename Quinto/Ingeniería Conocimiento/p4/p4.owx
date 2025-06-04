@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/carmen/ontologies/2025/5/untitled-ontology-7"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/carmen/ontologies/2025/5/untitled-ontology-7">
+    <Prefix name="" IRI="http://www.semanticweb.org/carmen/ontologies/2025/5/untitled-ontology-7/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#alimento"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#alimento_alto_azucar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#dieta"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#paciente"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#persona"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#persona_en_riesgo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#consume"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#sigue_dieta"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tiene_azucar"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tiene_calorias"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#brocoli"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#cocacola"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#juan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#pedro"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#alimento_alto_azucar"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#alimento"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#tiene_azucar"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">20</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#paciente"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#persona"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#sigue_dieta"/>
+                <Class IRI="#dieta"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#persona_en_riesgo"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#persona"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#consume"/>
+                <Class IRI="#alimento_alto_azucar"/>
+            </ObjectSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#persona_en_riesgo"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#consume"/>
+            <Class IRI="#alimento_alto_azucar"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#alimento"/>
+        <NamedIndividual IRI="#brocoli"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#alimento"/>
+        <NamedIndividual IRI="#cocacola"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#persona"/>
+        <NamedIndividual IRI="#juan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#persona_en_riesgo"/>
+        <NamedIndividual IRI="#pedro"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#consume"/>
+        <NamedIndividual IRI="#juan"/>
+        <NamedIndividual IRI="#brocoli"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#consume"/>
+        <NamedIndividual IRI="#pedro"/>
+        <NamedIndividual IRI="#cocacola"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tiene_azucar"/>
+        <NamedIndividual IRI="#brocoli"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tiene_calorias"/>
+        <NamedIndividual IRI="#brocoli"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tiene_azucar"/>
+        <NamedIndividual IRI="#cocacola"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">35</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tiene_calorias"/>
+        <NamedIndividual IRI="#cocacola"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">120</Literal>
+    </DataPropertyAssertion>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#consume"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#sigue_dieta"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#consume"/>
+        <Class IRI="#persona"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#sigue_dieta"/>
+        <Class IRI="#persona"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#consume"/>
+        <Class IRI="#alimento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#sigue_dieta"/>
+        <Class IRI="#dieta"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#tiene_azucar"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#tiene_calorias"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tiene_azucar"/>
+        <Class IRI="#alimento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tiene_calorias"/>
+        <Class IRI="#alimento"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#tiene_azucar"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#tiene_calorias"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
