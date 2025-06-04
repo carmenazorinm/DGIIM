@@ -1,5 +1,5 @@
 
-(define (problem problema2)
+(define (problem problema4)
     (:domain ejercicio4)
 
     (:objects
@@ -12,7 +12,7 @@
     )
 
     (:init
-        ;; Roles del problema
+        ; roles del problema
         (esRol Hobbit1 Hobbit)
         (esRol Hobbit2 Hobbit)
         (esRol Hobbit3 Hobbit)
@@ -49,8 +49,8 @@
         (esEdificio Extractor Extractor)
         (esEdificio Fortaleza Fortaleza)
 
-        ;; tenemos Hobbit1, Hobbit2, Hobbit3 en Hobbiton;
-        ;stenemos Hobbit4 en Bree; y tenemos Mago1 en Rivendell y Mago2 en Isengard
+        ; tenemos Hobbit1, Hobbit2, Hobbit3 en Hobbiton;
+        ; tenemos Hobbit4 en Bree; y tenemos Mago1 en Rivendell y Mago2 en Isengard
         (en Hobbit1 Hobbiton)
         (en Hobbit2 Hobbiton)
         (en Hobbit3 Hobbiton)
@@ -63,7 +63,7 @@
         (en Humano1 Edoras)
         (en Humano2 Edoras)
 
-        ;; todos estan disponibles al principio
+        ; todos estan disponibles al principio
         (disponible Hobbit1)
         (disponible Hobbit2)
         (disponible Hobbit3)
@@ -76,10 +76,10 @@
         (disponible Humano1)
         (disponible Humano2)
 
-        ;; Lugar de destrucción
+        ; lugar de destrucción
         (lugarDestruccion Orodruin)
 
-        ;; Conectividad de las localizaciones
+        ;; Conectividad de las localizaciones -> hecho por chatGPT
         ;; Hobbiton
         (conectado Hobbiton Bree)
         (conectado Hobbiton Tharbad)
@@ -166,7 +166,7 @@
         (conectado Erebor Mirkwood)
 
     )
-
+    ; el objetivo es que se construya la fortaleza en Isengard
     (:goal
         (construido Fortaleza Isengard)
         ;(generando Mithril)

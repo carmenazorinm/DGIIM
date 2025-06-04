@@ -60,6 +60,8 @@
     :effect (and
       (extrayendo ?p ?r)
       (generando ?r)
+      ; no se indica que el enano deja de estar disponible, porque no se pide en el enunciado explícitamente.
+      ;(not (disponible ?p))
     )
   )
 )

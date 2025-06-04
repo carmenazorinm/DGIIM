@@ -6,16 +6,16 @@
         ; los personajes
         Hobbit1 Hobbit2 Hobbit3 Hobbit4 Mago1 Mago2 Enano1 - personaje
         ; los recursos
-        r_fangorn r_moria r_erebor r_lothlorien r_mirkwood - recurso
+        r_fangorn r_moria_mineral r_moria_mithril r_erebor r_lothlorien r_mirkwood - recurso
         ; las localizaciones
         Hobbiton Bree Rivendell HighPass Mirkwood Erebor Moria Lothlorien Tharbad Fangorn Isengard HelmsDeep Edoras AmonHen MinasTirith DolAmroth Tolfolas MinasMorgul DeadMarshes Orodruin - localizacion
-        ; aquí se pasa Mithril como recurso porque es algo que se posee
+        ; los nuevos recursos espaciales del ejercicio
         Anillo Espada - recurso
 
     )
 
     (:init
-        ;; Roles del problema
+        ; roles del problema
         (esRol Hobbit1 Hobbit)
         (esRol Hobbit2 Hobbit)
         (esRol Hobbit3 Hobbit)
@@ -24,14 +24,15 @@
         (esRol Mago2 Mago)
         (esRol Enano1 Enano)
 
-        ;; recursos 
+        ; recursos -> se añade el Anillo y la Espada
         (esAnillo Anillo)
         (esEspada Espada)
         (enRecurso r_fangorn Fangorn)
         (esCategoria r_fangorn Madera)
-        (enRecurso r_moria Moria)
-        (esCategoria r_moria Mineral)
-        (esCategoria r_moria Mithril)
+        (enRecurso r_moria_mineral Moria)
+        (enRecurso r_moria_mithril Moria)
+        (esCategoria r_moria_mineral Mineral)
+        (esCategoria r_moria_mithril Mithril)
         (enRecurso r_erebor Erebor)
         (esCategoria r_erebor Mineral)
         (enRecurso r_lothlorien Lothlorien)
@@ -43,8 +44,8 @@
         (enRecurso Especia Tolfolas)
         (esCategoria Especia Especia)
 
-        ;; tenemos Hobbit1, Hobbit2, Hobbit3 en Hobbiton;
-        ;stenemos Hobbit4 en Bree; y tenemos Mago1 en Rivendell y Mago2 en Isengard
+        ; tenemos Hobbit1, Hobbit2, Hobbit3 en Hobbiton;
+        ; tenemos Hobbit4 en Bree; y tenemos Mago1 en Rivendell y Mago2 en Isengard
         (en Hobbit1 Hobbiton)
         (en Hobbit2 Hobbiton)
         (en Hobbit3 Hobbiton)
@@ -53,7 +54,7 @@
         (en Mago2 Isengard)
         (en Enano1 Fangorn)
 
-        ;; Disponibilidad
+        ; todos disponibles menos Enano1
         (disponible Hobbit1)
         (disponible Hobbit2)
         (disponible Hobbit3)
@@ -61,18 +62,17 @@
         (disponible Mago1)
         (disponible Mago2)
 
-        ;; Enano1 no está disponible
-        ;; No se marca como disponible para reflejar que está ocupado
+        ; Enano1 no está disponible
+        ; no se marca como disponible para reflejar que está ocupado
 
-        ;; Objetos en localizaciones
+        ; localizacion de los nuevos recursos
         (enRecurso Anillo Rivendell)
-        (enRecurso Mithril Moria)
         (enRecurso Espada Lothlorien)
 
         ;; Lugar de destrucción
         (lugarDestruccion Orodruin)
 
-        ;; Conectividad de las localizaciones
+        ;; Conectividad de las localizaciones -> hecho por chatGPT
         ;; Hobbiton
         (conectado Hobbiton Bree)
         (conectado Hobbiton Tharbad)
@@ -160,6 +160,7 @@
 
     )
 
+    ; se busca destruir el anillo
     (:goal
         (anilloDestruido)
     )

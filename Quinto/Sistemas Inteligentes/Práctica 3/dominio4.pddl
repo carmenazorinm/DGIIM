@@ -1,6 +1,6 @@
 (define (domain ejercicio4)
     (:requirements :strips :typing)
-
+    ; tipos
     (:types
         personaje recurso localizacion edificio ; añadimos edificio como tipo
         )
@@ -168,26 +168,25 @@
             (enRecurso ?r ?l)
             (disponible ?p)
 
-            ; si es Enano y quiere extraer Mithril, debe haber un Extractor construido en ese lugar
-            
+            ; si se quiere extraer Mithril, debe haber un Extractor construido en ese lugar y debe extraerlo un Enano
             (or
                 (not (esCategoria ?r Mithril))
                 (and (esRol ?p Enano) (construido Extractor ?l))
             )
 
-            ; los Humanos solo pueden extraer Mineral
+            ; solo Humanos pueden extraer Mineral
             (or
                 (not (esCategoria ?r Mineral))
                 (esRol ?p Humano)
             )
 
-            ; los Enanos extraen Madera
+            ; solo Enanos extraen Madera
             (or
                 (not (esCategoria ?r Madera))
                 (esRol ?p Enano)
             )
 
-            ; todos los hobbits deben estar generando alimento
+            ; todos los hobbits deben estar generando alimento o empezar a hacerlo
             (or
                 (forall
                     (?h - personaje)
@@ -200,7 +199,7 @@
                 )
             )
         )
-        ; el personaje comienza a extraer el recurso
+        ; el personaje comienza a extraer el recurso -> mejorado por chatGPT porque no sabía cómo hacer que dependiese de la Categoría 
         :effect (and
             (not (disponible ?p))
 
@@ -231,6 +230,7 @@
 
     )
 
+    ; un personaje construye un edificio en una localizacion 
     (:action Construir
         :parameters (?p - personaje ?e - edificio ?l - localizacion)
         :precondition (and

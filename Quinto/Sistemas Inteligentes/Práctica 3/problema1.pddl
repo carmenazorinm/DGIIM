@@ -1,11 +1,11 @@
-(define (problem problema_madera)
+(define (problem problema1)
   (:domain ejercicio1)
 
   (:objects
     ; los personajes
     Enano1 Enano2 Hobbit1 - personaje
     ; los recursos
-    r_fangorn r_moria r_erebor r_lothlorien r_mirkwood - recurso
+    r_fangorn r_moria_mineral r_moria_mithril r_erebor r_lothlorien r_mirkwood - recurso
     ; las localizaciones
     Hobbiton Bree Rivendell HighPass Mirkwood Erebor Moria Lothlorien Tharbad Fangorn Isengard HelmsDeep Edoras AmonHen MinasTirith DolAmroth Tolfolas MinasMorgul DeadMarshes Orodruin - localizacion
   )
@@ -25,12 +25,13 @@
     (disponible Enano1)
     (disponible Hobbit1)
 
-    ; inicializacion de recursos
+    ; inicializacion de recursos -> enRecurso indica la localización y esCategoria indica la categoría del recurso
     (enRecurso r_fangorn Fangorn)
     (esCategoria r_fangorn Madera)
-    (enRecurso r_moria Moria)
-    (esCategoria r_moria Mineral)
-    (esCategoria r_moria Mithril)
+    (enRecurso r_moria_mineral Moria)
+    (enRecurso r_moria_mithril Moria)
+    (esCategoria r_moria_mineral Mineral)
+    (esCategoria r_moria_mithril Mithril)
     (enRecurso r_erebor Erebor)
     (esCategoria r_erebor Mineral)
     (enRecurso r_lothlorien Lothlorien)
@@ -42,7 +43,7 @@
     (enRecurso Especia Tolfolas)
     (esCategoria Especia Especia)
 
-    ;; Conectividad básica 
+    ;; Conectividad básica -> hecho por Chatgpt
     ;; Hobbiton
     (conectado Hobbiton Bree)
     (conectado Hobbiton Tharbad)

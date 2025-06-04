@@ -1,37 +1,42 @@
-(define (problem problema5)
-    (:domain ejercicio5)
+
+(define (problem problema3)
+    (:domain ejercicio3)
 
     (:objects
         ; los personajes
-        Enano1 Enano2 Hobbit1 - personaje
+        Hobbit1 Hobbit2 Hobbit3 Hobbit4 Mago1 Mago2 Enano1 Enano2 Elfo1 Humano1 Humano2 - personaje
         ; los recursos
-        r_fangorn r_moria r_erebor r_lothlorien r_mirkwood - recurso
+        r_fangorn r_moria_mineral r_moria_mithril r_erebor r_lothlorien r_mirkwood - recurso
         ; las localizaciones
         Hobbiton Bree Rivendell HighPass Mirkwood Erebor Moria Lothlorien Tharbad Fangorn Isengard HelmsDeep Edoras AmonHen MinasTirith DolAmroth Tolfolas MinasMorgul DeadMarshes Orodruin - localizacion
+        ; los nuevos recursos espaciales del ejercicio
+        Anillo Espada - recurso
+
     )
 
     (:init
-
-        ; localizaciones de los personajes
-        (en Enano1 Tharbad)
-        (en Enano2 Isengard)
-        (en Hobbit1 Isengard)
-
-        ; roles de los personajes
+        ; roles del problema
+        (esRol Hobbit1 Hobbit)
+        (esRol Hobbit2 Hobbit)
+        (esRol Hobbit3 Hobbit)
+        (esRol Hobbit4 Hobbit)
+        (esRol Mago1 Mago)
+        (esRol Mago2 Mago)
         (esRol Enano1 Enano)
         (esRol Enano2 Enano)
-        (esRol Hobbit1 Hobbit)
+        (esRol Elfo1 Elfo)
+        (esRol Humano1 Humano)
+        (esRol Humano2 Humano)
 
-        ; disponibilidad de los personajes -> Enano2 no está disponible
-        (disponible Enano1)
-        (disponible Hobbit1)
-
-        ; inicializacion de recursos
+        ; recursos -> se añade el Anillo y la Espada
+        (esAnillo Anillo)
+        (esEspada Espada)
         (enRecurso r_fangorn Fangorn)
         (esCategoria r_fangorn Madera)
-        (enRecurso r_moria Moria)
-        (esCategoria r_moria Mineral)
-        (esCategoria r_moria Mithril)
+        (enRecurso r_moria_mineral Moria)
+        (enRecurso r_moria_mithril Moria)
+        (esCategoria r_moria_mineral Mineral)
+        (esCategoria r_moria_mithril Mithril)
         (enRecurso r_erebor Erebor)
         (esCategoria r_erebor Mineral)
         (enRecurso r_lothlorien Lothlorien)
@@ -43,7 +48,39 @@
         (enRecurso Especia Tolfolas)
         (esCategoria Especia Especia)
 
-        ;; Conectividad básica -> hecho por chatGPT
+        ; tenemos Hobbit1, Hobbit2, Hobbit3 en Hobbiton;
+        ; tenemos Hobbit4 en Bree; y tenemos Mago1 en Rivendell y Mago2 en Isengard
+        (en Hobbit1 Hobbiton)
+        (en Hobbit2 Hobbiton)
+        (en Hobbit3 Hobbiton)
+        (en Hobbit4 Bree)
+        (en Mago1 Rivendell)
+        (en Mago2 Isengard)
+        (en Enano1 Fangorn)
+        (en Enano2 Moria)
+        (en Elfo1 Lothlorien)
+        (en Humano1 Edoras)
+        (en Humano2 Edoras)
+
+        ; todos disponibles menos Enano1
+        (disponible Hobbit1)
+        (disponible Hobbit2)
+        (disponible Hobbit3)
+        (disponible Hobbit4)
+        (disponible Mago1)
+        (disponible Mago2)
+
+        ; Enano1 no está disponible
+        ; no se marca como disponible para reflejar que está ocupado
+
+        ; localizacion de los nuevos recursos
+        (enRecurso Anillo Rivendell)
+        (enRecurso Espada Lothlorien)
+
+        ;; Lugar de destrucción
+        (lugarDestruccion Orodruin)
+
+        ;; Conectividad de las localizaciones -> hecho por chatGPT
         ;; Hobbiton
         (conectado Hobbiton Bree)
         (conectado Hobbiton Tharbad)
@@ -129,62 +166,10 @@
         ;; Erebor
         (conectado Erebor Mirkwood)
 
-        ; coste de viajar entre localizaciones -> hecho por chatGPT
-        (= (costeCamino Hobbiton Bree) 1)
-        (= (costeCamino Hobbiton Tharbad) 1)
-        (= (costeCamino Bree Hobbiton) 1)
-        (= (costeCamino Bree Rivendell) 1)
-        (= (costeCamino Bree Tharbad) 1)
-        (= (costeCamino Tharbad Hobbiton) 1)
-        (= (costeCamino Tharbad Bree) 1)
-        (= (costeCamino Tharbad HelmsDeep) 3)
-        (= (costeCamino HelmsDeep Tharbad) 3)
-        (= (costeCamino HelmsDeep Edoras) 1)
-        (= (costeCamino HelmsDeep Isengard) 1)
-        (= (costeCamino Isengard HelmsDeep) 1)
-        (= (costeCamino Isengard Fangorn) 1)
-        (= (costeCamino Fangorn Isengard) 1)
-        (= (costeCamino Fangorn AmonHen) 1)
-        (= (costeCamino AmonHen Fangorn) 1)
-        (= (costeCamino AmonHen Lothlorien) 3)
-        (= (costeCamino Lothlorien AmonHen) 3)
-        (= (costeCamino AmonHen DeadMarshes) 1)
-        (= (costeCamino DeadMarshes AmonHen) 1)
-        (= (costeCamino DeadMarshes MinasMorgul) 1)
-        (= (costeCamino MinasMorgul DeadMarshes) 1)
-        (= (costeCamino MinasMorgul MinasTirith) 1)
-        (= (costeCamino MinasMorgul Orodruin) 1)
-        (= (costeCamino Orodruin MinasMorgul) 1)
-        (= (costeCamino MinasTirith MinasMorgul) 1)
-        (= (costeCamino MinasTirith Edoras) 1)
-        (= (costeCamino MinasTirith Tolfolas) 1)
-        (= (costeCamino Tolfolas MinasTirith) 1)
-        (= (costeCamino Tolfolas DolAmroth) 1)
-        (= (costeCamino Edoras HelmsDeep) 1)
-        (= (costeCamino Edoras DolAmroth) 1)
-        (= (costeCamino DolAmroth Edoras) 1)
-        (= (costeCamino DolAmroth Tolfolas) 1)
-        (= (costeCamino Lothlorien Moria) 1)
-        (= (costeCamino Moria Lothlorien) 1)
-        (= (costeCamino Moria Rivendell) 1)
-        (= (costeCamino Rivendell Moria) 1)
-        (= (costeCamino Rivendell Bree) 1)
-        (= (costeCamino Rivendell HighPass) 1)
-        (= (costeCamino HighPass Rivendell) 1)
-        (= (costeCamino HighPass Mirkwood) 1)
-        (= (costeCamino Mirkwood HighPass) 1)
-        (= (costeCamino Mirkwood Erebor) 1)
-        (= (costeCamino Erebor Mirkwood) 1)
-
     )
 
-    ; se busca generar madera en Fangorn
+    ; se busca destruir el anillo
     (:goal
-        (generando r_fangorn)
-    )
-
-    ; se minimiza el coste total del viaje
-    (:metric minimize
-        (total-cost)
+        (anilloDestruido)
     )
 )
